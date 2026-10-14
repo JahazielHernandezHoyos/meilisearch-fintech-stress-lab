@@ -1,0 +1,94 @@
+{
+ "scale": 4000000,
+ "campo": "fecha_registro_ts",
+ "filtro_segmento": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+ "ground_truth_segmento": 1209374,
+ "posiciones": [
+  10000,
+  100000,
+  1000000
+ ],
+ "host": {
+  "cpu_model": "AMD Ryzen 5 8645HS w/ Radeon 760M Graphics",
+  "nproc": 12,
+  "mem_total_kb": 14053936,
+  "kernel": "7.1.6-1-cachyos-deckify"
+ },
+ "filas": [
+  {
+   "posicion": 10000,
+   "hits_esperados": 20,
+   "cursor": 1673249483,
+   "sondeos_binarios": 26,
+   "por_offset": {
+    "reps": 3,
+    "status": 200,
+    "hits": 20,
+    "p50_ms": 369.7,
+    "p95_ms": 4802.77,
+    "meili_p50_ms": 367.0
+   },
+   "por_keyset": {
+    "reps": 20,
+    "status": 200,
+    "hits": 20,
+    "p50_ms": 12.51,
+    "p95_ms": 13.16,
+    "meili_p50_ms": 11.0
+   },
+   "factor": 29.6,
+   "keyset_hits_ok": true,
+   "offset_hits_ok": true
+  },
+  {
+   "posicion": 100000,
+   "hits_esperados": 20,
+   "cursor": 1679670880,
+   "sondeos_binarios": 27,
+   "por_offset": {
+    "reps": 3,
+    "status": 200,
+    "hits": 20,
+    "p50_ms": 18427.66,
+    "p95_ms": 18627.05,
+    "meili_p50_ms": 18386.0
+   },
+   "por_keyset": {
+    "reps": 20,
+    "status": 200,
+    "hits": 20,
+    "p50_ms": 9.75,
+    "p95_ms": 10.67,
+    "meili_p50_ms": 8.0
+   },
+   "factor": 1890.0,
+   "keyset_hits_ok": true,
+   "offset_hits_ok": true
+  },
+  {
+   "posicion": 1000000,
+   "hits_esperados": 20,
+   "cursor": 1744047715,
+   "sondeos_binarios": 26,
+   "por_offset": {
+    "reps": 3,
+    "status": 200,
+    "hits": 0,
+    "p50_ms": 55803.22,
+    "p95_ms": 70426.87,
+    "meili_p50_ms": 55567.0
+   },
+   "por_keyset": {
+    "reps": 20,
+    "status": 200,
+    "hits": 20,
+    "p50_ms": 10.14,
+    "p95_ms": 14.43,
+    "meili_p50_ms": 9.0
+   },
+   "factor": 5503.3,
+   "keyset_hits_ok": true,
+   "offset_hits_ok": false
+  }
+ ]
+}

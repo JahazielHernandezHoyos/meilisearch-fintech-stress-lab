@@ -1,0 +1,17 @@
+# --- artefactos grandes: se regeneran con los scripts (ver README) ---
+/bin/
+/data/arrays/
+/data/db/
+/data/ndjson/
+/dumps/
+
+# --- muestras ligeras SI se versionan ---
+!/data/sample/
+!/data/sample/*.jsonl.gz
+
+# --- ruido ---
+__pycache__/
+*.pyc
+/logs/*.log
+/logs/*.out
+*.tmp

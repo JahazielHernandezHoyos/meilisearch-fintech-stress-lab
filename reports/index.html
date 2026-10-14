@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laboratorio Meilisearch · 4,000,000 de clientes ficticios (simulación fintech)</title>
+<style>
+  /* Tema: Tech Innovation (theme-factory, anthropics/skills)
+     Electric Blue #0066ff · Neon Cyan #00ffff · Dark Gray #1e1e1e · DejaVu Sans */
+  :root {
+    --bg: #1e1e1e; --panel: #252526; --panel2: #2d2d30; --line: #3a3a3d;
+    --ink: #ffffff; --muted: #9da2a6; --blue: #0066ff; --cyan: #00ffff;
+    --amber: #f5a524; --green: #3ddc97; --red: #ff5c5c;
+    --sans: "DejaVu Sans", "Fira Sans", Cantarell, system-ui, sans-serif;
+    --mono: "DejaVu Sans Mono", "FantasqueSansM Nerd Font Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans);
+    font-size: 15.5px; line-height: 1.62; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--cyan); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+  code { font-family: var(--mono); font-size: 0.88em; background: #2a2a2c; padding: 1px 5px; border: 1px solid var(--line); }
+  .wrap { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0 44px; max-width: 1500px; margin: 0 auto; padding: 0 28px 96px; }
+  header.top { grid-column: 1 / -1; padding: 56px 0 30px; border-bottom: 1px solid var(--line); }
+  .kicker { font-family: var(--mono); font-size: 12.5px; color: var(--cyan); letter-spacing: 0.02em; }
+  h1 { font-size: clamp(30px, 4.4vw, 52px); line-height: 1.04; font-weight: bold; margin: 14px 0 0; max-width: 24ch; }
+  h1 em { font-style: normal; color: var(--blue); }
+  .lede { color: var(--muted); max-width: 74ch; margin: 18px 0 0; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-top: 24px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+  .meta b { color: var(--ink); font-weight: normal; }
+  nav.side { position: sticky; top: 24px; align-self: start; padding-top: 34px; font-size: 14px; }
+  nav.side a { display: block; padding: 5px 0 5px 13px; color: var(--muted); text-decoration: none; border-left: 2px solid var(--line); }
+  nav.side a:hover { color: var(--ink); border-left-color: var(--cyan); }
+  main { padding-top: 34px; min-width: 0; }
+  section { margin: 0 0 60px; scroll-margin-top: 20px; }
+  h2 { font-size: 25px; margin: 0 0 6px; font-weight: bold; }
+  h3 { font-size: 17px; margin: 30px 0 8px; }
+  h4 { font-size: 14px; margin: 22px 0 6px; font-family: var(--mono); color: var(--muted); font-weight: normal; }
+  p, li { max-width: 80ch; }
+  .hint { color: var(--muted); font-size: 14px; margin: 4px 0 18px; }
+  figure { margin: 22px 0 0; background: var(--panel); border: 1px solid var(--line); padding: 18px 20px 10px; }
+  figure svg { width: 100%; height: auto; display: block; }
+  .svg-title { fill: var(--ink); font-size: 15px; font-family: var(--sans); font-weight: bold; }
+  .svg-sub { fill: var(--muted); font-size: 12px; font-family: var(--mono); }
+  .grid { stroke: #333336; stroke-width: 1; }
+  .axis { stroke: var(--line); stroke-width: 1; }
+  .tick { fill: var(--muted); font-size: 11.5px; font-family: var(--mono); }
+  .axis-lab { fill: var(--muted); font-size: 12px; font-family: var(--sans); }
+  .series-lab { font-size: 11.5px; font-family: var(--mono); }
+  .draw { stroke-dasharray: 2600; stroke-dashoffset: 2600; animation: draw 1.5s ease-out forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .draw { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; } html { scroll-behavior: auto; } }
+  .tw { overflow-x: auto; border: 1px solid var(--line); background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 7px 11px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+  thead th { background: var(--panel2); font-size: 12.5px; color: var(--muted); font-weight: normal; position: sticky; top: 0; }
+  td.n, th.n { text-align: right; font-family: var(--mono); }
+  table.dense th, table.dense td { padding: 4px 9px; font-size: 12.5px; }
+  table.warn thead th { color: var(--amber); }
+  table.warn td:nth-child(3) { color: var(--amber); }
+  tbody tr:hover td { background: #2b2b2e; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(228px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 22px; }
+  .card { background: var(--panel); padding: 16px 18px 18px; }
+  .card .v { font-family: var(--mono); font-size: 25px; color: var(--cyan); }
+  .card .v.amber { color: var(--amber); }
+  .card .k { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .note { border-left: 3px solid var(--amber); background: #2a2622; padding: 12px 16px; margin: 18px 0; max-width: 86ch; }
+  .note.cyan { border-left-color: var(--cyan); background: #222a2a; }
+  ol.steps { padding-left: 20px; }
+  pre { background: var(--panel); border: 1px solid var(--line); padding: 14px 16px; overflow-x: auto; font-family: var(--mono); font-size: 12.5px; color: #d6d6d6; }
+  footer { grid-column: 1 / -1; border-top: 1px solid var(--line); margin-top: 20px; padding-top: 22px; color: var(--muted); font-size: 13px; }
+  @media (max-width: 900px) { .wrap { grid-template-columns: 1fr; } nav.side { position: static; padding-top: 10px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="kicker">laboratorio de estrés · meilisearch v1.55.0 · datos 100% ficticios</div>
+    <h1>Cuatro millones de clientes ficticios de una <em>simulación fintech</em> bajo un solo motor de búsqueda</h1>
+    <p class="lede">Índice sintético y determinista (semilla <code>20261013</code>) con verdad de referencia
+    calculada <b>antes</b> de consultar: cada latencia de este reporte viene con el conteo que el segmento
+    <i>debe</i> devolver. Se midió la degradación de 1,000 a 4,000,000 documentos, qué pasa al pedir más de
+    1000 resultados y dónde se rompe la paginación profunda.</p>
+    <div class="meta">
+      <span>host <b>AMD Ryzen 5 8645HS w/ Radeon 760M Graphics</b></span>
+      <span>vCPU <b>12</b></span>
+      <span>RAM <b>13.4 GiB</b></span>
+      <span>índice <b>30.02 GiB</b> · 4,000,000 docs</span>
+      <span>indexado <b>3.9 h</b> a 284 docs/s</span>
+      <span>consultas <b>27</b> · escalas <b>7</b></span>
+      <span>repo <b><a href="https://github.com/JahazielHernandezHoyos/meilisearch-fintech-stress-lab">JahazielHernandezHoyos/meilisearch-fintech-stress-lab</a></b></span>
+      <span>clonar <b><code>git clone https://github.com/JahazielHernandezHoyos/meilisearch-fintech-stress-lab.git</code></b></span>
+    </div>
+  </header>
+
+  <nav class="side"><a href="#degradacion">Degradación</a>
+<a href="#escalas">Escalas</a>
+<a href="#dataset">El dataset</a>
+<a href="#verdad">Ground truth</a>
+<a href="#tope">El tope de 1000</a>
+<a href="#profunda">Paginación profunda</a>
+<a href="#concurrencia">Concurrencia</a>
+<a href="#erratas">Erratas y cliente</a>
+<a href="#hallazgos">Hallazgos</a>
+<a href="#reproducir">Reproducir</a></nav>
+
+  <main>
+    <section id="degradacion">
+      <h2>El costo no está en buscar, está en extraer</h2>
+      <p class="hint">Filtrar y facetar se mantienen planos mientras el índice crece 400×; paginar profundo
+      y las consultas geográficas no.</p>
+      <figure><svg viewBox="0 0 1040 380" role="img" aria-label="Latencia p50 por consulta vs. tamaño del índice" preserveAspectRatio="xMidYMid meet">
+<text x="0" y="16" class="svg-title">Latencia p50 por consulta vs. tamaño del índice</text>
+<text x="0" y="34" class="svg-sub">Consultas de segmentación con limit=20 · escala logarítmica en Y</text>
+<line x1="78" y1="312.7" x2="772" y2="312.7" class="grid"/>
+<text x="68" y="316.7" class="tick" text-anchor="end">2</text>
+<line x1="78" y1="259.1" x2="772" y2="259.1" class="grid"/>
+<text x="68" y="263.1" class="tick" text-anchor="end">5</text>
+<line x1="78" y1="218.6" x2="772" y2="218.6" class="grid"/>
+<text x="68" y="222.6" class="tick" text-anchor="end">10</text>
+<line x1="78" y1="178.1" x2="772" y2="178.1" class="grid"/>
+<text x="68" y="182.1" class="tick" text-anchor="end">20</text>
+<line x1="78" y1="124.6" x2="772" y2="124.6" class="grid"/>
+<text x="68" y="128.6" class="tick" text-anchor="end">50</text>
+<line x1="78" y1="84.0" x2="772" y2="84.0" class="grid"/>
+<text x="68" y="88.0" class="tick" text-anchor="end">100</text>
+<line x1="78.0" y1="314" x2="78.0" y2="319" class="axis"/>
+<text x="78.0" y="336" class="tick" text-anchor="middle">1,000</text>
+<line x1="193.7" y1="314" x2="193.7" y2="319" class="axis"/>
+<text x="193.7" y="336" class="tick" text-anchor="middle">3,000</text>
+<line x1="309.3" y1="314" x2="309.3" y2="319" class="axis"/>
+<text x="309.3" y="336" class="tick" text-anchor="middle">10,000</text>
+<line x1="425.0" y1="314" x2="425.0" y2="319" class="axis"/>
+<text x="425.0" y="336" class="tick" text-anchor="middle">100,000</text>
+<line x1="540.7" y1="314" x2="540.7" y2="319" class="axis"/>
+<text x="540.7" y="336" class="tick" text-anchor="middle">300,000</text>
+<line x1="656.3" y1="314" x2="656.3" y2="319" class="axis"/>
+<text x="656.3" y="336" class="tick" text-anchor="middle">1,000,000</text>
+<line x1="772.0" y1="314" x2="772.0" y2="319" class="axis"/>
+<text x="772.0" y="336" class="tick" text-anchor="middle">4,000,000</text>
+<text x="425" y="360" class="axis-lab" text-anchor="middle">documentos en el índice</text>
+<text x="20" y="185" class="axis-lab" text-anchor="middle" transform="rotate(-90 20 185)">ms (p50)</text>
+<path d="M78.0,286.5 L193.7,269.9 L309.3,268.4 L425.0,267.2 L540.7,256.7 L656.3,266.5 L772.0,259.1" fill="none" stroke="#00ffff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="draw"/>
+<circle cx="78.0" cy="286.5" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>filtro score_buro&lt;520 · 3</title></circle>
+<circle cx="193.7" cy="269.9" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>filtro score_buro&lt;520 · 4</title></circle>
+<circle cx="309.3" cy="268.4" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>filtro score_buro&lt;520 · 4</title></circle>
+<circle cx="425.0" cy="267.2" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>filtro score_buro&lt;520 · 4</title></circle>
+<circle cx="540.7" cy="256.7" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>filtro score_buro&lt;520 · 5</title></circle>
+<circle cx="656.3" cy="266.5" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>filtro score_buro&lt;520 · 4</title></circle>
+<circle cx="772.0" cy="259.1" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>filtro score_buro&lt;520 · 5</title></circle>
+<path d="M78.0,255.0 L193.7,235.3 L309.3,262.3 L425.0,250.3 L540.7,236.9 L656.3,206.6 L772.0,211.5" fill="none" stroke="#0066ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="draw"/>
+<circle cx="78.0" cy="255.0" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>facet por estado (4M) · 5</title></circle>
+<circle cx="193.7" cy="235.3" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>facet por estado (4M) · 8</title></circle>
+<circle cx="309.3" cy="262.3" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>facet por estado (4M) · 5</title></circle>
+<circle cx="425.0" cy="250.3" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>facet por estado (4M) · 6</title></circle>
+<circle cx="540.7" cy="236.9" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>facet por estado (4M) · 7</title></circle>
+<circle cx="656.3" cy="206.6" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>facet por estado (4M) · 12</title></circle>
+<circle cx="772.0" cy="211.5" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>facet por estado (4M) · 11</title></circle>
+<path d="M78.0,269.5 L193.7,264.7 L309.3,264.5 L425.0,275.7 L540.7,254.1 L656.3,251.4 L772.0,257.1" fill="none" stroke="#f5a524" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="draw"/>
+<circle cx="78.0" cy="269.5" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>filtro KYC+jóvenes · 4</title></circle>
+<circle cx="193.7" cy="264.7" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>filtro KYC+jóvenes · 5</title></circle>
+<circle cx="309.3" cy="264.5" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>filtro KYC+jóvenes · 5</title></circle>
+<circle cx="425.0" cy="275.7" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>filtro KYC+jóvenes · 4</title></circle>
+<circle cx="540.7" cy="254.1" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>filtro KYC+jóvenes · 5</title></circle>
+<circle cx="656.3" cy="251.4" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>filtro KYC+jóvenes · 6</title></circle>
+<circle cx="772.0" cy="257.1" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>filtro KYC+jóvenes · 5</title></circle>
+<path d="M78.0,275.5 L193.7,267.0 L309.3,257.2 L425.0,189.9 L540.7,138.5 L656.3,84.3 L772.0,64.2" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="draw"/>
+<circle cx="78.0" cy="275.5" r="3.4" fill="#1e1e1e" stroke="#a78bfa" stroke-width="2"><title>geo _geoRadius 25 km · 4</title></circle>
+<circle cx="193.7" cy="267.0" r="3.4" fill="#1e1e1e" stroke="#a78bfa" stroke-width="2"><title>geo _geoRadius 25 km · 4</title></circle>
+<circle cx="309.3" cy="257.2" r="3.4" fill="#1e1e1e" stroke="#a78bfa" stroke-width="2"><title>geo _geoRadius 25 km · 5</title></circle>
+<circle cx="425.0" cy="189.9" r="3.4" fill="#1e1e1e" stroke="#a78bfa" stroke-width="2"><title>geo _geoRadius 25 km · 16</title></circle>
+<circle cx="540.7" cy="138.5" r="3.4" fill="#1e1e1e" stroke="#a78bfa" stroke-width="2"><title>geo _geoRadius 25 km · 39</title></circle>
+<circle cx="656.3" cy="84.3" r="3.4" fill="#1e1e1e" stroke="#a78bfa" stroke-width="2"><title>geo _geoRadius 25 km · 100</title></circle>
+<circle cx="772.0" cy="64.2" r="3.4" fill="#1e1e1e" stroke="#a78bfa" stroke-width="2"><title>geo _geoRadius 25 km · 141</title></circle>
+<path d="M78.0,267.8 L193.7,265.2 L309.3,259.4 L425.0,216.7 L540.7,209.4 L656.3,213.2 L772.0,231.6" fill="none" stroke="#3ddc97" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="draw"/>
+<circle cx="78.0" cy="267.8" r="3.4" fill="#1e1e1e" stroke="#3ddc97" stroke-width="2"><title>texto "Hernandez" · 4</title></circle>
+<circle cx="193.7" cy="265.2" r="3.4" fill="#1e1e1e" stroke="#3ddc97" stroke-width="2"><title>texto "Hernandez" · 5</title></circle>
+<circle cx="309.3" cy="259.4" r="3.4" fill="#1e1e1e" stroke="#3ddc97" stroke-width="2"><title>texto "Hernandez" · 5</title></circle>
+<circle cx="425.0" cy="216.7" r="3.4" fill="#1e1e1e" stroke="#3ddc97" stroke-width="2"><title>texto "Hernandez" · 10</title></circle>
+<circle cx="540.7" cy="209.4" r="3.4" fill="#1e1e1e" stroke="#3ddc97" stroke-width="2"><title>texto "Hernandez" · 12</title></circle>
+<circle cx="656.3" cy="213.2" r="3.4" fill="#1e1e1e" stroke="#3ddc97" stroke-width="2"><title>texto "Hernandez" · 11</title></circle>
+<circle cx="772.0" cy="231.6" r="3.4" fill="#1e1e1e" stroke="#3ddc97" stroke-width="2"><title>texto "Hernandez" · 8</title></circle>
+<line x1="776.0" y1="64.2" x2="782.0" y2="64.2" stroke="#a78bfa" stroke-width="1" opacity="0.6"/>
+<text x="786.0" y="68.2" class="series-lab" fill="#a78bfa">geo _geoRadius 25 km <tspan opacity="0.75">141</tspan></text>
+<line x1="776.0" y1="211.5" x2="782.0" y2="211.5" stroke="#0066ff" stroke-width="1" opacity="0.6"/>
+<text x="786.0" y="215.5" class="series-lab" fill="#0066ff">facet por estado (4M) <tspan opacity="0.75">11</tspan></text>
+<line x1="776.0" y1="231.6" x2="782.0" y2="231.6" stroke="#3ddc97" stroke-width="1" opacity="0.6"/>
+<text x="786.0" y="235.6" class="series-lab" fill="#3ddc97">texto "Hernandez" <tspan opacity="0.75">8</tspan></text>
+<line x1="776.0" y1="257.1" x2="782.0" y2="257.1" stroke="#f5a524" stroke-width="1" opacity="0.6"/>
+<text x="786.0" y="261.1" class="series-lab" fill="#f5a524">filtro KYC+jóvenes <tspan opacity="0.75">5</tspan></text>
+<line x1="776.0" y1="274.1" x2="782.0" y2="274.1" stroke="#00ffff" stroke-width="1" opacity="0.6"/>
+<text x="786.0" y="278.1" class="series-lab" fill="#00ffff">filtro score_buro&lt;520 <tspan opacity="0.75">5</tspan></text>
+</svg>
+      <figcaption class="hint">Cada punto es la mediana de 20 repeticiones (cliente HTTP real, cuerpo completo leído).
+      El eje Y es logarítmico: la distancia entre la línea verde y la azul es de dos órdenes de magnitud.</figcaption></figure>
+      <div class="cards">
+        <div class="card"><div class="v">5.00 ms</div>
+          <div class="k">filtrar 705,801 clientes con <code>score_buro &lt; 520</code> a 4,000,000 docs</div></div>
+        <div class="card"><div class="v">11.29 ms</div>
+          <div class="k">facetar los 4,000,000 por <code>estado</code> con conteos exactos por bucket</div></div>
+        <div class="card"><div class="v amber">36,997 ms</div>
+          <div class="k">offset 1,000,000 sobre los 4,000,000 · 1.3 ms en offset 0</div></div>
+        <div class="card"><div class="v amber">140.5 ms</div>
+          <div class="k"><code>_geoRadius</code> 25 km: 37× más lento que a 1,000 docs</div></div>
+      </div>
+    </section>
+
+    <section id="escalas">
+      <h2>Las siete escalas, de 1,000 a 4,000,000</h2>
+      <p class="hint">Cada escala es el prefijo determinista del dataset completo: los documentos <code>1..N</code>,
+      así que las mediciones son comparables entre sí.</p>
+      <figure><svg viewBox="0 0 1040 340" role="img" aria-label="Costo de indexado por escala" preserveAspectRatio="xMidYMid meet">
+<text x="0" y="16" class="svg-title">Costo de indexado por escala</text>
+<text x="0" y="34" class="svg-sub">El throughput se derrumba cuando el índice deja de caber en RAM</text>
+<line x1="78" y1="274.0" x2="1000" y2="274.0" class="grid"/>
+<text x="68" y="278.0" class="tick" text-anchor="end">0</text>
+<line x1="78" y1="219.5" x2="1000" y2="219.5" class="grid"/>
+<text x="68" y="223.5" class="tick" text-anchor="end">4,375</text>
+<line x1="78" y1="165.0" x2="1000" y2="165.0" class="grid"/>
+<text x="68" y="169.0" class="tick" text-anchor="end">8,751</text>
+<line x1="78" y1="110.5" x2="1000" y2="110.5" class="grid"/>
+<text x="68" y="114.5" class="tick" text-anchor="end">13,126</text>
+<line x1="78" y1="56.0" x2="1000" y2="56.0" class="grid"/>
+<text x="68" y="60.0" class="tick" text-anchor="end">17,502</text>
+<line x1="78.0" y1="274" x2="78.0" y2="279" class="axis"/>
+<text x="78.0" y="296" class="tick" text-anchor="middle">1,000</text>
+<line x1="231.7" y1="274" x2="231.7" y2="279" class="axis"/>
+<text x="231.7" y="296" class="tick" text-anchor="middle">3,000</text>
+<line x1="385.3" y1="274" x2="385.3" y2="279" class="axis"/>
+<text x="385.3" y="296" class="tick" text-anchor="middle">10,000</text>
+<line x1="539.0" y1="274" x2="539.0" y2="279" class="axis"/>
+<text x="539.0" y="296" class="tick" text-anchor="middle">100,000</text>
+<line x1="692.7" y1="274" x2="692.7" y2="279" class="axis"/>
+<text x="692.7" y="296" class="tick" text-anchor="middle">300,000</text>
+<line x1="846.3" y1="274" x2="846.3" y2="279" class="axis"/>
+<text x="846.3" y="296" class="tick" text-anchor="middle">1,000,000</text>
+<line x1="1000.0" y1="274" x2="1000.0" y2="279" class="axis"/>
+<text x="1000.0" y="296" class="tick" text-anchor="middle">4,000,000</text>
+<text x="539" y="320" class="axis-lab" text-anchor="middle">documentos en el índice</text>
+<text x="20" y="165" class="axis-lab" text-anchor="middle" transform="rotate(-90 20 165)">docs/s  ·  GiB</text>
+<rect x="99.1" y="223.6" width="44.8" height="50.4" fill="#00ffff" opacity="0.85"><title>docs/s · 4,047</title></rect>
+<rect x="230.8" y="117.9" width="44.8" height="156.1" fill="#00ffff" opacity="0.85"><title>docs/s · 12,534</title></rect>
+<rect x="362.5" y="84.4" width="44.8" height="189.6" fill="#00ffff" opacity="0.85"><title>docs/s · 15,219</title></rect>
+<rect x="494.2" y="143.2" width="44.8" height="130.8" fill="#00ffff" opacity="0.85"><title>docs/s · 10,497</title></rect>
+<rect x="625.9" y="207.7" width="44.8" height="66.3" fill="#00ffff" opacity="0.85"><title>docs/s · 5,324</title></rect>
+<rect x="757.6" y="249.2" width="44.8" height="24.8" fill="#00ffff" opacity="0.85"><title>docs/s · 1,990</title></rect>
+<rect x="889.4" y="270.5" width="44.8" height="3.5" fill="#00ffff" opacity="0.85"><title>docs/s · 284</title></rect>
+<rect x="880" y="59" width="12" height="12" fill="#00ffff" opacity="0.85"/>
+<text x="898" y="70" class="series-lab">docs/s</text>
+<rect x="407.3" y="274.0" width="44.8" height="0.0" fill="#f5a524" opacity="0.85"><title>pico RSS (GiB) · 0</title></rect>
+<rect x="539.0" y="274.0" width="44.8" height="0.0" fill="#f5a524" opacity="0.85"><title>pico RSS (GiB) · 1</title></rect>
+<rect x="670.7" y="274.0" width="44.8" height="0.0" fill="#f5a524" opacity="0.85"><title>pico RSS (GiB) · 3</title></rect>
+<rect x="802.4" y="273.9" width="44.8" height="0.1" fill="#f5a524" opacity="0.85"><title>pico RSS (GiB) · 7</title></rect>
+<rect x="934.1" y="273.9" width="44.8" height="0.1" fill="#f5a524" opacity="0.85"><title>pico RSS (GiB) · 9</title></rect>
+<rect x="880" y="78" width="12" height="12" fill="#f5a524" opacity="0.85"/>
+<text x="898" y="89" class="series-lab">pico RSS (GiB)</text>
+</svg></figure>
+      <div class="tw"><table class="">
+<thead><tr>
+<th class="">Escala</th>
+<th class="">Índice en disco</th>
+<th class="">Indexado</th>
+<th class="">docs/s</th>
+<th class="">Pico RSS</th>
+<th class="n">Filtro p50</th>
+<th class="n">Facet p50</th>
+<th class="n">Geo p50</th>
+<th class="n">Deep offset 1M</th>
+<th class="n">QPS @32</th>
+</tr></thead><tbody>
+<tr><td class="">1,000</td><td class="">0.01 GiB</td><td class="">0.2 s</td><td class="">4,047</td><td class="">—</td><td class="n">3.13 ms</td><td class="n">5.37 ms</td><td class="n">3.78 ms</td><td class="n">43.5 ms</td><td class="n">1,112</td></tr>
+<tr><td class="">3,000</td><td class="">0.02 GiB</td><td class="">0.2 s</td><td class="">12,534</td><td class="">—</td><td class="n">4.16 ms</td><td class="n">7.52 ms</td><td class="n">4.37 ms</td><td class="n">109.7 ms</td><td class="n">1,091</td></tr>
+<tr><td class="">10,000</td><td class="">0.05 GiB</td><td class="">0.7 s</td><td class="">15,219</td><td class="">0.44 GiB</td><td class="n">4.27 ms</td><td class="n">4.74 ms</td><td class="n">5.17 ms</td><td class="n">356.2 ms</td><td class="n">1,071</td></tr>
+<tr><td class="">100,000</td><td class="">0.74 GiB</td><td class="">9.5 s</td><td class="">10,497</td><td class="">1.14 GiB</td><td class="n">4.36 ms</td><td class="n">5.82 ms</td><td class="n">16.36 ms</td><td class="n">3,262.6 ms</td><td class="n">1,040</td></tr>
+<tr><td class="">300,000</td><td class="">2.30 GiB</td><td class="">56.3 s</td><td class="">5,324</td><td class="">3.01 GiB</td><td class="n">5.21 ms</td><td class="n">7.32 ms</td><td class="n">39.42 ms</td><td class="n">8,723.5 ms</td><td class="n">1,062</td></tr>
+<tr><td class="">1,000,000</td><td class="">7.30 GiB</td><td class="">502.4 s</td><td class="">1,990</td><td class="">7.20 GiB</td><td class="n">4.41 ms</td><td class="n">12.28 ms</td><td class="n">99.61 ms</td><td class="n">40,866.9 ms</td><td class="n">1,582</td></tr>
+<tr><td class="">4,000,000</td><td class="">30.02 GiB</td><td class="">14,073.6 s</td><td class="">284</td><td class="">8.72 GiB</td><td class="n">5.00 ms</td><td class="n">11.29 ms</td><td class="n">140.51 ms</td><td class="n">36,997.1 ms</td><td class="n">1,171</td></tr>
+</tbody></table></div>
+      <div class="note cyan">El throughput de indexado cae de 10,497 docs/s
+      (100,000 documentos) a 284 docs/s en la escala final: cuando el índice pesa
+      30.02 GiB y la máquina tiene 13 GiB de RAM, cada lote golpea el disco.
+      El pico de RSS durante el indexado fue 8.72 GiB.</div>
+    </section>
+
+    <section id="dataset">
+      <h2>De dónde salió este dataset</h2>
+      <p><b>Está inventado para este laboratorio.</b> No se consultó, raspó ni copió el esquema de
+      ninguna empresa real: los nombres de producto, las bandas, los canales y los estatus son
+      vocabulario genérico del crédito al consumo. Los pesos, las correlaciones y las reglas de
+      derivación se escribieron a mano en <code>gen/spec.py</code>; las únicas referencias externas
+      son de sentido común (peso poblacional relativo de los estados, orden de magnitud de los
+      ingresos por banda). El dominio de correo propio del dataset es <code>fintech-demo.mx</code>,
+      un dominio de relleno.</p>
+      <p>El esquema lo dictaron los experimentos: cada campo tenía que ser <b>plausible</b> para una
+      fintech de préstamos, <b>filtrable, ordenable o buscable</b> (cada atributo filtrable construye
+      su propia base de facetas, de ahí los 8,060 B
+      por documento), <b>calculable en forma cerrada</b> sobre vectores numpy (requisito para predecir
+      el conteo antes de consultar) y de <b>cardinalidad variada</b> (32 estados, 5 productos,
+      4 bandas de riesgo, 12 etiquetas).</p>
+      <h3>Pesos declarados</h3>
+      <div class="tw"><table class="">
+<thead><tr>
+<th class="">Campo</th>
+<th class="">Valores (peso %)</th>
+</tr></thead><tbody>
+<tr><td class=""><code>genero</code></td><td class="">H <b>48%</b>, M <b>50%</b>, X <b>2%</b></td></tr>
+<tr><td class=""><code>producto</code></td><td class="">credito_personal <b>30%</b>, credito_nomina <b>22%</b>, credito_express <b>28%</b>, linea_credito <b>12%</b>, seguro <b>8%</b></td></tr>
+<tr><td class=""><code>kyc_status</code></td><td class="">verificado <b>58%</b>, pendiente <b>22%</b>, rechazado <b>9%</b>, no_iniciado <b>11%</b></td></tr>
+<tr><td class=""><code>estatus_cuenta</code></td><td class="">activo <b>42%</b>, moroso <b>18%</b>, pagado <b>24%</b>, cancelado <b>10%</b>, bloqueado <b>6%</b></td></tr>
+<tr><td class=""><code>canal_adquisicion</code></td><td class="">referido <b>21%</b>, facebook <b>24%</b>, google_ads <b>17%</b>, tiktok <b>15%</b>, organico <b>11%</b>, appstore <b>7%</b>, prensa <b>5%</b></td></tr>
+<tr><td class=""><code>dispositivo</code></td><td class="">android <b>71%</b>, ios <b>19%</b>, web <b>10%</b></td></tr>
+<tr><td class=""><code>banda_riesgo</code></td><td class="">bajo <b>38%</b>, medio <b>34%</b>, alto <b>22%</b>, muy_alto <b>6%</b></td></tr>
+<tr><td class=""><code>banda_ingreso</code></td><td class="">A <b>30%</b>, B <b>32%</b>, C <b>24%</b>, D <b>10%</b>, E <b>4%</b></td></tr>
+<tr><td class=""><code>tipo_vivienda</code></td><td class="">propia <b>28%</b>, rentada <b>41%</b>, familiar <b>27%</b>, hipoteca <b>4%</b></td></tr>
+<tr><td class=""><code>nivel_educativo</code></td><td class="">basica <b>18%</b>, media <b>34%</b>, superior <b>40%</b>, posgrado <b>8%</b></td></tr>
+<tr><td class=""><code>tipo_contrato</code></td><td class="">formal <b>46%</b>, informal <b>27%</b>, independiente <b>19%</b>, desempleado <b>8%</b></td></tr>
+<tr><td class=""><code>segmento_comercial</code></td><td class="">nuevo <b>34%</b>, recurrente <b>40%</b>, vip <b>9%</b>, inactivo <b>17%</b></td></tr>
+</tbody></table></div>
+      <h3>Correlaciones deliberadas</h3>
+      <p class="hint">Es lo que hace que los filtros crucen de forma no trivial: el score de buró
+      depende de la banda de riesgo y el ingreso de su banda, así que <code>score_buro &lt; 520</code>
+      corta transversalmente todo el dataset.</p>
+      <div class="tw"><table class="">
+<thead><tr>
+<th class="">Relación</th>
+<th class="">Regla</th>
+</tr></thead><tbody>
+<tr><td class=""><code>banda_riesgo = bajo</code> → <code>score_buro</code></td><td class="">N(718, 58) recortada a 300–850</td></tr>
+<tr><td class=""><code>banda_riesgo = medio</code> → <code>score_buro</code></td><td class="">N(622, 55) recortada a 300–850</td></tr>
+<tr><td class=""><code>banda_riesgo = alto</code> → <code>score_buro</code></td><td class="">N(521, 50) recortada a 300–850</td></tr>
+<tr><td class=""><code>banda_riesgo = muy_alto</code> → <code>score_buro</code></td><td class="">N(432, 45) recortada a 300–850</td></tr>
+<tr><td class=""><code>banda_ingreso = A</code> → <code>ingreso_mensual</code></td><td class="">N(6,800, 2100) recortada a 2,400–400,000</td></tr>
+<tr><td class=""><code>banda_ingreso = B</code> → <code>ingreso_mensual</code></td><td class="">N(11,800, 3100) recortada a 2,400–400,000</td></tr>
+<tr><td class=""><code>banda_ingreso = C</code> → <code>ingreso_mensual</code></td><td class="">N(21,500, 6200) recortada a 2,400–400,000</td></tr>
+<tr><td class=""><code>banda_ingreso = D</code> → <code>ingreso_mensual</code></td><td class="">N(41,000, 12000) recortada a 2,400–400,000</td></tr>
+<tr><td class=""><code>banda_ingreso = E</code> → <code>ingreso_mensual</code></td><td class="">N(74,000, 26000) recortada a 2,400–400,000</td></tr>
+<tr><td class=""><code>monto_solicitado</code></td><td class="">log-normal exp(N(9.1, 0.85)) recortada a 500–80,000</td></tr>
+<tr><td class=""><code>dias_atraso</code></td><td class="">72 % en 0 + cola exponencial exp(N(3.4, 1.15)) hasta 400</td></tr>
+<tr><td class=""><code>num_prestamos</code></td><td class="">Poisson(3.2) recortada a 0–30</td></tr>
+<tr><td class=""><code>fecha_registro</code> / <code>ultimo_acceso</code></td><td class="">uniforme en 3 años / registro + exponencial</td></tr>
+</tbody></table></div>
+      <h3>Campos derivados (coherentes entre sí, no sorteados por separado)</h3>
+      <ul>
+        <li><code>curp</code> = 2 letras del apellido + 1 del nombre + 1 del segundo apellido + fecha
+        de nacimiento + sexo + código del estado + 3 consonantes internas + 4 hex del PRNG;
+        <code>rfc</code> igual con 6 hex.</li>
+        <li><code>email</code> = <code>{nombre}.{apellido}{4 dígitos}@{dominio}</code>, así el
+        token del correo coincide siempre con el nombre del documento (por eso el conteo por correo
+        es verificable).</li>
+        <li><code>cp</code> = prefijo del estado + 3 dígitos; <code>_geo</code> = capital del estado +
+        jitter gaussiano σ = 0.22° (≈25 km); <code>direccion</code> = calle + número + colonia.</li>
+        <li><code>nombre_completo</code>, <code>utilizacion_pct</code> y las fechas ISO se calculan de
+        los campos anteriores.</li>
+      </ul>
+      <h3>Cómo queda</h3>
+      <div class="tw"><table class="">
+<thead><tr>
+<th class="">Segmento resultante</th>
+<th class="n">Clientes</th>
+<th class="n">Proporción</th>
+</tr></thead><tbody>
+<tr><td class=""><code>score_buro &lt; 520</code></td><td class="n"><b>705,801</b></td><td class="n">17.65%</td></tr>
+<tr><td class="">vive en Ciudad de Mexico</td><td class="n"><b>277,491</b></td><td class="n">6.94%</td></tr>
+<tr><td class="">KYC verificado de 25 a 35 anios</td><td class="n"><b>1,045,773</b></td><td class="n">26.14%</td></tr>
+<tr><td class="">activo y sin atraso</td><td class="n"><b>1,209,374</b></td><td class="n">30.23%</td></tr>
+<tr><td class="">dentro de 25 km del Zocalo</td><td class="n"><b>144,119</b></td><td class="n">3.60%</td></tr>
+<tr><td class="">apellido Hernandez</td><td class="n"><b>78,428</b></td><td class="n">1.96%</td></tr>
+</tbody></table></div>
+      <div class="note">Un dataset estacionario y sintético: sirve para medir degradación con un
+      oráculo exacto, <b>no</b> para inferir nada del negocio. Cambiar cualquier tabla de
+      <code>gen/spec.py</code> y volver a correr los scripts del README regenera todo — incluido el
+      ground truth — de forma determinista.</div>
+    </section>
+
+    <section id="verdad">
+      <h2>Verdad de referencia antes de consultar</h2>
+      <p class="hint">Conteos calculados con numpy sobre los arreglos que generaron los documentos, revalidados
+      releyendo el NDJSON escrito y comparados contra lo que reporta el motor. En negritas, segmentos con más de
+      1000 clientes reales.</p>
+      <div class="tw"><table class="">
+<thead><tr>
+<th class="">Verificación</th>
+<th class="">Resultado</th>
+<th class="">Detalle</th>
+</tr></thead><tbody>
+<tr><td class="">Ground truth vs recuento independiente del NDJSON</td><td class=""><b>108/108</b></td><td class="">predicados propios sobre los 4,000,000 documentos serializados</td></tr>
+<tr><td class="">Meilisearch vs ground truth (27 consultas × 7 escalas × 4 variantes)</td><td class=""><b>189/189</b></td><td class="">0 discrepancias de conteo, en ambos modos de maxTotalHits</td></tr>
+<tr><td class="">Ids devueltos vs ground truth</td><td class=""><b>16/16</b> por escala</td><td class="">los 5 ids más bajos de cada segmento coinciden exactamente</td></tr>
+<tr><td class="">Facets por bucket vs ground truth</td><td class=""><b>idénticas</b></td><td class="">4 consultas de agregación, todas las categorías</td></tr>
+<tr><td class="">Autochequeo de invariantes</td><td class=""><b>TODO OK</b></td><td class="">7 escalas: conteos, facetas, ids, errores HTTP, paginación</td></tr>
+</tbody></table></div>
+      <h3>Conteo esperado por consulta y escala</h3>
+      <div class="tw"><table class="dense">
+<thead><tr>
+<th class="">Consulta</th>
+<th class="">Tipo</th>
+<th class="n">Ground truth</th>
+<th class="n">1,000</th>
+<th class="n">3,000</th>
+<th class="n">10,000</th>
+<th class="n">100,000</th>
+<th class="n">300,000</th>
+<th class="n">1,000,000</th>
+<th class="n">4,000,000</th>
+</tr></thead><tbody>
+<tr><td class=""><code>seg_estado_cdmx</code></td><td class="">filter</td><td class="n">73</td><td class="n">216</td><td class="n">723</td><td class="n"><b>6,839</b></td><td class="n"><b>20,691</b></td><td class="n"><b>69,144</b></td><td class="n"><b>277,491</b></td></tr>
+<tr><td class=""><code>seg_riesgo_alto_personal</code></td><td class="">filter</td><td class="n">59</td><td class="n">186</td><td class="n">631</td><td class="n"><b>6,562</b></td><td class="n"><b>19,504</b></td><td class="n"><b>65,474</b></td><td class="n"><b>262,980</b></td></tr>
+<tr><td class=""><code>seg_score_bajo</code></td><td class="">filter</td><td class="n">158</td><td class="n">509</td><td class="n"><b>1,757</b></td><td class="n"><b>17,726</b></td><td class="n"><b>52,879</b></td><td class="n"><b>176,302</b></td><td class="n"><b>705,801</b></td></tr>
+<tr><td class=""><code>seg_morosos_30d</code></td><td class="">filter</td><td class="n">17</td><td class="n">54</td><td class="n">224</td><td class="n"><b>2,399</b></td><td class="n"><b>7,407</b></td><td class="n"><b>24,801</b></td><td class="n"><b>100,018</b></td></tr>
+<tr><td class=""><code>seg_kyc_verif_jovenes</code></td><td class="">filter</td><td class="n">256</td><td class="n">783</td><td class="n"><b>2,639</b></td><td class="n"><b>26,109</b></td><td class="n"><b>78,581</b></td><td class="n"><b>261,423</b></td><td class="n"><b>1,045,773</b></td></tr>
+<tr><td class=""><code>seg_jalisco_ingreso_b</code></td><td class="">filter</td><td class="n">25</td><td class="n">80</td><td class="n">236</td><td class="n"><b>2,177</b></td><td class="n"><b>6,335</b></td><td class="n"><b>21,272</b></td><td class="n"><b>84,999</b></td></tr>
+<tr><td class=""><code>seg_tiktok_android_marketing</code></td><td class="">filter</td><td class="n">64</td><td class="n">185</td><td class="n">655</td><td class="n"><b>6,704</b></td><td class="n"><b>20,245</b></td><td class="n"><b>66,800</b></td><td class="n"><b>268,314</b></td></tr>
+<tr><td class=""><code>seg_mujeres_30_45_kyc</code></td><td class="">filter</td><td class="n">115</td><td class="n">375</td><td class="n"><b>1,233</b></td><td class="n"><b>12,809</b></td><td class="n"><b>38,527</b></td><td class="n"><b>128,180</b></td><td class="n"><b>512,893</b></td></tr>
+<tr><td class=""><code>seg_riesgo_muy_alto</code></td><td class="">filter</td><td class="n">50</td><td class="n">161</td><td class="n">590</td><td class="n"><b>5,923</b></td><td class="n"><b>17,889</b></td><td class="n"><b>59,635</b></td><td class="n"><b>239,694</b></td></tr>
+<tr><td class=""><code>seg_activos_sin_atraso</code></td><td class="">filter</td><td class="n">322</td><td class="n">927</td><td class="n"><b>3,066</b></td><td class="n"><b>30,421</b></td><td class="n"><b>90,673</b></td><td class="n"><b>301,621</b></td><td class="n"><b>1,209,374</b></td></tr>
+<tr><td class=""><code>seg_tag_promo</code></td><td class="">filter</td><td class="n">118</td><td class="n">341</td><td class="n"><b>1,103</b></td><td class="n"><b>11,355</b></td><td class="n"><b>33,943</b></td><td class="n"><b>113,299</b></td><td class="n"><b>453,572</b></td></tr>
+<tr><td class=""><code>seg_nomina_vip_alto_monto</code></td><td class="">filter</td><td class="n">1</td><td class="n">2</td><td class="n">7</td><td class="n">79</td><td class="n">230</td><td class="n">820</td><td class="n"><b>3,144</b></td></tr>
+<tr><td class=""><code>geo_cdmx_25km</code></td><td class="">geo</td><td class="n">38</td><td class="n">115</td><td class="n">408</td><td class="n"><b>3,584</b></td><td class="n"><b>10,845</b></td><td class="n"><b>36,062</b></td><td class="n"><b>144,119</b></td></tr>
+<tr><td class=""><code>geo_gdl_50km</code></td><td class="">geo</td><td class="n">59</td><td class="n">193</td><td class="n">600</td><td class="n"><b>5,905</b></td><td class="n"><b>17,611</b></td><td class="n"><b>59,237</b></td><td class="n"><b>237,606</b></td></tr>
+<tr><td class=""><code>txt_apellido_hernandez</code></td><td class="">search</td><td class="n">25</td><td class="n">54</td><td class="n">208</td><td class="n"><b>1,943</b></td><td class="n"><b>5,775</b></td><td class="n"><b>19,375</b></td><td class="n"><b>78,428</b></td></tr>
+<tr><td class=""><code>txt_nombre_maria</code></td><td class="">search</td><td class="n">21</td><td class="n">54</td><td class="n">177</td><td class="n"><b>1,921</b></td><td class="n"><b>5,800</b></td><td class="n"><b>19,172</b></td><td class="n"><b>76,965</b></td></tr>
+<tr><td class=""><code>txt_nombre_apellido_jalisco</code></td><td class="">search</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">2</td><td class="n">5</td><td class="n">20</td></tr>
+<tr><td class=""><code>txt_apellido_hernandez_riesgo_alto</code></td><td class="">search</td><td class="n">7</td><td class="n">15</td><td class="n">56</td><td class="n">441</td><td class="n"><b>1,267</b></td><td class="n"><b>4,221</b></td><td class="n"><b>17,300</b></td></tr>
+<tr><td class=""><code>txt_prefix_apellido</code></td><td class="">search</td><td class="n">9</td><td class="n">20</td><td class="n">101</td><td class="n">973</td><td class="n"><b>2,855</b></td><td class="n"><b>9,710</b></td><td class="n"><b>39,327</b></td></tr>
+<tr><td class=""><code>txt_colonia_centro</code></td><td class="">search</td><td class="n">31</td><td class="n">82</td><td class="n">292</td><td class="n"><b>2,518</b></td><td class="n"><b>7,452</b></td><td class="n"><b>24,993</b></td><td class="n"><b>99,907</b></td></tr>
+<tr><td class=""><code>txt_fulltext_default</code></td><td class="">search</td><td class="n">35</td><td class="n">102</td><td class="n">321</td><td class="n"><b>3,406</b></td><td class="n"><b>10,353</b></td><td class="n"><b>34,345</b></td><td class="n"><b>137,561</b></td></tr>
+<tr><td class=""><code>mix_sort_score_riesgo_alto</code></td><td class="">sort</td><td class="n">217</td><td class="n">676</td><td class="n"><b>2,216</b></td><td class="n"><b>22,092</b></td><td class="n"><b>65,879</b></td><td class="n"><b>219,774</b></td><td class="n"><b>878,755</b></td></tr>
+<tr><td class=""><code>mix_sort_ingreso_banda_c</code></td><td class="">sort</td><td class="n">218</td><td class="n">715</td><td class="n"><b>2,407</b></td><td class="n"><b>24,015</b></td><td class="n"><b>71,847</b></td><td class="n"><b>240,341</b></td><td class="n"><b>960,581</b></td></tr>
+<tr><td class=""><code>facet_estado_global</code></td><td class="">facet</td><td class="n">1,000</td><td class="n"><b>3,000</b></td><td class="n"><b>10,000</b></td><td class="n"><b>100,000</b></td><td class="n"><b>300,000</b></td><td class="n"><b>1,000,000</b></td><td class="n"><b>4,000,000</b></td></tr>
+<tr><td class=""><code>facet_morosos_producto_riesgo</code></td><td class="">facet</td><td class="n">147</td><td class="n">499</td><td class="n"><b>1,750</b></td><td class="n"><b>17,784</b></td><td class="n"><b>54,001</b></td><td class="n"><b>179,405</b></td><td class="n"><b>718,864</b></td></tr>
+<tr><td class=""><code>facet_score_bajo_canal</code></td><td class="">facet</td><td class="n">158</td><td class="n">509</td><td class="n"><b>1,757</b></td><td class="n"><b>17,726</b></td><td class="n"><b>52,879</b></td><td class="n"><b>176,302</b></td><td class="n"><b>705,801</b></td></tr>
+<tr><td class=""><code>facet_kyc_pendiente_dispositivo</code></td><td class="">facet</td><td class="n">211</td><td class="n">661</td><td class="n"><b>2,196</b></td><td class="n"><b>21,777</b></td><td class="n"><b>65,904</b></td><td class="n"><b>220,060</b></td><td class="n"><b>880,261</b></td></tr>
+</tbody></table></div>
+    </section>
+
+    <section id="tope">
+      <h2>Qué limita exactamente <code>maxTotalHits</code></h2>
+      <p class="hint">Experimento dedicado sobre el índice de 4,000,000 documentos, segmento de referencia
+      <code>estatus_cuenta = "activo" AND dias_atraso = 0</code> = 1,209,374 clientes.</p>
+      <div class="note">Con el valor de fábrica (<b>1000</b>) el motor <b>trunca en silencio</b>: <code>limit=5000</code>
+      responde HTTP 200 con 1,000 hits y <code>offset=1000</code> responde 200 con 0 hits. Ningún error, ninguna
+      advertencia. El conteo del segmento, en cambio, siempre es exacto.</div>
+      <h4>maxTotalHits = 1,000</h4><div class="tw"><table class="dense warn">
+<thead><tr>
+<th class="">Petición</th>
+<th class="n">HTTP</th>
+<th class="n">hits devueltos</th>
+<th class="n">estimatedTotalHits</th>
+<th class="n">totalHits</th>
+<th class="">error</th>
+</tr></thead><tbody>
+<tr><td class=""><code>limit=20</code></td><td class="n">200</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>limit=1000</code></td><td class="n">200</td><td class="n">1,000</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>limit=1001</code></td><td class="n">200</td><td class="n">1,000</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>limit=5000</code></td><td class="n">200</td><td class="n">1,000</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>offset=900&limit=20</code></td><td class="n">200</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>offset=990&limit=20 (=1000)</code></td><td class="n">200</td><td class="n">10</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>offset=1000&limit=20</code></td><td class="n">200</td><td class="n">0</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>offset=100000&limit=20</code></td><td class="n">200</td><td class="n">0</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>page=50&hitsPerPage=20 (=1000)</code></td><td class="n">200</td><td class="n">20</td><td class="n">—</td><td class="n">1,209,374</td><td class="">—</td></tr>
+<tr><td class=""><code>page=51&hitsPerPage=20 (>1000)</code></td><td class="n">200</td><td class="n">0</td><td class="n">—</td><td class="n">1,209,374</td><td class="">—</td></tr>
+<tr><td class=""><code>page=1&hitsPerPage=100</code></td><td class="n">200</td><td class="n">100</td><td class="n">—</td><td class="n">1,209,374</td><td class="">—</td></tr>
+</tbody></table></div>
+<h4>maxTotalHits = 1,000,000</h4><div class="tw"><table class="dense">
+<thead><tr>
+<th class="">Petición</th>
+<th class="n">HTTP</th>
+<th class="n">hits devueltos</th>
+<th class="n">estimatedTotalHits</th>
+<th class="n">totalHits</th>
+<th class="">error</th>
+</tr></thead><tbody>
+<tr><td class=""><code>limit=20</code></td><td class="n">200</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>limit=1000</code></td><td class="n">200</td><td class="n">1,000</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>limit=1001</code></td><td class="n">200</td><td class="n">1,001</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>limit=5000</code></td><td class="n">200</td><td class="n">5,000</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>offset=900&limit=20</code></td><td class="n">200</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>offset=990&limit=20 (=1000)</code></td><td class="n">200</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>offset=1000&limit=20</code></td><td class="n">200</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>offset=100000&limit=20</code></td><td class="n">200</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">—</td><td class="">—</td></tr>
+<tr><td class=""><code>page=50&hitsPerPage=20 (=1000)</code></td><td class="n">200</td><td class="n">20</td><td class="n">—</td><td class="n">1,209,374</td><td class="">—</td></tr>
+<tr><td class=""><code>page=51&hitsPerPage=20 (>1000)</code></td><td class="n">200</td><td class="n">20</td><td class="n">—</td><td class="n">1,209,374</td><td class="">—</td></tr>
+<tr><td class=""><code>page=1&hitsPerPage=100</code></td><td class="n">200</td><td class="n">100</td><td class="n">—</td><td class="n">1,209,374</td><td class="">—</td></tr>
+</tbody></table></div>
+    </section>
+
+    <section id="profunda">
+      <h2>Paginación profunda</h2>
+      <p class="hint">Sólo posible con el tope levantado; <code>sort=id:asc</code> y <code>limit=20</code>.
+      Levantar <code>maxTotalHits</code> a 4,000,000 costó 0.16 s
+      y no reindexó nada.</p>
+      <figure><svg viewBox="0 0 1040 400" role="img" aria-label="Paginación profunda a 4,000,000 documentos" preserveAspectRatio="xMidYMid meet">
+<text x="0" y="16" class="svg-title">Paginación profunda a 4,000,000 documentos</text>
+<text x="0" y="34" class="svg-sub">sort=id:asc · limit=20 · maxTotalHits levantado · p50 por offset</text>
+<line x1="78" y1="334.0" x2="772" y2="334.0" class="grid"/>
+<text x="68" y="338.0" class="tick" text-anchor="end">0</text>
+<line x1="78" y1="264.5" x2="772" y2="264.5" class="grid"/>
+<text x="68" y="268.5" class="tick" text-anchor="end">17,397</text>
+<line x1="78" y1="195.0" x2="772" y2="195.0" class="grid"/>
+<text x="68" y="199.0" class="tick" text-anchor="end">34,794</text>
+<line x1="78" y1="125.5" x2="772" y2="125.5" class="grid"/>
+<text x="68" y="129.5" class="tick" text-anchor="end">52,192</text>
+<line x1="78" y1="56.0" x2="772" y2="56.0" class="grid"/>
+<text x="68" y="60.0" class="tick" text-anchor="end">69,589</text>
+<line x1="78.0" y1="334" x2="78.0" y2="339" class="axis"/>
+<text x="78.0" y="356" class="tick" text-anchor="middle">0</text>
+<line x1="216.8" y1="334" x2="216.8" y2="339" class="axis"/>
+<text x="216.8" y="356" class="tick" text-anchor="middle">1,000</text>
+<line x1="355.6" y1="334" x2="355.6" y2="339" class="axis"/>
+<text x="355.6" y="356" class="tick" text-anchor="middle">10,000</text>
+<line x1="494.4" y1="334" x2="494.4" y2="339" class="axis"/>
+<text x="494.4" y="356" class="tick" text-anchor="middle">100,000</text>
+<line x1="633.2" y1="334" x2="633.2" y2="339" class="axis"/>
+<text x="633.2" y="356" class="tick" text-anchor="middle">500,000</text>
+<line x1="772.0" y1="334" x2="772.0" y2="339" class="axis"/>
+<text x="772.0" y="356" class="tick" text-anchor="middle">1,000,000</text>
+<text x="425" y="380" class="axis-lab" text-anchor="middle">offset solicitado</text>
+<text x="20" y="195" class="axis-lab" text-anchor="middle" transform="rotate(-90 20 195)">ms (p50)</text>
+<path d="M78.0,334.0 L216.8,333.9 L355.6,332.8 L494.4,320.8 L633.2,233.8 L772.0,92.3" fill="none" stroke="#00ffff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="draw"/>
+<circle cx="78.0" cy="334.0" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>activos_sin_atraso · 2</title></circle>
+<circle cx="216.8" cy="333.9" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>activos_sin_atraso · 31</title></circle>
+<circle cx="355.6" cy="332.8" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>activos_sin_atraso · 309</title></circle>
+<circle cx="494.4" cy="320.8" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>activos_sin_atraso · 3,302</title></circle>
+<circle cx="633.2" cy="233.8" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>activos_sin_atraso · 25,087</title></circle>
+<circle cx="772.0" cy="92.3" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>activos_sin_atraso · 60,512</title></circle>
+<path d="M78.0,334.0 L216.8,333.9 L355.6,332.8 L494.4,318.6 L633.2,197.8 L772.0,146.6" fill="none" stroke="#0066ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="draw"/>
+<circle cx="78.0" cy="334.0" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>score_bajo · 6</title></circle>
+<circle cx="216.8" cy="333.9" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>score_bajo · 37</title></circle>
+<circle cx="355.6" cy="332.8" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>score_bajo · 308</title></circle>
+<circle cx="494.4" cy="318.6" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>score_bajo · 3,848</title></circle>
+<circle cx="633.2" cy="197.8" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>score_bajo · 34,089</title></circle>
+<circle cx="772.0" cy="146.6" r="3.4" fill="#1e1e1e" stroke="#0066ff" stroke-width="2"><title>score_bajo · 46,916</title></circle>
+<path d="M78.0,334.0 L216.8,333.9 L355.6,333.0 L494.4,322.2 L633.2,260.6 L772.0,186.2" fill="none" stroke="#f5a524" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="draw"/>
+<circle cx="78.0" cy="334.0" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>sin_filtro · 1</title></circle>
+<circle cx="216.8" cy="333.9" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>sin_filtro · 27</title></circle>
+<circle cx="355.6" cy="333.0" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>sin_filtro · 257</title></circle>
+<circle cx="494.4" cy="322.2" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>sin_filtro · 2,960</title></circle>
+<circle cx="633.2" cy="260.6" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>sin_filtro · 18,371</title></circle>
+<circle cx="772.0" cy="186.2" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>sin_filtro · 36,997</title></circle>
+<line x1="776.0" y1="92.3" x2="782.0" y2="92.3" stroke="#00ffff" stroke-width="1" opacity="0.6"/>
+<text x="786.0" y="96.3" class="series-lab" fill="#00ffff">activos_sin_atraso <tspan opacity="0.75">60,512</tspan></text>
+<line x1="776.0" y1="146.6" x2="782.0" y2="146.6" stroke="#0066ff" stroke-width="1" opacity="0.6"/>
+<text x="786.0" y="150.6" class="series-lab" fill="#0066ff">score_bajo <tspan opacity="0.75">46,916</tspan></text>
+<line x1="776.0" y1="186.2" x2="782.0" y2="186.2" stroke="#f5a524" stroke-width="1" opacity="0.6"/>
+<text x="786.0" y="190.2" class="series-lab" fill="#f5a524">sin_filtro <tspan opacity="0.75">36,997</tspan></text>
+</svg></figure>
+      <div class="tw"><table class="dense">
+<thead><tr>
+<th class="">Segmento</th>
+<th class="n">Offset</th>
+<th class="n">p50</th>
+<th class="n">p95</th>
+<th class="n">p99</th>
+<th class="n">processingTimeMs</th>
+<th class="n">hits</th>
+<th class="n">GT</th>
+<th class="n">hits esperados</th>
+</tr></thead><tbody>
+<tr><td class=""><code>deep_activos_sin_atraso</code></td><td class="n">0</td><td class="n">1.63</td><td class="n">1.95</td><td class="n">2.07</td><td class="n">1.0</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_activos_sin_atraso</code></td><td class="n">1,000</td><td class="n">30.83</td><td class="n">33.56</td><td class="n">33.67</td><td class="n">29.0</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_activos_sin_atraso</code></td><td class="n">10,000</td><td class="n">309.21</td><td class="n">341.03</td><td class="n">344.54</td><td class="n">306.5</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_activos_sin_atraso</code></td><td class="n">100,000</td><td class="n">3,302.28</td><td class="n">3,987.90</td><td class="n">4,314.42</td><td class="n">3,292.5</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_activos_sin_atraso</code></td><td class="n">500,000</td><td class="n">25,087.16</td><td class="n">34,390.78</td><td class="n">38,930.55</td><td class="n">24,955.5</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_activos_sin_atraso</code></td><td class="n">1,000,000</td><td class="n">60,512.08</td><td class="n">68,199.03</td><td class="n">69,184.15</td><td class="n">60,150.0</td><td class="n">20</td><td class="n">1,209,374</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_score_bajo</code></td><td class="n">0</td><td class="n">5.62</td><td class="n">7.19</td><td class="n">7.42</td><td class="n">4.0</td><td class="n">20</td><td class="n">705,801</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_score_bajo</code></td><td class="n">1,000</td><td class="n">36.83</td><td class="n">41.05</td><td class="n">42.28</td><td class="n">35.0</td><td class="n">20</td><td class="n">705,801</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_score_bajo</code></td><td class="n">10,000</td><td class="n">308.37</td><td class="n">325.76</td><td class="n">333.87</td><td class="n">306.0</td><td class="n">20</td><td class="n">705,801</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_score_bajo</code></td><td class="n">100,000</td><td class="n">3,848.15</td><td class="n">5,026.13</td><td class="n">5,042.12</td><td class="n">3,834.0</td><td class="n">20</td><td class="n">705,801</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_score_bajo</code></td><td class="n">500,000</td><td class="n">34,089.06</td><td class="n">38,051.85</td><td class="n">38,119.07</td><td class="n">33,858.0</td><td class="n">20</td><td class="n">705,801</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_score_bajo</code></td><td class="n">1,000,000</td><td class="n">46,916.04</td><td class="n">52,805.85</td><td class="n">53,921.92</td><td class="n">46,616.5</td><td class="n">0</td><td class="n">705,801</td><td class="n">0</td></tr>
+<tr><td class=""><code>deep_sin_filtro</code></td><td class="n">0</td><td class="n">1.31</td><td class="n">1.65</td><td class="n">1.72</td><td class="n">0.0</td><td class="n">20</td><td class="n">4,000,000</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_sin_filtro</code></td><td class="n">1,000</td><td class="n">26.76</td><td class="n">30.59</td><td class="n">31.40</td><td class="n">25.0</td><td class="n">20</td><td class="n">4,000,000</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_sin_filtro</code></td><td class="n">10,000</td><td class="n">256.89</td><td class="n">266.10</td><td class="n">266.29</td><td class="n">255.0</td><td class="n">20</td><td class="n">4,000,000</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_sin_filtro</code></td><td class="n">100,000</td><td class="n">2,960.42</td><td class="n">3,396.51</td><td class="n">3,451.15</td><td class="n">2,947.5</td><td class="n">20</td><td class="n">4,000,000</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_sin_filtro</code></td><td class="n">500,000</td><td class="n">18,370.92</td><td class="n">19,137.13</td><td class="n">19,431.27</td><td class="n">18,246.5</td><td class="n">20</td><td class="n">4,000,000</td><td class="n">20</td></tr>
+<tr><td class=""><code>deep_sin_filtro</code></td><td class="n">1,000,000</td><td class="n">36,997.07</td><td class="n">39,673.52</td><td class="n">39,981.43</td><td class="n">36,746.0</td><td class="n">20</td><td class="n">4,000,000</td><td class="n">20</td></tr>
+</tbody></table></div>
+      <h3>Offset contra paginación por llave</h3>
+      <p class="hint">Mismo punto del segmento de
+      1,209,374 clientes:
+      pedir <code>offset</code> o filtrar <code>fecha_registro_ts &gt; cursor</code>, ambos con
+      <code>sort=fecha_registro_ts:asc</code> y <code>limit=20</code>. El cursor se ubicó por
+      búsqueda binaria sobre conteos exactos, para comparar la misma posición.</p>
+      <div class="tw"><table class="dense">
+<thead><tr>
+<th class="n">Posición en el segmento</th>
+<th class="n">hits esperados</th>
+<th class="n">por <code>offset</code></th>
+<th class="n">por keyset</th>
+<th class="n">factor</th>
+<th class="n">hits offset</th>
+<th class="n">hits keyset</th>
+</tr></thead><tbody>
+<tr><td class="n">10,000</td><td class="n">20</td><td class="n">369.70 ms</td><td class="n">12.51 ms</td><td class="n"><b>30×</b></td><td class="n">20</td><td class="n">20</td></tr>
+<tr><td class="n">100,000</td><td class="n">20</td><td class="n">18,427.66 ms</td><td class="n">9.75 ms</td><td class="n"><b>1,890×</b></td><td class="n">20</td><td class="n">20</td></tr>
+<tr><td class="n">1,000,000</td><td class="n">20</td><td class="n">55,803.22 ms</td><td class="n">10.14 ms</td><td class="n"><b>5,503×</b></td><td class="n">0</td><td class="n">20</td></tr>
+</tbody></table></div>
+      <div class="note">A 1,000,000 de profundidad la vía por <code>offset</code> tarda casi un minuto
+      y puede devolver <b>cero</b> filas sin error cuando la clave de ordenamiento está llena de
+      empates; keyset responde en menos de 1 ms. Y con la llave no siendo única, keyset pierde o
+      repite filas en los empates: en producción se usa una llave compuesta y única.</div>
+    </section>
+
+    <section id="concurrencia">
+      <h2>Concurrencia</h2>
+      <p class="hint">Mezcla de consultas de segmentación con <code>limit=20</code>, 15 s por nivel,
+      4 niveles hasta 64 clientes.</p>
+      <figure><svg viewBox="0 0 1040 340" role="img" aria-label="Concurrencia a 4,000,000 documentos" preserveAspectRatio="xMidYMid meet">
+<text x="0" y="16" class="svg-title">Concurrencia a 4,000,000 documentos</text>
+<text x="0" y="34" class="svg-sub">Mezcla de consultas de segmentación · 15 s por nivel</text>
+<line x1="78" y1="274.0" x2="772" y2="274.0" class="grid"/>
+<text x="68" y="278.0" class="tick" text-anchor="end">0</text>
+<line x1="78" y1="219.5" x2="772" y2="219.5" class="grid"/>
+<text x="68" y="223.5" class="tick" text-anchor="end">337</text>
+<line x1="78" y1="165.0" x2="772" y2="165.0" class="grid"/>
+<text x="68" y="169.0" class="tick" text-anchor="end">673</text>
+<line x1="78" y1="110.5" x2="772" y2="110.5" class="grid"/>
+<text x="68" y="114.5" class="tick" text-anchor="end">1,010</text>
+<line x1="78" y1="56.0" x2="772" y2="56.0" class="grid"/>
+<text x="68" y="60.0" class="tick" text-anchor="end">1,347</text>
+<line x1="78.0" y1="274" x2="78.0" y2="279" class="axis"/>
+<text x="78.0" y="296" class="tick" text-anchor="middle">1</text>
+<line x1="309.3" y1="274" x2="309.3" y2="279" class="axis"/>
+<text x="309.3" y="296" class="tick" text-anchor="middle">8</text>
+<line x1="540.7" y1="274" x2="540.7" y2="279" class="axis"/>
+<text x="540.7" y="296" class="tick" text-anchor="middle">32</text>
+<line x1="772.0" y1="274" x2="772.0" y2="279" class="axis"/>
+<text x="772.0" y="296" class="tick" text-anchor="middle">64</text>
+<text x="425" y="320" class="axis-lab" text-anchor="middle">clientes concurrentes</text>
+<text x="20" y="165" class="axis-lab" text-anchor="middle" transform="rotate(-90 20 165)">QPS  ·  ms (p95)</text>
+<path d="M78.0,241.8 L309.3,95.1 L540.7,84.4 L772.0,87.7" fill="none" stroke="#00ffff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="draw"/>
+<circle cx="78.0" cy="241.8" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>QPS · 199</title></circle>
+<circle cx="309.3" cy="95.1" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>QPS · 1,105</title></circle>
+<circle cx="540.7" cy="84.4" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>QPS · 1,171</title></circle>
+<circle cx="772.0" cy="87.7" r="3.4" fill="#1e1e1e" stroke="#00ffff" stroke-width="2"><title>QPS · 1,151</title></circle>
+<path d="M78.0,272.5 L309.3,271.7 L540.7,265.6 L772.0,255.5" fill="none" stroke="#f5a524" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="draw"/>
+<circle cx="78.0" cy="272.5" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>p95 (ms) · 9</title></circle>
+<circle cx="309.3" cy="271.7" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>p95 (ms) · 14</title></circle>
+<circle cx="540.7" cy="265.6" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>p95 (ms) · 52</title></circle>
+<circle cx="772.0" cy="255.5" r="3.4" fill="#1e1e1e" stroke="#f5a524" stroke-width="2"><title>p95 (ms) · 114</title></circle>
+<line x1="776.0" y1="87.7" x2="782.0" y2="87.7" stroke="#00ffff" stroke-width="1" opacity="0.6"/>
+<text x="786.0" y="91.7" class="series-lab" fill="#00ffff">QPS <tspan opacity="0.75">1,151</tspan></text>
+<line x1="776.0" y1="255.5" x2="782.0" y2="255.5" stroke="#f5a524" stroke-width="1" opacity="0.6"/>
+<text x="786.0" y="259.5" class="series-lab" fill="#f5a524">p95 (ms) <tspan opacity="0.75">114</tspan></text>
+</svg></figure>
+      <div class="tw"><table class="">
+<thead><tr>
+<th class="n">Clientes</th>
+<th class="n">Peticiones</th>
+<th class="n">OK</th>
+<th class="n">Errores</th>
+<th class="n">QPS</th>
+<th class="n">p50</th>
+<th class="n">p95</th>
+<th class="n">p99</th>
+<th class="n">máx</th>
+<th class="n">CPU máx</th>
+</tr></thead><tbody>
+<tr><td class="n">1</td><td class="n">2,987</td><td class="n">2,987</td><td class="n">0</td><td class="n">199.0</td><td class="n">4.02 ms</td><td class="n">9.24 ms</td><td class="n">11.47 ms</td><td class="n">55.52 ms</td><td class="n">96%</td></tr>
+<tr><td class="n">8</td><td class="n">16,585</td><td class="n">16,585</td><td class="n">0</td><td class="n">1,105.2</td><td class="n">6.39 ms</td><td class="n">13.97 ms</td><td class="n">17.45 ms</td><td class="n">61.73 ms</td><td class="n">635%</td></tr>
+<tr><td class="n">32</td><td class="n">17,585</td><td class="n">17,585</td><td class="n">0</td><td class="n">1,171.0</td><td class="n">24.60 ms</td><td class="n">51.96 ms</td><td class="n">67.48 ms</td><td class="n">136.83 ms</td><td class="n">782%</td></tr>
+<tr><td class="n">64</td><td class="n">17,300</td><td class="n">17,300</td><td class="n">0</td><td class="n">1,150.8</td><td class="n">47.45 ms</td><td class="n">114.40 ms</td><td class="n">152.11 ms</td><td class="n">265.10 ms</td><td class="n">888%</td></tr>
+</tbody></table></div>
+      <div class="note cyan">El throughput máximo aparece con
+      32 clientes
+      (1,171 qps); a partir de ahí la latencia p95 crece sin ganar
+      capacidad. Cero errores en todos los niveles.</div>
+    </section>
+
+    <section id="erratas">
+      <h2>Erratas y sobrecarga del cliente</h2>
+      <p class="hint">La base del laboratorio corre con <code>typoTolerance.enabled=false</code> para que los conteos
+      de texto sean comparables 1:1 con la verdad de referencia. Al activarla (valor de fábrica) el mismo segmento
+      cambia de tamaño.</p>
+      <div class="tw"><table class="">
+<thead><tr>
+<th class="">Consulta</th>
+<th class="n">Ground truth (token exacto)</th>
+<th class="n">typos OFF</th>
+<th class="n">factor</th>
+<th class="n">typos ON</th>
+<th class="n">factor</th>
+</tr></thead><tbody>
+<tr><td class=""><code>txt_apellido_hernandez</code></td><td class="n">78,428</td><td class="n">78,428</td><td class="n">1.000</td><td class="n">78,428</td><td class="n">1.000</td></tr>
+<tr><td class=""><code>txt_nombre_maria</code></td><td class="n">76,965</td><td class="n">76,965</td><td class="n">1.000</td><td class="n">76,965</td><td class="n">1.000</td></tr>
+<tr><td class=""><code>txt_nombre_apellido_jalisco</code></td><td class="n">20</td><td class="n">20</td><td class="n">1.000</td><td class="n">20</td><td class="n">1.000</td></tr>
+<tr><td class=""><code>txt_apellido_hernandez_riesgo_alto</code></td><td class="n">17,300</td><td class="n">17,300</td><td class="n">1.000</td><td class="n">17,300</td><td class="n">1.000</td></tr>
+<tr><td class=""><code>txt_prefix_apellido</code></td><td class="n">39,327</td><td class="n">39,327</td><td class="n">1.000</td><td class="n">39,327</td><td class="n">1.000</td></tr>
+<tr><td class=""><code>txt_colonia_centro</code></td><td class="n">99,907</td><td class="n">99,907</td><td class="n">1.000</td><td class="n">99,907</td><td class="n">1.000</td></tr>
+<tr><td class=""><code>txt_fulltext_default</code></td><td class="n">137,561</td><td class="n">137,561</td><td class="n">1.000</td><td class="n">137,561</td><td class="n">1.000</td></tr>
+</tbody></table></div>
+      <h3>Cliente HTTP</h3>
+      <p>Las latencias se midieron con urllib3 (keep-alive, sin reintentos). <code>requests.Session</code> —el cliente
+      del SDK oficial de Python— añadía una constante por petición en este host:</p>
+      <div class="tw"><table class="">
+<thead><tr>
+<th class="">Escala</th>
+<th class="n">urllib3 p50</th>
+<th class="n">requests.Session p50</th>
+<th class="n">delta</th>
+</tr></thead><tbody>
+<tr><td class="">1,000</td><td class="n">4.10 ms</td><td class="n">48.24 ms</td><td class="n">+44.14 ms</td></tr>
+<tr><td class="">3,000</td><td class="n">1.74 ms</td><td class="n">47.56 ms</td><td class="n">+45.82 ms</td></tr>
+<tr><td class="">10,000</td><td class="n">1.42 ms</td><td class="n">46.80 ms</td><td class="n">+45.38 ms</td></tr>
+<tr><td class="">100,000</td><td class="n">1.27 ms</td><td class="n">44.74 ms</td><td class="n">+43.47 ms</td></tr>
+<tr><td class="">300,000</td><td class="n">1.28 ms</td><td class="n">45.17 ms</td><td class="n">+43.89 ms</td></tr>
+<tr><td class="">1,000,000</td><td class="n">1.53 ms</td><td class="n">45.50 ms</td><td class="n">+43.97 ms</td></tr>
+<tr><td class="">4,000,000</td><td class="n">1.28 ms</td><td class="n">44.26 ms</td><td class="n">+42.98 ms</td></tr>
+</tbody></table></div>
+    </section>
+
+    <section id="hallazgos">
+      <h2>Hallazgos</h2>
+      <ol class="steps">
+        <li><b>El conteo nunca estuvo escondido.</b> <code>estimatedTotalHits</code> coincidió con la verdad de
+        referencia en las 27 consultas × 7 escalas × 4 variantes (189/189), también con el tope de fábrica.</li>
+        <li><b>El tope limita la extracción, no el conteo.</b> 26 de las 27 consultas devuelven más de 1000 clientes a
+        4,000,000; con <code>maxTotalHits=1000</code> se pueden sacar 1000 por respuesta, y pasarse devuelve menos
+        sin avisar.</li>
+        <li><b>Paginar profundo es el costo real.</b> A 4,000,000, offset 1,000,000 cuesta
+        60,512 ms
+        en el segmento de 1,209,374 clientes y
+        36,997 ms sin filtro;
+        con offset 0 son ~1.5 ms.</li>
+        <li><b>El volumen se paga al indexar.</b> 10,497 docs/s a 100,000
+        documentos contra 284 docs/s a 4,000,000: 3.9 h y
+        30.02 GiB de índice.</li>
+        <li><b>Las consultas geográficas son la excepción.</b> <code>_geoRadius</code> pasa de
+        3.8 ms a
+        140.5 ms, mientras los filtros escalares se
+        mantienen en ~5 ms.</li>
+      </ol>
+    </section>
+
+    <section id="reproducir">
+      <h2>Reproducir</h2>
+      <p class="hint">Todo el laboratorio está publicado en
+      <a href="https://github.com/JahazielHernandezHoyos/meilisearch-fintech-stress-lab">https://github.com/JahazielHernandezHoyos/meilisearch-fintech-stress-lab</a> (público, licencia MIT): código de generación, código de los
+      experimentos, crudos de las 7 escalas, tablas CSV y gráficas.</p>
+      <pre>git clone https://github.com/JahazielHernandezHoyos/meilisearch-fintech-stress-lab.git
+cd meilisearch-fintech-stress-lab
+
+python3 gen/gen_arrays.py          # arreglos + verdad de referencia (≈10 s)
+python3 gen/write_ndjson.py        # 4,000,000 de documentos en 40 shards (≈30 s)
+python3 bench/verify_ndjson.py     # relectura independiente: 108/108
+python3 bench/run_all.py --reps 20 # 7 escalas de punta a punta
+python3 bench/cap_limits.py --scale 4000000
+python3 bench/keyset_vs_offset.py  # offset vs paginación por llave
+python3 bench/selfcheck.py         # invariantes: TODO OK
+python3 bench/report.py            # REPORTE.md + CSV + SVG
+python3 bench/report_html.py       # este index.html</pre>
+      <p class="hint">En este equipo vive en <code>~/meili-lab</code>; el detalle completo está en
+      <code>reports/REPORTE.md</code>, los datos crudos en <code>raw/*.json</code>, las tablas en
+      <code>reports/tables/*.csv</code> y las gráficas sueltas en <code>reports/charts/*.svg</code>.
+      Muestra de 1,000 documentos sin regenerar nada:
+      <code>data/sample/clientes_fintech_sample_1k.jsonl.gz</code>.</p>
+    </section>
+  </main>
+
+  <footer>
+    Reporte generado aplicando las skills <b>frontend-design</b> y <b>theme-factory</b> (tema <i>Tech Innovation</i>)
+    del repositorio oficial <a href="https://github.com/anthropics/skills">anthropics/skills</a> — 180,911 estrellas,
+    actualizado el 2026-10-09. Documento autónomo: sin recursos remotos, sin JavaScript, abre desde el disco.
+    Código y datos de este laboratorio:
+    <a href="https://github.com/JahazielHernandezHoyos/meilisearch-fintech-stress-lab">https://github.com/JahazielHernandezHoyos/meilisearch-fintech-stress-lab</a> · <code>git clone https://github.com/JahazielHernandezHoyos/meilisearch-fintech-stress-lab.git</code>
+  </footer>
+</div>
+</body>
+</html>

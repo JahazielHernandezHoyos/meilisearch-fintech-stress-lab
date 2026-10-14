@@ -1,0 +1,28 @@
+consulta,tipo,descripcion,n_1000,n_3000,n_10000,n_100000,n_300000,n_1000000,n_4000000
+seg_estado_cdmx,filter,Usuarios en Ciudad de Mexico,73,216,723,6839,20691,69144,277491
+seg_riesgo_alto_personal,filter,Riesgo alto con credito personal,59,186,631,6562,19504,65474,262980
+seg_score_bajo,filter,Buro menor a 520 (candidatos a rechazo),158,509,1757,17726,52879,176302,705801
+seg_morosos_30d,filter,Morosos con mas de 30 dias de atraso,17,54,224,2399,7407,24801,100018
+seg_kyc_verif_jovenes,filter,KYC verificado de 25 a 35 anios,256,783,2639,26109,78581,261423,1045773
+seg_jalisco_ingreso_b,filter,Jalisco con ingreso banda B,25,80,236,2177,6335,21272,84999
+seg_tiktok_android_marketing,filter,TikTok + Android + acepta marketing,64,185,655,6704,20245,66800,268314
+seg_mujeres_30_45_kyc,filter,Mujeres de 30 a 45 verificadas,115,375,1233,12809,38527,128180,512893
+seg_riesgo_muy_alto,filter,Banda muy_alto (segmento chico pero >1000 a gran escala),50,161,590,5923,17889,59635,239694
+seg_activos_sin_atraso,filter,Activos sin atraso (~1.1M en 4M): segmento masivo,322,927,3066,30421,90673,301621,1209374
+seg_tag_promo,filter,Tag promo_2026,118,341,1103,11355,33943,113299,453572
+seg_nomina_vip_alto_monto,filter,Nomina VIP con monto > 40000,1,2,7,79,230,820,3144
+geo_cdmx_25km,geo,Dentro de 25 km del Zocalo (CDMX),38,115,408,3584,10845,36062,144119
+geo_gdl_50km,geo,Dentro de 50 km de Guadalajara,59,193,600,5905,17611,59237,237606
+txt_apellido_hernandez,search,"q=""Hernandez"" sin typo tolerance (conteo exacto)",25,54,208,1943,5775,19375,78428
+txt_nombre_maria,search,"q=""Maria"" en nombre",21,54,177,1921,5800,19172,76965
+txt_nombre_apellido_jalisco,search,"q=""Jose Hernandez"" + filtro Jalisco (segmento chico, control <1000)",0,0,0,0,2,5,20
+txt_apellido_hernandez_riesgo_alto,search,"q=""Hernandez"" + filtro banda_riesgo=alto (>1000 a gran escala)",7,15,56,441,1267,4221,17300
+txt_prefix_apellido,search,"Prefijo ""Hern"" (prefix search sobre el ultimo token)",9,20,101,973,2855,9710,39327
+txt_colonia_centro,search,"q=""Centro"" en colonia",31,82,292,2518,7452,24993,99907
+txt_fulltext_default,search,"q=""Guadalupe"" sobre todos los campos buscables (sonda fulltext)",35,102,321,3406,10353,34345,137561
+mix_sort_score_riesgo_alto,sort,Riesgo alto ordenado por score ascendente,217,676,2216,22092,65879,219774,878755
+mix_sort_ingreso_banda_c,sort,Banda de ingreso C ordenada por ingreso descendente,218,715,2407,24015,71847,240341,960581
+facet_estado_global,facet,Distribucion por estado (32 buckets sobre todo el indice),1000,3000,10000,100000,300000,1000000,4000000
+facet_morosos_producto_riesgo,facet,Morosos: facet por producto y banda de riesgo,147,499,1750,17784,54001,179405,718864
+facet_score_bajo_canal,facet,Score < 520: facet por canal de adquisicion,158,509,1757,17726,52879,176302,705801
+facet_kyc_pendiente_dispositivo,facet,KYC pendiente: facet por dispositivo y acepta_marketing,211,661,2196,21777,65904,220060,880261

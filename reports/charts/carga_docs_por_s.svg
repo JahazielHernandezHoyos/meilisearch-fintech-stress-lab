@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" width="860" height="420" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13">
+<text x="70" y="26" font-size="16" font-weight="600" fill="#111827">Throughput de indexado por escala</text>
+<line x1="70" y1="360.0" x2="660" y2="360.0" stroke="#e5e7eb"/>
+<text x="62" y="364.0" text-anchor="end" fill="#6b7280">0</text>
+<line x1="70" y1="296.8" x2="660" y2="296.8" stroke="#e5e7eb"/>
+<text x="62" y="300.8" text-anchor="end" fill="#6b7280">3,500</text>
+<line x1="70" y1="233.6" x2="660" y2="233.6" stroke="#e5e7eb"/>
+<text x="62" y="237.6" text-anchor="end" fill="#6b7280">7,001</text>
+<line x1="70" y1="170.4" x2="660" y2="170.4" stroke="#e5e7eb"/>
+<text x="62" y="174.4" text-anchor="end" fill="#6b7280">10,501</text>
+<line x1="70" y1="107.2" x2="660" y2="107.2" stroke="#e5e7eb"/>
+<text x="62" y="111.2" text-anchor="end" fill="#6b7280">14,001</text>
+<line x1="70" y1="44.0" x2="660" y2="44.0" stroke="#e5e7eb"/>
+<text x="62" y="48.0" text-anchor="end" fill="#6b7280">17,502</text>
+<rect x="82.6" y="286.9" width="59.0" height="73.1" fill="#2563eb"/>
+<rect x="166.9" y="133.7" width="59.0" height="226.3" fill="#2563eb"/>
+<rect x="251.2" y="85.2" width="59.0" height="274.8" fill="#2563eb"/>
+<rect x="335.5" y="170.5" width="59.0" height="189.5" fill="#2563eb"/>
+<rect x="419.8" y="263.9" width="59.0" height="96.1" fill="#2563eb"/>
+<rect x="504.1" y="324.1" width="59.0" height="35.9" fill="#2563eb"/>
+<rect x="588.4" y="354.9" width="59.0" height="5.1" fill="#2563eb"/>
+<rect x="674" y="50" width="20" height="10" fill="#2563eb"/>
+<text x="700" y="60" fill="#111827">docs/s</text>
+<text x="112.1" y="380" text-anchor="middle" fill="#6b7280">1,000</text>
+<text x="196.4" y="380" text-anchor="middle" fill="#6b7280">3,000</text>
+<text x="280.7" y="380" text-anchor="middle" fill="#6b7280">10,000</text>
+<text x="365.0" y="380" text-anchor="middle" fill="#6b7280">100,000</text>
+<text x="449.3" y="380" text-anchor="middle" fill="#6b7280">300,000</text>
+<text x="533.6" y="380" text-anchor="middle" fill="#6b7280">1,000,000</text>
+<text x="617.9" y="380" text-anchor="middle" fill="#6b7280">4,000,000</text>
+<text x="365" y="406" text-anchor="middle" fill="#6b7280">Documentos indexados</text>
+<text x="16" y="202" fill="#6b7280" transform="rotate(-90 16 202)" text-anchor="middle">docs/s</text>
+</svg>

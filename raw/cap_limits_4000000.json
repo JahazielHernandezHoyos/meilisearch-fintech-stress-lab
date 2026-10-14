@@ -1,0 +1,392 @@
+{
+ "scale": 4000000,
+ "host": {
+  "cpu_model": "AMD Ryzen 5 8645HS w/ Radeon 760M Graphics",
+  "nproc": 12,
+  "mem_total_kb": 14053936,
+  "kernel": "7.1.6-1-cachyos-deckify"
+ },
+ "docs": 4000000,
+ "corridas": [
+  {
+   "maxTotalHits": 1000,
+   "label": "cap=1000",
+   "ground_truth_segmento": 1209374,
+   "casos": [
+    {
+     "caso": "limit=20",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "limit": 20
+     },
+     "status": 200,
+     "wall_ms": 383.32,
+     "bytes": 26782,
+     "hits": 20,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "limit=1000",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "limit": 1000
+     },
+     "status": 200,
+     "wall_ms": 36.75,
+     "bytes": 1333360,
+     "hits": 1000,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "limit=1001",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "limit": 1001
+     },
+     "status": 200,
+     "wall_ms": 28.13,
+     "bytes": 1333360,
+     "hits": 1000,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "limit=5000",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "limit": 5000
+     },
+     "status": 200,
+     "wall_ms": 28.82,
+     "bytes": 1333360,
+     "hits": 1000,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "offset=900&limit=20",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "offset": 900,
+      "limit": 20
+     },
+     "status": 200,
+     "wall_ms": 24.2,
+     "bytes": 26885,
+     "hits": 20,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "offset=990&limit=20 (=1000)",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "offset": 990,
+      "limit": 20
+     },
+     "status": 200,
+     "wall_ms": 24.44,
+     "bytes": 13470,
+     "hits": 10,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "offset=1000&limit=20",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "offset": 1000,
+      "limit": 20
+     },
+     "status": 200,
+     "wall_ms": 24.21,
+     "bytes": 150,
+     "hits": 0,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "offset=100000&limit=20",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "offset": 100000,
+      "limit": 20
+     },
+     "status": 200,
+     "wall_ms": 23.14,
+     "bytes": 152,
+     "hits": 0,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "page=50&hitsPerPage=20 (=1000)",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "page": 50,
+      "hitsPerPage": 20
+     },
+     "status": 200,
+     "wall_ms": 23.23,
+     "bytes": 26746,
+     "hits": 20,
+     "estimatedTotalHits": null,
+     "totalHits": 1209374,
+     "totalPages": 60469,
+     "page": 50,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "page=51&hitsPerPage=20 (>1000)",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "page": 51,
+      "hitsPerPage": 20
+     },
+     "status": 200,
+     "wall_ms": 24.61,
+     "bytes": 162,
+     "hits": 0,
+     "estimatedTotalHits": null,
+     "totalHits": 1209374,
+     "totalPages": 60469,
+     "page": 51,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "page=1&hitsPerPage=100",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "page": 1,
+      "hitsPerPage": 100
+     },
+     "status": 200,
+     "wall_ms": 4.06,
+     "bytes": 133386,
+     "hits": 100,
+     "estimatedTotalHits": null,
+     "totalHits": 1209374,
+     "totalPages": 12094,
+     "page": 1,
+     "ground_truth_segmento": 1209374
+    }
+   ]
+  },
+  {
+   "maxTotalHits": 1000000,
+   "label": "cap=1000000",
+   "ground_truth_segmento": 1209374,
+   "casos": [
+    {
+     "caso": "limit=20",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "limit": 20
+     },
+     "status": 200,
+     "wall_ms": 2.31,
+     "bytes": 26780,
+     "hits": 20,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "limit=1000",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "limit": 1000
+     },
+     "status": 200,
+     "wall_ms": 28.16,
+     "bytes": 1333360,
+     "hits": 1000,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "limit=1001",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "limit": 1001
+     },
+     "status": 200,
+     "wall_ms": 30.7,
+     "bytes": 1334681,
+     "hits": 1001,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "limit=5000",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "limit": 5000
+     },
+     "status": 200,
+     "wall_ms": 154.84,
+     "bytes": 6665553,
+     "hits": 5000,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "offset=900&limit=20",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "offset": 900,
+      "limit": 20
+     },
+     "status": 200,
+     "wall_ms": 24.2,
+     "bytes": 26885,
+     "hits": 20,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "offset=990&limit=20 (=1000)",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "offset": 990,
+      "limit": 20
+     },
+     "status": 200,
+     "wall_ms": 24.63,
+     "bytes": 26732,
+     "hits": 20,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "offset=1000&limit=20",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "offset": 1000,
+      "limit": 20
+     },
+     "status": 200,
+     "wall_ms": 23.45,
+     "bytes": 26744,
+     "hits": 20,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "offset=100000&limit=20",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "offset": 100000,
+      "limit": 20
+     },
+     "status": 200,
+     "wall_ms": 4076.58,
+     "bytes": 27044,
+     "hits": 20,
+     "estimatedTotalHits": 1209374,
+     "totalHits": null,
+     "totalPages": null,
+     "page": null,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "page=50&hitsPerPage=20 (=1000)",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "page": 50,
+      "hitsPerPage": 20
+     },
+     "status": 200,
+     "wall_ms": 176.7,
+     "bytes": 26747,
+     "hits": 20,
+     "estimatedTotalHits": null,
+     "totalHits": 1209374,
+     "totalPages": 60469,
+     "page": 50,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "page=51&hitsPerPage=20 (>1000)",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "page": 51,
+      "hitsPerPage": 20
+     },
+     "status": 200,
+     "wall_ms": 28.46,
+     "bytes": 26756,
+     "hits": 20,
+     "estimatedTotalHits": null,
+     "totalHits": 1209374,
+     "totalPages": 60469,
+     "page": 51,
+     "ground_truth_segmento": 1209374
+    },
+    {
+     "caso": "page=1&hitsPerPage=100",
+     "body": {
+      "filter": "estatus_cuenta = \"activo\" AND dias_atraso = 0",
+      "page": 1,
+      "hitsPerPage": 100
+     },
+     "status": 200,
+     "wall_ms": 3.74,
+     "bytes": 133386,
+     "hits": 100,
+     "estimatedTotalHits": null,
+     "totalHits": 1209374,
+     "totalPages": 12094,
+     "page": 1,
+     "ground_truth_segmento": 1209374
+    }
+   ]
+  }
+ ]
+}

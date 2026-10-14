@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" width="860" height="420" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13">
+<text x="70" y="26" font-size="16" font-weight="600" fill="#111827">QPS vs. clientes concurrentes a 4,000,000 documentos</text>
+<line x1="70" y1="360.0" x2="670" y2="360.0" stroke="#e5e7eb"/>
+<text x="62" y="364.0" text-anchor="end" fill="#6b7280">0.00</text>
+<line x1="70" y1="296.8" x2="670" y2="296.8" stroke="#e5e7eb"/>
+<text x="62" y="300.8" text-anchor="end" fill="#6b7280">269</text>
+<line x1="70" y1="233.6" x2="670" y2="233.6" stroke="#e5e7eb"/>
+<text x="62" y="237.6" text-anchor="end" fill="#6b7280">539</text>
+<line x1="70" y1="170.4" x2="670" y2="170.4" stroke="#e5e7eb"/>
+<text x="62" y="174.4" text-anchor="end" fill="#6b7280">808</text>
+<line x1="70" y1="107.2" x2="670" y2="107.2" stroke="#e5e7eb"/>
+<text x="62" y="111.2" text-anchor="end" fill="#6b7280">1,077</text>
+<line x1="70" y1="44.0" x2="670" y2="44.0" stroke="#e5e7eb"/>
+<text x="62" y="48.0" text-anchor="end" fill="#6b7280">1,347</text>
+<line x1="70.0" y1="360" x2="70.0" y2="364" stroke="#6b7280"/>
+<text x="70.0" y="380" text-anchor="middle" fill="#6b7280">1</text>
+<line x1="270.0" y1="360" x2="270.0" y2="364" stroke="#6b7280"/>
+<text x="270.0" y="380" text-anchor="middle" fill="#6b7280">8</text>
+<line x1="470.0" y1="360" x2="470.0" y2="364" stroke="#6b7280"/>
+<text x="470.0" y="380" text-anchor="middle" fill="#6b7280">32</text>
+<line x1="670.0" y1="360" x2="670.0" y2="364" stroke="#6b7280"/>
+<text x="670.0" y="380" text-anchor="middle" fill="#6b7280">64</text>
+<text x="370" y="406" text-anchor="middle" fill="#6b7280">Clientes concurrentes</text>
+<text x="16" y="202" fill="#6b7280" transform="rotate(-90 16 202)" text-anchor="middle">QPS</text>
+<path d="M70.0,313.3 L270.0,100.7 L470.0,85.2 L670.0,90.0" fill="none" stroke="#2563eb" stroke-width="2"/>
+<circle cx="70.0" cy="313.3" r="3" fill="#2563eb"/>
+<circle cx="270.0" cy="100.7" r="3" fill="#2563eb"/>
+<circle cx="470.0" cy="85.2" r="3" fill="#2563eb"/>
+<circle cx="670.0" cy="90.0" r="3" fill="#2563eb"/>
+<line x1="684" y1="58" x2="704" y2="58" stroke="#2563eb" stroke-width="2"/>
+<text x="710" y="62" fill="#111827">QPS</text>
+<path d="M70.0,338.3 L270.0,327.2 L470.0,238.1 L670.0,91.6" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="70.0" cy="338.3" r="3" fill="#dc2626"/>
+<circle cx="270.0" cy="327.2" r="3" fill="#dc2626"/>
+<circle cx="470.0" cy="238.1" r="3" fill="#dc2626"/>
+<circle cx="670.0" cy="91.6" r="3" fill="#dc2626"/>
+<line x1="684" y1="78" x2="704" y2="78" stroke="#dc2626" stroke-width="2"/>
+<text x="710" y="82" fill="#111827">p95 x10 (ms)</text>
+</svg>

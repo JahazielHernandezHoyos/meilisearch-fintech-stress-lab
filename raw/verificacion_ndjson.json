@@ -1,0 +1,551 @@
+{
+ "verificado": [
+  {
+   "escala": 100000,
+   "consulta": "seg_estado_cdmx",
+   "count": 6839
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_riesgo_alto_personal",
+   "count": 6562
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_score_bajo",
+   "count": 17726
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_morosos_30d",
+   "count": 2399
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_kyc_verif_jovenes",
+   "count": 26109
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_jalisco_ingreso_b",
+   "count": 2177
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_tiktok_android_marketing",
+   "count": 6704
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_mujeres_30_45_kyc",
+   "count": 12809
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_riesgo_muy_alto",
+   "count": 5923
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_activos_sin_atraso",
+   "count": 30421
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_tag_promo",
+   "count": 11355
+  },
+  {
+   "escala": 100000,
+   "consulta": "seg_nomina_vip_alto_monto",
+   "count": 79
+  },
+  {
+   "escala": 100000,
+   "consulta": "txt_apellido_hernandez",
+   "count": 1943
+  },
+  {
+   "escala": 100000,
+   "consulta": "txt_apellido_hernandez_riesgo_alto",
+   "count": 441
+  },
+  {
+   "escala": 100000,
+   "consulta": "txt_nombre_maria",
+   "count": 1921
+  },
+  {
+   "escala": 100000,
+   "consulta": "txt_nombre_apellido_jalisco",
+   "count": 0
+  },
+  {
+   "escala": 100000,
+   "consulta": "txt_colonia_centro",
+   "count": 2518
+  },
+  {
+   "escala": 100000,
+   "consulta": "txt_prefix_apellido",
+   "count": 973
+  },
+  {
+   "escala": 100000,
+   "consulta": "txt_fulltext_default",
+   "count": 3406
+  },
+  {
+   "escala": 100000,
+   "consulta": "mix_sort_score_riesgo_alto",
+   "count": 22092
+  },
+  {
+   "escala": 100000,
+   "consulta": "mix_sort_ingreso_banda_c",
+   "count": 24015
+  },
+  {
+   "escala": 100000,
+   "consulta": "facet_morosos_producto_riesgo",
+   "count": 17784
+  },
+  {
+   "escala": 100000,
+   "consulta": "facet_kyc_pendiente_dispositivo",
+   "count": 21777
+  },
+  {
+   "escala": 100000,
+   "consulta": "geo_cdmx_25km",
+   "count": 3584
+  },
+  {
+   "escala": 100000,
+   "consulta": "geo_gdl_50km",
+   "count": 5905
+  },
+  {
+   "escala": 100000,
+   "consulta": "facet_estado_global",
+   "count": 100000
+  },
+  {
+   "escala": 100000,
+   "consulta": "facet_score_bajo_canal",
+   "count": 17726
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_estado_cdmx",
+   "count": 20691
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_riesgo_alto_personal",
+   "count": 19504
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_score_bajo",
+   "count": 52879
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_morosos_30d",
+   "count": 7407
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_kyc_verif_jovenes",
+   "count": 78581
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_jalisco_ingreso_b",
+   "count": 6335
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_tiktok_android_marketing",
+   "count": 20245
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_mujeres_30_45_kyc",
+   "count": 38527
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_riesgo_muy_alto",
+   "count": 17889
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_activos_sin_atraso",
+   "count": 90673
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_tag_promo",
+   "count": 33943
+  },
+  {
+   "escala": 300000,
+   "consulta": "seg_nomina_vip_alto_monto",
+   "count": 230
+  },
+  {
+   "escala": 300000,
+   "consulta": "txt_apellido_hernandez",
+   "count": 5775
+  },
+  {
+   "escala": 300000,
+   "consulta": "txt_apellido_hernandez_riesgo_alto",
+   "count": 1267
+  },
+  {
+   "escala": 300000,
+   "consulta": "txt_nombre_maria",
+   "count": 5800
+  },
+  {
+   "escala": 300000,
+   "consulta": "txt_nombre_apellido_jalisco",
+   "count": 2
+  },
+  {
+   "escala": 300000,
+   "consulta": "txt_colonia_centro",
+   "count": 7452
+  },
+  {
+   "escala": 300000,
+   "consulta": "txt_prefix_apellido",
+   "count": 2855
+  },
+  {
+   "escala": 300000,
+   "consulta": "txt_fulltext_default",
+   "count": 10353
+  },
+  {
+   "escala": 300000,
+   "consulta": "mix_sort_score_riesgo_alto",
+   "count": 65879
+  },
+  {
+   "escala": 300000,
+   "consulta": "mix_sort_ingreso_banda_c",
+   "count": 71847
+  },
+  {
+   "escala": 300000,
+   "consulta": "facet_morosos_producto_riesgo",
+   "count": 54001
+  },
+  {
+   "escala": 300000,
+   "consulta": "facet_kyc_pendiente_dispositivo",
+   "count": 65904
+  },
+  {
+   "escala": 300000,
+   "consulta": "geo_cdmx_25km",
+   "count": 10845
+  },
+  {
+   "escala": 300000,
+   "consulta": "geo_gdl_50km",
+   "count": 17611
+  },
+  {
+   "escala": 300000,
+   "consulta": "facet_estado_global",
+   "count": 300000
+  },
+  {
+   "escala": 300000,
+   "consulta": "facet_score_bajo_canal",
+   "count": 52879
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_estado_cdmx",
+   "count": 69144
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_riesgo_alto_personal",
+   "count": 65474
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_score_bajo",
+   "count": 176302
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_morosos_30d",
+   "count": 24801
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_kyc_verif_jovenes",
+   "count": 261423
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_jalisco_ingreso_b",
+   "count": 21272
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_tiktok_android_marketing",
+   "count": 66800
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_mujeres_30_45_kyc",
+   "count": 128180
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_riesgo_muy_alto",
+   "count": 59635
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_activos_sin_atraso",
+   "count": 301621
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_tag_promo",
+   "count": 113299
+  },
+  {
+   "escala": 1000000,
+   "consulta": "seg_nomina_vip_alto_monto",
+   "count": 820
+  },
+  {
+   "escala": 1000000,
+   "consulta": "txt_apellido_hernandez",
+   "count": 19375
+  },
+  {
+   "escala": 1000000,
+   "consulta": "txt_apellido_hernandez_riesgo_alto",
+   "count": 4221
+  },
+  {
+   "escala": 1000000,
+   "consulta": "txt_nombre_maria",
+   "count": 19172
+  },
+  {
+   "escala": 1000000,
+   "consulta": "txt_nombre_apellido_jalisco",
+   "count": 5
+  },
+  {
+   "escala": 1000000,
+   "consulta": "txt_colonia_centro",
+   "count": 24993
+  },
+  {
+   "escala": 1000000,
+   "consulta": "txt_prefix_apellido",
+   "count": 9710
+  },
+  {
+   "escala": 1000000,
+   "consulta": "txt_fulltext_default",
+   "count": 34345
+  },
+  {
+   "escala": 1000000,
+   "consulta": "mix_sort_score_riesgo_alto",
+   "count": 219774
+  },
+  {
+   "escala": 1000000,
+   "consulta": "mix_sort_ingreso_banda_c",
+   "count": 240341
+  },
+  {
+   "escala": 1000000,
+   "consulta": "facet_morosos_producto_riesgo",
+   "count": 179405
+  },
+  {
+   "escala": 1000000,
+   "consulta": "facet_kyc_pendiente_dispositivo",
+   "count": 220060
+  },
+  {
+   "escala": 1000000,
+   "consulta": "geo_cdmx_25km",
+   "count": 36062
+  },
+  {
+   "escala": 1000000,
+   "consulta": "geo_gdl_50km",
+   "count": 59237
+  },
+  {
+   "escala": 1000000,
+   "consulta": "facet_estado_global",
+   "count": 1000000
+  },
+  {
+   "escala": 1000000,
+   "consulta": "facet_score_bajo_canal",
+   "count": 176302
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_estado_cdmx",
+   "count": 277491
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_riesgo_alto_personal",
+   "count": 262980
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_score_bajo",
+   "count": 705801
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_morosos_30d",
+   "count": 100018
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_kyc_verif_jovenes",
+   "count": 1045773
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_jalisco_ingreso_b",
+   "count": 84999
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_tiktok_android_marketing",
+   "count": 268314
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_mujeres_30_45_kyc",
+   "count": 512893
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_riesgo_muy_alto",
+   "count": 239694
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_activos_sin_atraso",
+   "count": 1209374
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_tag_promo",
+   "count": 453572
+  },
+  {
+   "escala": 4000000,
+   "consulta": "seg_nomina_vip_alto_monto",
+   "count": 3144
+  },
+  {
+   "escala": 4000000,
+   "consulta": "txt_apellido_hernandez",
+   "count": 78428
+  },
+  {
+   "escala": 4000000,
+   "consulta": "txt_apellido_hernandez_riesgo_alto",
+   "count": 17300
+  },
+  {
+   "escala": 4000000,
+   "consulta": "txt_nombre_maria",
+   "count": 76965
+  },
+  {
+   "escala": 4000000,
+   "consulta": "txt_nombre_apellido_jalisco",
+   "count": 20
+  },
+  {
+   "escala": 4000000,
+   "consulta": "txt_colonia_centro",
+   "count": 99907
+  },
+  {
+   "escala": 4000000,
+   "consulta": "txt_prefix_apellido",
+   "count": 39327
+  },
+  {
+   "escala": 4000000,
+   "consulta": "txt_fulltext_default",
+   "count": 137561
+  },
+  {
+   "escala": 4000000,
+   "consulta": "mix_sort_score_riesgo_alto",
+   "count": 878755
+  },
+  {
+   "escala": 4000000,
+   "consulta": "mix_sort_ingreso_banda_c",
+   "count": 960581
+  },
+  {
+   "escala": 4000000,
+   "consulta": "facet_morosos_producto_riesgo",
+   "count": 718864
+  },
+  {
+   "escala": 4000000,
+   "consulta": "facet_kyc_pendiente_dispositivo",
+   "count": 880261
+  },
+  {
+   "escala": 4000000,
+   "consulta": "geo_cdmx_25km",
+   "count": 144119
+  },
+  {
+   "escala": 4000000,
+   "consulta": "geo_gdl_50km",
+   "count": 237606
+  },
+  {
+   "escala": 4000000,
+   "consulta": "facet_estado_global",
+   "count": 4000000
+  },
+  {
+   "escala": 4000000,
+   "consulta": "facet_score_bajo_canal",
+   "count": 705801
+  }
+ ],
+ "discrepancias": [],
+ "resumen": {
+  "comparaciones": 108,
+  "ok": 108,
+  "discrepancias": 0,
+  "docs_totales": 4000000
+ }
+}

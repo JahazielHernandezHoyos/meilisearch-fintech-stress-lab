@@ -1,0 +1,4157 @@
+{
+ "scale": 300000,
+ "host": {
+  "cpu_model": "AMD Ryzen 5 8645HS w/ Radeon 760M Graphics",
+  "nproc": 12,
+  "mem_total_kb": 14053936,
+  "kernel": "7.1.6-1-cachyos-deckify"
+ },
+ "flags": {
+  "scale": 300000,
+  "stages": "load,queries_default,concurrency,raise_cap,queries_raised,verify_ids,typo_experiment,deep",
+  "batch": 20000,
+  "port": 7700,
+  "threads": 8,
+  "memory": "4GiB",
+  "keep_db": false,
+  "reps": 20,
+  "clients": "1,8,32,64",
+  "conc_seconds": 15
+ },
+ "startup_s": 0.205,
+ "load": {
+  "docs_solicitados": 300000,
+  "docs_indexados": 300000,
+  "settings_s": 0.101,
+  "index_s": 56.343,
+  "docs_per_s": 5324.5,
+  "batch_size": 20000,
+  "n_batches": 15,
+  "batch_stats": {
+   "s_min": 1.447,
+   "s_p50": 3.564,
+   "s_max": 6.045
+  },
+  "ndjson_bytes": 400885499,
+  "db_bytes": 2468823302,
+  "peak_rss_bytes": 3228815360,
+  "cpu": {
+   "cpu_pct_max": 823.0,
+   "cpu_pct_p50": 132.9,
+   "cpu_pct_mean": 232.5
+  },
+  "index_stats": {
+   "numberOfDocuments": 300000,
+   "indexSize": 2468302848,
+   "usedIndexSize": 1501786112,
+   "rawDocumentDbSize": 309088256,
+   "avgDocumentSize": 1022,
+   "isIndexing": false,
+   "numberOfEmbeddings": 0,
+   "numberOfEmbeddedDocuments": 0,
+   "fieldDistribution": {
+    "_geo": 300000,
+    "acepta_marketing": 300000,
+    "apellido_materno": 300000,
+    "apellido_paterno": 300000,
+    "banda_ingreso": 300000,
+    "banda_riesgo": 300000,
+    "canal_adquisicion": 300000,
+    "colonia": 300000,
+    "cp": 300000,
+    "credito_usado": 300000,
+    "curp": 300000,
+    "dias_atraso": 300000,
+    "direccion": 300000,
+    "dispositivo": 300000,
+    "edad": 300000,
+    "email": 300000,
+    "estado": 300000,
+    "estatus_cuenta": 300000,
+    "fecha_nacimiento": 300000,
+    "fecha_registro": 300000,
+    "fecha_registro_ts": 300000,
+    "fecha_ultimo_acceso": 300000,
+    "fecha_ultimo_acceso_ts": 300000,
+    "genero": 300000,
+    "id": 300000,
+    "ingreso_mensual": 300000,
+    "intentos_login": 300000,
+    "kyc_fecha": 300000,
+    "kyc_status": 300000,
+    "limite_credito": 300000,
+    "monto_solicitado": 300000,
+    "municipio": 300000,
+    "nivel_educativo": 300000,
+    "nombre": 300000,
+    "nombre_completo": 300000,
+    "num_prestamos": 300000,
+    "plazo_meses": 300000,
+    "producto": 300000,
+    "rfc": 300000,
+    "saldo_actual": 300000,
+    "score_buro": 300000,
+    "score_interno": 300000,
+    "segmento_comercial": 300000,
+    "tags": 300000,
+    "tasa_anual": 300000,
+    "telefono": 300000,
+    "tiene_seguro": 300000,
+    "tipo_contrato": 300000,
+    "tipo_vivienda": 300000,
+    "utilizacion_pct": 300000,
+    "uuid": 300000
+   }
+  },
+  "db_bytes_per_doc": 8229.4
+ },
+ "overhead_cliente": {
+  "urllib3_p50_ms": 1.28,
+  "urllib3_p95_ms": 1.69,
+  "requests_session_p50_ms": 45.17,
+  "requests_session_p95_ms": 48.03,
+  "delta_p50_ms": 43.89
+ },
+ "queries_default_limit20": {
+  "config": "default",
+  "limit": 20,
+  "reps": 20,
+  "peak_rss_bytes": 3059408896,
+  "cpu": {
+   "cpu_pct_max": 97.9,
+   "cpu_pct_p50": 87.9,
+   "cpu_pct_mean": 87.9
+  },
+  "queries": {
+   "seg_estado_cdmx": {
+    "tipo": "filter",
+    "desc": "Usuarios en Ciudad de Mexico",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.1,
+     "wall_ms_p95": 4.69,
+     "wall_ms_p99": 5.19,
+     "wall_ms_min": 2.35,
+     "wall_ms_max": 5.32,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.05,
+     "hits": 20,
+     "estimatedTotalHits": 20691,
+     "totalHits": null,
+     "resp_bytes": 26781
+    },
+    "truth_check": {
+     "ground_truth_count": 20691,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 20691,
+     "count_match": false
+    },
+    "ids": [
+     18,
+     32,
+     47,
+     61,
+     69
+    ]
+   },
+   "seg_riesgo_alto_personal": {
+    "tipo": "filter",
+    "desc": "Riesgo alto con credito personal",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.16,
+     "wall_ms_p95": 4.45,
+     "wall_ms_p99": 4.45,
+     "wall_ms_min": 3.83,
+     "wall_ms_max": 4.45,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 19504,
+     "totalHits": null,
+     "resp_bytes": 26616
+    },
+    "truth_check": {
+     "ground_truth_count": 19504,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 19504,
+     "count_match": false
+    },
+    "ids": [
+     3,
+     16,
+     19,
+     25,
+     106
+    ]
+   },
+   "seg_score_bajo": {
+    "tipo": "filter",
+    "desc": "Buro menor a 520 (candidatos a rechazo)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.21,
+     "wall_ms_p95": 5.52,
+     "wall_ms_p99": 5.77,
+     "wall_ms_min": 4.4,
+     "wall_ms_max": 5.83,
+     "meili_ms_p50": 3.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 52879,
+     "totalHits": null,
+     "resp_bytes": 26890
+    },
+    "truth_check": {
+     "ground_truth_count": 52879,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 52879,
+     "count_match": false
+    },
+    "ids": [
+     2,
+     8,
+     11,
+     12,
+     13
+    ]
+   },
+   "seg_morosos_30d": {
+    "tipo": "filter",
+    "desc": "Morosos con mas de 30 dias de atraso",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.65,
+     "wall_ms_p95": 4.85,
+     "wall_ms_p99": 5.43,
+     "wall_ms_min": 3.3,
+     "wall_ms_max": 5.58,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 7407,
+     "totalHits": null,
+     "resp_bytes": 27024
+    },
+    "truth_check": {
+     "ground_truth_count": 7407,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 7407,
+     "count_match": false
+    },
+    "ids": [
+     101,
+     134,
+     186,
+     219,
+     275
+    ]
+   },
+   "seg_kyc_verif_jovenes": {
+    "tipo": "filter",
+    "desc": "KYC verificado de 25 a 35 anios",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.45,
+     "wall_ms_p95": 5.7,
+     "wall_ms_p99": 5.98,
+     "wall_ms_min": 5.22,
+     "wall_ms_max": 6.06,
+     "meili_ms_p50": 3.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 78581,
+     "totalHits": null,
+     "resp_bytes": 26935
+    },
+    "truth_check": {
+     "ground_truth_count": 78581,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 78581,
+     "count_match": false
+    },
+    "ids": [
+     4,
+     25,
+     28,
+     32,
+     43
+    ]
+   },
+   "seg_jalisco_ingreso_b": {
+    "tipo": "filter",
+    "desc": "Jalisco con ingreso banda B",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.2,
+     "wall_ms_p95": 4.33,
+     "wall_ms_p99": 4.45,
+     "wall_ms_min": 3.31,
+     "wall_ms_max": 4.48,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 6335,
+     "totalHits": null,
+     "resp_bytes": 26930
+    },
+    "truth_check": {
+     "ground_truth_count": 6335,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 6335,
+     "count_match": false
+    },
+    "ids": [
+     26,
+     46,
+     201,
+     252,
+     271
+    ]
+   },
+   "seg_tiktok_android_marketing": {
+    "tipo": "filter",
+    "desc": "TikTok + Android + acepta marketing",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.31,
+     "wall_ms_p95": 5.01,
+     "wall_ms_p99": 5.24,
+     "wall_ms_min": 3.69,
+     "wall_ms_max": 5.3,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 20245,
+     "totalHits": null,
+     "resp_bytes": 26701
+    },
+    "truth_check": {
+     "ground_truth_count": 20245,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 20245,
+     "count_match": false
+    },
+    "ids": [
+     24,
+     36,
+     53,
+     109,
+     114
+    ]
+   },
+   "seg_mujeres_30_45_kyc": {
+    "tipo": "filter",
+    "desc": "Mujeres de 30 a 45 verificadas",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.59,
+     "wall_ms_p95": 6.2,
+     "wall_ms_p99": 6.87,
+     "wall_ms_min": 4.12,
+     "wall_ms_max": 7.04,
+     "meili_ms_p50": 3.0,
+     "meili_ms_p95": 3.05,
+     "hits": 20,
+     "estimatedTotalHits": 38527,
+     "totalHits": null,
+     "resp_bytes": 26903
+    },
+    "truth_check": {
+     "ground_truth_count": 38527,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 38527,
+     "count_match": false
+    },
+    "ids": [
+     30,
+     32,
+     46,
+     64,
+     71
+    ]
+   },
+   "seg_riesgo_muy_alto": {
+    "tipo": "filter",
+    "desc": "Banda muy_alto (segmento chico pero >1000 a gran escala)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.06,
+     "wall_ms_p95": 4.3,
+     "wall_ms_p99": 4.55,
+     "wall_ms_min": 2.59,
+     "wall_ms_max": 4.61,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 17889,
+     "totalHits": null,
+     "resp_bytes": 27042
+    },
+    "truth_check": {
+     "ground_truth_count": 17889,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 17889,
+     "count_match": false
+    },
+    "ids": [
+     8,
+     13,
+     28,
+     52,
+     57
+    ]
+   },
+   "seg_activos_sin_atraso": {
+    "tipo": "filter",
+    "desc": "Activos sin atraso (~1.1M en 4M): segmento masivo",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.08,
+     "wall_ms_p95": 4.41,
+     "wall_ms_p99": 4.43,
+     "wall_ms_min": 2.79,
+     "wall_ms_max": 4.43,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 90673,
+     "totalHits": null,
+     "resp_bytes": 26778
+    },
+    "truth_check": {
+     "ground_truth_count": 90673,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 90673,
+     "count_match": false
+    },
+    "ids": [
+     1,
+     3,
+     5,
+     6,
+     8
+    ]
+   },
+   "seg_tag_promo": {
+    "tipo": "filter",
+    "desc": "Tag promo_2026",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.01,
+     "wall_ms_p95": 4.25,
+     "wall_ms_p99": 4.39,
+     "wall_ms_min": 2.57,
+     "wall_ms_max": 4.43,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 33943,
+     "totalHits": null,
+     "resp_bytes": 27016
+    },
+    "truth_check": {
+     "ground_truth_count": 33943,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 33943,
+     "count_match": false
+    },
+    "ids": [
+     5,
+     17,
+     30,
+     50,
+     52
+    ]
+   },
+   "seg_nomina_vip_alto_monto": {
+    "tipo": "filter",
+    "desc": "Nomina VIP con monto > 40000",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.65,
+     "wall_ms_p95": 4.98,
+     "wall_ms_p99": 5.66,
+     "wall_ms_min": 4.28,
+     "wall_ms_max": 5.83,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.05,
+     "hits": 20,
+     "estimatedTotalHits": 230,
+     "totalHits": null,
+     "resp_bytes": 27091
+    },
+    "truth_check": {
+     "ground_truth_count": 230,
+     "cap": 1000,
+     "expected_reported": 230,
+     "reported": 230,
+     "count_match": true
+    },
+    "ids": [
+     991,
+     1428,
+     3175,
+     4378,
+     7639
+    ]
+   },
+   "geo_cdmx_25km": {
+    "tipo": "geo",
+    "desc": "Dentro de 25 km del Zocalo (CDMX)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 39.42,
+     "wall_ms_p95": 43.61,
+     "wall_ms_p99": 43.66,
+     "wall_ms_min": 32.69,
+     "wall_ms_max": 43.67,
+     "meili_ms_p50": 36.0,
+     "meili_ms_p95": 41.0,
+     "hits": 20,
+     "estimatedTotalHits": 10845,
+     "totalHits": null,
+     "resp_bytes": 26873
+    },
+    "truth_check": {
+     "ground_truth_count": 10845,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 10845,
+     "count_match": false
+    },
+    "ids": [
+     18,
+     47,
+     61,
+     77,
+     97
+    ]
+   },
+   "geo_gdl_50km": {
+    "tipo": "geo",
+    "desc": "Dentro de 50 km de Guadalajara",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 41.31,
+     "wall_ms_p95": 44.42,
+     "wall_ms_p99": 44.63,
+     "wall_ms_min": 37.42,
+     "wall_ms_max": 44.68,
+     "meili_ms_p50": 38.5,
+     "meili_ms_p95": 41.0,
+     "hits": 20,
+     "estimatedTotalHits": 17611,
+     "totalHits": null,
+     "resp_bytes": 26812
+    },
+    "truth_check": {
+     "ground_truth_count": 17611,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 17611,
+     "count_match": false
+    },
+    "ids": [
+     6,
+     26,
+     52,
+     74,
+     103
+    ]
+   },
+   "txt_apellido_hernandez": {
+    "tipo": "search",
+    "desc": "q=\"Hernandez\" sin typo tolerance (conteo exacto)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 11.71,
+     "wall_ms_p95": 13.26,
+     "wall_ms_p99": 13.46,
+     "wall_ms_min": 9.94,
+     "wall_ms_max": 13.51,
+     "meili_ms_p50": 9.0,
+     "meili_ms_p95": 10.05,
+     "hits": 20,
+     "estimatedTotalHits": 5775,
+     "totalHits": null,
+     "resp_bytes": 27025
+    },
+    "truth_check": {
+     "ground_truth_count": 5775,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 5775,
+     "count_match": false
+    },
+    "ids": [
+     45,
+     71,
+     172,
+     300,
+     375
+    ]
+   },
+   "txt_nombre_maria": {
+    "tipo": "search",
+    "desc": "q=\"Maria\" en nombre",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.79,
+     "wall_ms_p95": 6.64,
+     "wall_ms_p99": 7.17,
+     "wall_ms_min": 3.87,
+     "wall_ms_max": 7.31,
+     "meili_ms_p50": 4.0,
+     "meili_ms_p95": 4.0,
+     "hits": 20,
+     "estimatedTotalHits": 5800,
+     "totalHits": null,
+     "resp_bytes": 26720
+    },
+    "truth_check": {
+     "ground_truth_count": 5800,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 5800,
+     "count_match": false
+    },
+    "ids": [
+     127,
+     166,
+     286,
+     292,
+     340
+    ]
+   },
+   "txt_nombre_apellido_jalisco": {
+    "tipo": "search",
+    "desc": "q=\"Jose Hernandez\" + filtro Jalisco (segmento chico, control <1000)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 9.42,
+     "wall_ms_p95": 10.46,
+     "wall_ms_p99": 11.14,
+     "wall_ms_min": 8.96,
+     "wall_ms_max": 11.31,
+     "meili_ms_p50": 7.0,
+     "meili_ms_p95": 8.0,
+     "hits": 2,
+     "estimatedTotalHits": 2,
+     "totalHits": null,
+     "resp_bytes": 2786
+    },
+    "truth_check": {
+     "ground_truth_count": 2,
+     "cap": 1000,
+     "expected_reported": 2,
+     "reported": 2,
+     "count_match": true
+    },
+    "ids": [
+     190841,
+     284519
+    ]
+   },
+   "txt_apellido_hernandez_riesgo_alto": {
+    "tipo": "search",
+    "desc": "q=\"Hernandez\" + filtro banda_riesgo=alto (>1000 a gran escala)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 11.23,
+     "wall_ms_p95": 12.21,
+     "wall_ms_p99": 12.68,
+     "wall_ms_min": 10.61,
+     "wall_ms_max": 12.8,
+     "meili_ms_p50": 8.5,
+     "meili_ms_p95": 9.05,
+     "hits": 20,
+     "estimatedTotalHits": 1267,
+     "totalHits": null,
+     "resp_bytes": 27013
+    },
+    "truth_check": {
+     "ground_truth_count": 1267,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 1267,
+     "count_match": false
+    },
+    "ids": [
+     172,
+     300,
+     375,
+     1195,
+     1897
+    ]
+   },
+   "txt_prefix_apellido": {
+    "tipo": "search",
+    "desc": "Prefijo \"Hern\" (prefix search sobre el ultimo token)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.78,
+     "wall_ms_p95": 5.31,
+     "wall_ms_p99": 5.72,
+     "wall_ms_min": 4.42,
+     "wall_ms_max": 5.82,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 2855,
+     "totalHits": null,
+     "resp_bytes": 27020
+    },
+    "truth_check": {
+     "ground_truth_count": 2855,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 2855,
+     "count_match": false
+    },
+    "ids": [
+     45,
+     71,
+     172,
+     300,
+     375
+    ]
+   },
+   "txt_colonia_centro": {
+    "tipo": "search",
+    "desc": "q=\"Centro\" en colonia",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.31,
+     "wall_ms_p95": 6.2,
+     "wall_ms_p99": 6.69,
+     "wall_ms_min": 4.81,
+     "wall_ms_max": 6.82,
+     "meili_ms_p50": 3.0,
+     "meili_ms_p95": 3.05,
+     "hits": 20,
+     "estimatedTotalHits": 7452,
+     "totalHits": null,
+     "resp_bytes": 26501
+    },
+    "truth_check": {
+     "ground_truth_count": 7452,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 7452,
+     "count_match": false
+    },
+    "ids": [
+     13,
+     14,
+     66,
+     152,
+     246
+    ]
+   },
+   "txt_fulltext_default": {
+    "tipo": "search",
+    "desc": "q=\"Guadalupe\" sobre todos los campos buscables (sonda fulltext)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 6.44,
+     "wall_ms_p95": 7.75,
+     "wall_ms_p99": 8.19,
+     "wall_ms_min": 6.08,
+     "wall_ms_max": 8.31,
+     "meili_ms_p50": 4.0,
+     "meili_ms_p95": 5.0,
+     "hits": 20,
+     "estimatedTotalHits": 10353,
+     "totalHits": null,
+     "resp_bytes": 26985
+    },
+    "truth_check": {
+     "ground_truth_count": 10353,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 10353,
+     "count_match": false
+    },
+    "ids": [
+     9,
+     92,
+     98,
+     387,
+     405
+    ]
+   },
+   "mix_sort_score_riesgo_alto": {
+    "tipo": "sort",
+    "desc": "Riesgo alto ordenado por score ascendente",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.39,
+     "wall_ms_p95": 4.85,
+     "wall_ms_p99": 5.45,
+     "wall_ms_min": 2.95,
+     "wall_ms_max": 5.6,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.05,
+     "hits": 20,
+     "estimatedTotalHits": 65879,
+     "totalHits": null,
+     "resp_bytes": 26923
+    },
+    "truth_check": {
+     "ground_truth_count": 65879,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 65879,
+     "count_match": false
+    },
+    "ids": [
+     100021,
+     64900,
+     76621,
+     16808,
+     94236
+    ]
+   },
+   "mix_sort_ingreso_banda_c": {
+    "tipo": "sort",
+    "desc": "Banda de ingreso C ordenada por ingreso descendente",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.61,
+     "wall_ms_p95": 5.03,
+     "wall_ms_p99": 5.09,
+     "wall_ms_min": 3.18,
+     "wall_ms_max": 5.1,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 71847,
+     "totalHits": null,
+     "resp_bytes": 27217
+    },
+    "truth_check": {
+     "ground_truth_count": 71847,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 71847,
+     "count_match": false
+    },
+    "ids": [
+     279176,
+     253354,
+     159418,
+     145319,
+     92401
+    ]
+   },
+   "facet_estado_global": {
+    "tipo": "facet",
+    "desc": "Distribucion por estado (32 buckets sobre todo el indice)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 7.32,
+     "wall_ms_p95": 8.14,
+     "wall_ms_p99": 8.2,
+     "wall_ms_min": 6.81,
+     "wall_ms_max": 8.22,
+     "meili_ms_p50": 5.0,
+     "meili_ms_p95": 6.0,
+     "hits": 20,
+     "estimatedTotalHits": 300000,
+     "totalHits": null,
+     "resp_bytes": 27355
+    },
+    "truth_check": {
+     "ground_truth_count": 300000,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 300000,
+     "count_match": false,
+     "facets_match": {
+      "estado": true
+     }
+    },
+    "ids": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "facet_morosos_producto_riesgo": {
+    "tipo": "facet",
+    "desc": "Morosos: facet por producto y banda de riesgo",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.48,
+     "wall_ms_p95": 6.16,
+     "wall_ms_p99": 6.3,
+     "wall_ms_min": 5.29,
+     "wall_ms_max": 6.33,
+     "meili_ms_p50": 3.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 54001,
+     "totalHits": null,
+     "resp_bytes": 26817
+    },
+    "truth_check": {
+     "ground_truth_count": 54001,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 54001,
+     "count_match": false,
+     "facets_match": {
+      "producto": true,
+      "banda_riesgo": true
+     }
+    },
+    "ids": [
+     2,
+     4,
+     9,
+     21,
+     38
+    ]
+   },
+   "facet_score_bajo_canal": {
+    "tipo": "facet",
+    "desc": "Score < 520: facet por canal de adquisicion",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 6.41,
+     "wall_ms_p95": 6.74,
+     "wall_ms_p99": 6.87,
+     "wall_ms_min": 4.46,
+     "wall_ms_max": 6.9,
+     "meili_ms_p50": 4.0,
+     "meili_ms_p95": 4.0,
+     "hits": 20,
+     "estimatedTotalHits": 52879,
+     "totalHits": null,
+     "resp_bytes": 27062
+    },
+    "truth_check": {
+     "ground_truth_count": 52879,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 52879,
+     "count_match": false,
+     "facets_match": {
+      "canal_adquisicion": true
+     }
+    },
+    "ids": [
+     2,
+     8,
+     11,
+     12,
+     13
+    ]
+   },
+   "facet_kyc_pendiente_dispositivo": {
+    "tipo": "facet",
+    "desc": "KYC pendiente: facet por dispositivo y acepta_marketing",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.83,
+     "wall_ms_p95": 5.16,
+     "wall_ms_p99": 5.69,
+     "wall_ms_min": 3.77,
+     "wall_ms_max": 5.82,
+     "meili_ms_p50": 3.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 65904,
+     "totalHits": null,
+     "resp_bytes": 26764
+    },
+    "truth_check": {
+     "ground_truth_count": 65904,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 65904,
+     "count_match": false,
+     "facets_match": {
+      "dispositivo": true,
+      "acepta_marketing": true
+     }
+    },
+    "ids": [
+     3,
+     9,
+     16,
+     21,
+     23
+    ]
+   }
+  }
+ },
+ "queries_default_limit1000": {
+  "config": "default",
+  "limit": 1000,
+  "reps": 6,
+  "peak_rss_bytes": 3125919744,
+  "cpu": {
+   "cpu_pct_max": 83.9,
+   "cpu_pct_p50": 77.7,
+   "cpu_pct_mean": 78.0
+  },
+  "queries": {
+   "seg_estado_cdmx": {
+    "tipo": "filter",
+    "desc": "Usuarios en Ciudad de Mexico",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 100.69,
+     "wall_ms_p95": 106.55,
+     "wall_ms_p99": 106.95,
+     "wall_ms_min": 99.61,
+     "wall_ms_max": 107.05,
+     "meili_ms_p50": 86.0,
+     "meili_ms_p95": 88.75,
+     "hits": 1000,
+     "estimatedTotalHits": 20691,
+     "totalHits": null,
+     "resp_bytes": 1339209
+    },
+    "truth_check": {
+     "ground_truth_count": 20691,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 20691,
+     "count_match": false
+    },
+    "ids": [
+     18,
+     32,
+     47,
+     61,
+     69
+    ]
+   },
+   "seg_riesgo_alto_personal": {
+    "tipo": "filter",
+    "desc": "Riesgo alto con credito personal",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 100.49,
+     "wall_ms_p95": 101.6,
+     "wall_ms_p99": 101.67,
+     "wall_ms_min": 99.37,
+     "wall_ms_max": 101.68,
+     "meili_ms_p50": 85.5,
+     "meili_ms_p95": 87.75,
+     "hits": 1000,
+     "estimatedTotalHits": 19504,
+     "totalHits": null,
+     "resp_bytes": 1337111
+    },
+    "truth_check": {
+     "ground_truth_count": 19504,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 19504,
+     "count_match": false
+    },
+    "ids": [
+     3,
+     16,
+     19,
+     25,
+     106
+    ]
+   },
+   "seg_score_bajo": {
+    "tipo": "filter",
+    "desc": "Buro menor a 520 (candidatos a rechazo)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 96.98,
+     "wall_ms_p95": 101.67,
+     "wall_ms_p99": 101.87,
+     "wall_ms_min": 91.93,
+     "wall_ms_max": 101.92,
+     "meili_ms_p50": 83.0,
+     "meili_ms_p95": 86.25,
+     "hits": 1000,
+     "estimatedTotalHits": 52879,
+     "totalHits": null,
+     "resp_bytes": 1335908
+    },
+    "truth_check": {
+     "ground_truth_count": 52879,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 52879,
+     "count_match": false
+    },
+    "ids": [
+     2,
+     8,
+     11,
+     12,
+     13
+    ]
+   },
+   "seg_morosos_30d": {
+    "tipo": "filter",
+    "desc": "Morosos con mas de 30 dias de atraso",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 85.43,
+     "wall_ms_p95": 97.12,
+     "wall_ms_p99": 97.48,
+     "wall_ms_min": 76.15,
+     "wall_ms_max": 97.57,
+     "meili_ms_p50": 74.5,
+     "meili_ms_p95": 82.75,
+     "hits": 1000,
+     "estimatedTotalHits": 7407,
+     "totalHits": null,
+     "resp_bytes": 1345167
+    },
+    "truth_check": {
+     "ground_truth_count": 7407,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 7407,
+     "count_match": false
+    },
+    "ids": [
+     101,
+     134,
+     186,
+     219,
+     275
+    ]
+   },
+   "seg_kyc_verif_jovenes": {
+    "tipo": "filter",
+    "desc": "KYC verificado de 25 a 35 anios",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 66.41,
+     "wall_ms_p95": 74.11,
+     "wall_ms_p99": 75.11,
+     "wall_ms_min": 58.4,
+     "wall_ms_max": 75.36,
+     "meili_ms_p50": 55.5,
+     "meili_ms_p95": 63.5,
+     "hits": 1000,
+     "estimatedTotalHits": 78581,
+     "totalHits": null,
+     "resp_bytes": 1338907
+    },
+    "truth_check": {
+     "ground_truth_count": 78581,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 78581,
+     "count_match": false
+    },
+    "ids": [
+     4,
+     25,
+     28,
+     32,
+     43
+    ]
+   },
+   "seg_jalisco_ingreso_b": {
+    "tipo": "filter",
+    "desc": "Jalisco con ingreso banda B",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 57.16,
+     "wall_ms_p95": 62.58,
+     "wall_ms_p99": 63.53,
+     "wall_ms_min": 46.34,
+     "wall_ms_max": 63.76,
+     "meili_ms_p50": 47.5,
+     "meili_ms_p95": 52.5,
+     "hits": 1000,
+     "estimatedTotalHits": 6335,
+     "totalHits": null,
+     "resp_bytes": 1334454
+    },
+    "truth_check": {
+     "ground_truth_count": 6335,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 6335,
+     "count_match": false
+    },
+    "ids": [
+     26,
+     46,
+     201,
+     252,
+     271
+    ]
+   },
+   "seg_tiktok_android_marketing": {
+    "tipo": "filter",
+    "desc": "TikTok + Android + acepta marketing",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 46.47,
+     "wall_ms_p95": 49.67,
+     "wall_ms_p99": 50.1,
+     "wall_ms_min": 40.43,
+     "wall_ms_max": 50.21,
+     "meili_ms_p50": 38.0,
+     "meili_ms_p95": 41.25,
+     "hits": 1000,
+     "estimatedTotalHits": 20245,
+     "totalHits": null,
+     "resp_bytes": 1335621
+    },
+    "truth_check": {
+     "ground_truth_count": 20245,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 20245,
+     "count_match": false
+    },
+    "ids": [
+     24,
+     36,
+     53,
+     109,
+     114
+    ]
+   },
+   "seg_mujeres_30_45_kyc": {
+    "tipo": "filter",
+    "desc": "Mujeres de 30 a 45 verificadas",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 41.15,
+     "wall_ms_p95": 46.44,
+     "wall_ms_p99": 47.04,
+     "wall_ms_min": 35.6,
+     "wall_ms_max": 47.18,
+     "meili_ms_p50": 34.5,
+     "meili_ms_p95": 38.25,
+     "hits": 1000,
+     "estimatedTotalHits": 38527,
+     "totalHits": null,
+     "resp_bytes": 1339494
+    },
+    "truth_check": {
+     "ground_truth_count": 38527,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 38527,
+     "count_match": false
+    },
+    "ids": [
+     30,
+     32,
+     46,
+     64,
+     71
+    ]
+   },
+   "seg_riesgo_muy_alto": {
+    "tipo": "filter",
+    "desc": "Banda muy_alto (segmento chico pero >1000 a gran escala)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 39.07,
+     "wall_ms_p95": 42.83,
+     "wall_ms_p99": 43.31,
+     "wall_ms_min": 31.53,
+     "wall_ms_max": 43.43,
+     "meili_ms_p50": 33.5,
+     "meili_ms_p95": 35.5,
+     "hits": 1000,
+     "estimatedTotalHits": 17889,
+     "totalHits": null,
+     "resp_bytes": 1338827
+    },
+    "truth_check": {
+     "ground_truth_count": 17889,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 17889,
+     "count_match": false
+    },
+    "ids": [
+     8,
+     13,
+     28,
+     52,
+     57
+    ]
+   },
+   "seg_activos_sin_atraso": {
+    "tipo": "filter",
+    "desc": "Activos sin atraso (~1.1M en 4M): segmento masivo",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 34.25,
+     "wall_ms_p95": 39.19,
+     "wall_ms_p99": 39.72,
+     "wall_ms_min": 30.84,
+     "wall_ms_max": 39.86,
+     "meili_ms_p50": 28.5,
+     "meili_ms_p95": 32.25,
+     "hits": 1000,
+     "estimatedTotalHits": 90673,
+     "totalHits": null,
+     "resp_bytes": 1333358
+    },
+    "truth_check": {
+     "ground_truth_count": 90673,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 90673,
+     "count_match": false
+    },
+    "ids": [
+     1,
+     3,
+     5,
+     6,
+     8
+    ]
+   },
+   "seg_tag_promo": {
+    "tipo": "filter",
+    "desc": "Tag promo_2026",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 38.3,
+     "wall_ms_p95": 41.89,
+     "wall_ms_p99": 42.2,
+     "wall_ms_min": 32.91,
+     "wall_ms_max": 42.28,
+     "meili_ms_p50": 32.5,
+     "meili_ms_p95": 34.75,
+     "hits": 1000,
+     "estimatedTotalHits": 33943,
+     "totalHits": null,
+     "resp_bytes": 1345501
+    },
+    "truth_check": {
+     "ground_truth_count": 33943,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 33943,
+     "count_match": false
+    },
+    "ids": [
+     5,
+     17,
+     30,
+     50,
+     52
+    ]
+   },
+   "seg_nomina_vip_alto_monto": {
+    "tipo": "filter",
+    "desc": "Nomina VIP con monto > 40000",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 9.88,
+     "wall_ms_p95": 11.14,
+     "wall_ms_p99": 11.27,
+     "wall_ms_min": 7.55,
+     "wall_ms_max": 11.3,
+     "meili_ms_p50": 6.5,
+     "meili_ms_p95": 7.75,
+     "hits": 230,
+     "estimatedTotalHits": 230,
+     "totalHits": null,
+     "resp_bytes": 308826
+    },
+    "truth_check": {
+     "ground_truth_count": 230,
+     "cap": 1000,
+     "expected_reported": 230,
+     "reported": 230,
+     "count_match": true
+    },
+    "ids": [
+     991,
+     1428,
+     3175,
+     4378,
+     7639
+    ]
+   },
+   "geo_cdmx_25km": {
+    "tipo": "geo",
+    "desc": "Dentro de 25 km del Zocalo (CDMX)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 48.73,
+     "wall_ms_p95": 54.18,
+     "wall_ms_p99": 54.22,
+     "wall_ms_min": 42.77,
+     "wall_ms_max": 54.23,
+     "meili_ms_p50": 42.0,
+     "meili_ms_p95": 48.25,
+     "hits": 1000,
+     "estimatedTotalHits": 10845,
+     "totalHits": null,
+     "resp_bytes": 1339486
+    },
+    "truth_check": {
+     "ground_truth_count": 10845,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 10845,
+     "count_match": false
+    },
+    "ids": [
+     18,
+     47,
+     61,
+     77,
+     97
+    ]
+   },
+   "geo_gdl_50km": {
+    "tipo": "geo",
+    "desc": "Dentro de 50 km de Guadalajara",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 41.43,
+     "wall_ms_p95": 46.04,
+     "wall_ms_p99": 46.5,
+     "wall_ms_min": 40.26,
+     "wall_ms_max": 46.62,
+     "meili_ms_p50": 36.0,
+     "meili_ms_p95": 39.0,
+     "hits": 1000,
+     "estimatedTotalHits": 17611,
+     "totalHits": null,
+     "resp_bytes": 1335636
+    },
+    "truth_check": {
+     "ground_truth_count": 17611,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 17611,
+     "count_match": false
+    },
+    "ids": [
+     6,
+     26,
+     52,
+     74,
+     103
+    ]
+   },
+   "txt_apellido_hernandez": {
+    "tipo": "search",
+    "desc": "q=\"Hernandez\" sin typo tolerance (conteo exacto)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 39.69,
+     "wall_ms_p95": 43.55,
+     "wall_ms_p99": 44.26,
+     "wall_ms_min": 37.97,
+     "wall_ms_max": 44.43,
+     "meili_ms_p50": 34.0,
+     "meili_ms_p95": 38.25,
+     "hits": 1000,
+     "estimatedTotalHits": 5775,
+     "totalHits": null,
+     "resp_bytes": 1343299
+    },
+    "truth_check": {
+     "ground_truth_count": 5775,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 5775,
+     "count_match": false
+    },
+    "ids": [
+     45,
+     71,
+     172,
+     300,
+     375
+    ]
+   },
+   "txt_nombre_maria": {
+    "tipo": "search",
+    "desc": "q=\"Maria\" en nombre",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 36.98,
+     "wall_ms_p95": 41.76,
+     "wall_ms_p99": 42.35,
+     "wall_ms_min": 33.66,
+     "wall_ms_max": 42.49,
+     "meili_ms_p50": 32.0,
+     "meili_ms_p95": 36.0,
+     "hits": 1000,
+     "estimatedTotalHits": 5800,
+     "totalHits": null,
+     "resp_bytes": 1330956
+    },
+    "truth_check": {
+     "ground_truth_count": 5800,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 5800,
+     "count_match": false
+    },
+    "ids": [
+     127,
+     166,
+     286,
+     292,
+     340
+    ]
+   },
+   "txt_nombre_apellido_jalisco": {
+    "tipo": "search",
+    "desc": "q=\"Jose Hernandez\" + filtro Jalisco (segmento chico, control <1000)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 3.51,
+     "wall_ms_p95": 3.65,
+     "wall_ms_p99": 3.67,
+     "wall_ms_min": 3.3,
+     "wall_ms_max": 3.68,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 2,
+     "estimatedTotalHits": 2,
+     "totalHits": null,
+     "resp_bytes": 2788
+    },
+    "truth_check": {
+     "ground_truth_count": 2,
+     "cap": 1000,
+     "expected_reported": 2,
+     "reported": 2,
+     "count_match": true
+    },
+    "ids": [
+     190841,
+     284519
+    ]
+   },
+   "txt_apellido_hernandez_riesgo_alto": {
+    "tipo": "search",
+    "desc": "q=\"Hernandez\" + filtro banda_riesgo=alto (>1000 a gran escala)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 36.91,
+     "wall_ms_p95": 45.32,
+     "wall_ms_p99": 47.03,
+     "wall_ms_min": 32.42,
+     "wall_ms_max": 47.46,
+     "meili_ms_p50": 32.0,
+     "meili_ms_p95": 38.25,
+     "hits": 1000,
+     "estimatedTotalHits": 1267,
+     "totalHits": null,
+     "resp_bytes": 1342688
+    },
+    "truth_check": {
+     "ground_truth_count": 1267,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 1267,
+     "count_match": false
+    },
+    "ids": [
+     172,
+     300,
+     375,
+     1195,
+     1897
+    ]
+   },
+   "txt_prefix_apellido": {
+    "tipo": "search",
+    "desc": "Prefijo \"Hern\" (prefix search sobre el ultimo token)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 36.49,
+     "wall_ms_p95": 44.54,
+     "wall_ms_p99": 45.3,
+     "wall_ms_min": 31.41,
+     "wall_ms_max": 45.49,
+     "meili_ms_p50": 32.0,
+     "meili_ms_p95": 37.25,
+     "hits": 1000,
+     "estimatedTotalHits": 2855,
+     "totalHits": null,
+     "resp_bytes": 1343294
+    },
+    "truth_check": {
+     "ground_truth_count": 2855,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 2855,
+     "count_match": false
+    },
+    "ids": [
+     45,
+     71,
+     172,
+     300,
+     375
+    ]
+   },
+   "txt_colonia_centro": {
+    "tipo": "search",
+    "desc": "q=\"Centro\" en colonia",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 35.47,
+     "wall_ms_p95": 38.79,
+     "wall_ms_p99": 39.18,
+     "wall_ms_min": 30.01,
+     "wall_ms_max": 39.28,
+     "meili_ms_p50": 30.0,
+     "meili_ms_p95": 33.25,
+     "hits": 1000,
+     "estimatedTotalHits": 7452,
+     "totalHits": null,
+     "resp_bytes": 1325665
+    },
+    "truth_check": {
+     "ground_truth_count": 7452,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 7452,
+     "count_match": false
+    },
+    "ids": [
+     13,
+     14,
+     66,
+     152,
+     246
+    ]
+   },
+   "txt_fulltext_default": {
+    "tipo": "search",
+    "desc": "q=\"Guadalupe\" sobre todos los campos buscables (sonda fulltext)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 37.96,
+     "wall_ms_p95": 41.46,
+     "wall_ms_p99": 41.92,
+     "wall_ms_min": 32.26,
+     "wall_ms_max": 42.04,
+     "meili_ms_p50": 32.5,
+     "meili_ms_p95": 34.5,
+     "hits": 1000,
+     "estimatedTotalHits": 10353,
+     "totalHits": null,
+     "resp_bytes": 1345047
+    },
+    "truth_check": {
+     "ground_truth_count": 10353,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 10353,
+     "count_match": false
+    },
+    "ids": [
+     9,
+     92,
+     98,
+     387,
+     405
+    ]
+   },
+   "mix_sort_score_riesgo_alto": {
+    "tipo": "sort",
+    "desc": "Riesgo alto ordenado por score ascendente",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 32.99,
+     "wall_ms_p95": 33.61,
+     "wall_ms_p99": 33.74,
+     "wall_ms_min": 30.72,
+     "wall_ms_max": 33.77,
+     "meili_ms_p50": 26.5,
+     "meili_ms_p95": 28.0,
+     "hits": 1000,
+     "estimatedTotalHits": 65879,
+     "totalHits": null,
+     "resp_bytes": 1336120
+    },
+    "truth_check": {
+     "ground_truth_count": 65879,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 65879,
+     "count_match": false
+    },
+    "ids": [
+     100021,
+     64900,
+     76621,
+     16808,
+     94236
+    ]
+   },
+   "mix_sort_ingreso_banda_c": {
+    "tipo": "sort",
+    "desc": "Banda de ingreso C ordenada por ingreso descendente",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 39.88,
+     "wall_ms_p95": 46.97,
+     "wall_ms_p99": 48.72,
+     "wall_ms_min": 38.85,
+     "wall_ms_max": 49.16,
+     "meili_ms_p50": 33.0,
+     "meili_ms_p95": 40.75,
+     "hits": 1000,
+     "estimatedTotalHits": 71847,
+     "totalHits": null,
+     "resp_bytes": 1342644
+    },
+    "truth_check": {
+     "ground_truth_count": 71847,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 71847,
+     "count_match": false
+    },
+    "ids": [
+     279176,
+     253354,
+     159418,
+     145319,
+     92401
+    ]
+   },
+   "facet_estado_global": {
+    "tipo": "facet",
+    "desc": "Distribucion por estado (32 buckets sobre todo el indice)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 40.4,
+     "wall_ms_p95": 42.58,
+     "wall_ms_p99": 42.67,
+     "wall_ms_min": 31.61,
+     "wall_ms_max": 42.7,
+     "meili_ms_p50": 33.5,
+     "meili_ms_p95": 36.0,
+     "hits": 1000,
+     "estimatedTotalHits": 300000,
+     "totalHits": null,
+     "resp_bytes": 1334019
+    },
+    "truth_check": {
+     "ground_truth_count": 300000,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 300000,
+     "count_match": false,
+     "facets_match": {
+      "estado": true
+     }
+    },
+    "ids": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "facet_morosos_producto_riesgo": {
+    "tipo": "facet",
+    "desc": "Morosos: facet por producto y banda de riesgo",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 38.84,
+     "wall_ms_p95": 40.36,
+     "wall_ms_p99": 40.43,
+     "wall_ms_min": 29.85,
+     "wall_ms_max": 40.45,
+     "meili_ms_p50": 31.5,
+     "meili_ms_p95": 33.75,
+     "hits": 1000,
+     "estimatedTotalHits": 54001,
+     "totalHits": null,
+     "resp_bytes": 1333823
+    },
+    "truth_check": {
+     "ground_truth_count": 54001,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 54001,
+     "count_match": false,
+     "facets_match": {
+      "producto": true,
+      "banda_riesgo": true
+     }
+    },
+    "ids": [
+     2,
+     4,
+     9,
+     21,
+     38
+    ]
+   },
+   "facet_score_bajo_canal": {
+    "tipo": "facet",
+    "desc": "Score < 520: facet por canal de adquisicion",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 36.5,
+     "wall_ms_p95": 40.27,
+     "wall_ms_p99": 40.87,
+     "wall_ms_min": 32.26,
+     "wall_ms_max": 41.03,
+     "meili_ms_p50": 31.5,
+     "meili_ms_p95": 34.25,
+     "hits": 1000,
+     "estimatedTotalHits": 52879,
+     "totalHits": null,
+     "resp_bytes": 1336080
+    },
+    "truth_check": {
+     "ground_truth_count": 52879,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 52879,
+     "count_match": false,
+     "facets_match": {
+      "canal_adquisicion": true
+     }
+    },
+    "ids": [
+     2,
+     8,
+     11,
+     12,
+     13
+    ]
+   },
+   "facet_kyc_pendiente_dispositivo": {
+    "tipo": "facet",
+    "desc": "KYC pendiente: facet por dispositivo y acepta_marketing",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 34.43,
+     "wall_ms_p95": 42.83,
+     "wall_ms_p99": 44.22,
+     "wall_ms_min": 31.55,
+     "wall_ms_max": 44.56,
+     "meili_ms_p50": 29.0,
+     "meili_ms_p95": 36.25,
+     "hits": 1000,
+     "estimatedTotalHits": 65904,
+     "totalHits": null,
+     "resp_bytes": 1328146
+    },
+    "truth_check": {
+     "ground_truth_count": 65904,
+     "cap": 1000,
+     "expected_reported": 1000,
+     "reported": 65904,
+     "count_match": false,
+     "facets_match": {
+      "dispositivo": true,
+      "acepta_marketing": true
+     }
+    },
+    "ids": [
+     3,
+     9,
+     16,
+     21,
+     23
+    ]
+   }
+  }
+ },
+ "concurrency_default": [
+  {
+   "clients": 1,
+   "wall_s": 15.0,
+   "requests": 2732,
+   "ok": 2732,
+   "errors": 0,
+   "qps": 182.1,
+   "lat_p50": 4.67,
+   "lat_p90": 8.53,
+   "lat_p95": 10.69,
+   "lat_p99": 12.86,
+   "lat_max": 26.8,
+   "peak_rss_bytes": 3108704256,
+   "cpu": {
+    "cpu_pct_max": 85.9,
+    "cpu_pct_p50": 81.9,
+    "cpu_pct_mean": 81.7
+   },
+   "sample_error": []
+  },
+  {
+   "clients": 8,
+   "wall_s": 15.0,
+   "requests": 16900,
+   "ok": 16900,
+   "errors": 0,
+   "qps": 1126.3,
+   "lat_p50": 6.33,
+   "lat_p90": 10.28,
+   "lat_p95": 11.73,
+   "lat_p99": 14.86,
+   "lat_max": 25.83,
+   "peak_rss_bytes": 3113189376,
+   "cpu": {
+    "cpu_pct_max": 338.6,
+    "cpu_pct_p50": 328.1,
+    "cpu_pct_mean": 327.8
+   },
+   "sample_error": []
+  },
+  {
+   "clients": 32,
+   "wall_s": 15.02,
+   "requests": 15951,
+   "ok": 15951,
+   "errors": 0,
+   "qps": 1061.8,
+   "lat_p50": 27.04,
+   "lat_p90": 49.01,
+   "lat_p95": 57.16,
+   "lat_p99": 73.43,
+   "lat_max": 127.48,
+   "peak_rss_bytes": 3060498432,
+   "cpu": {
+    "cpu_pct_max": 339.3,
+    "cpu_pct_p50": 319.5,
+    "cpu_pct_mean": 319.0
+   },
+   "sample_error": []
+  },
+  {
+   "clients": 64,
+   "wall_s": 15.05,
+   "requests": 16336,
+   "ok": 16336,
+   "errors": 0,
+   "qps": 1085.5,
+   "lat_p50": 51.71,
+   "lat_p90": 98.31,
+   "lat_p95": 114.87,
+   "lat_p99": 152.08,
+   "lat_max": 239.29,
+   "peak_rss_bytes": 3023888384,
+   "cpu": {
+    "cpu_pct_max": 371.2,
+    "cpu_pct_p50": 309.7,
+    "cpu_pct_mean": 308.3
+   },
+   "sample_error": []
+  }
+ ],
+ "raise_cap": {
+  "raise_cap_s": 0.067,
+  "task_duration": "PT0.014386788S",
+  "status": "succeeded",
+  "peak_rss_bytes": 0,
+  "cpu": {}
+ },
+ "queries_raised_limit20": {
+  "config": "raised",
+  "limit": 20,
+  "reps": 20,
+  "peak_rss_bytes": 3108753408,
+  "cpu": {
+   "cpu_pct_max": 97.9,
+   "cpu_pct_p50": 87.9,
+   "cpu_pct_mean": 88.1
+  },
+  "queries": {
+   "seg_estado_cdmx": {
+    "tipo": "filter",
+    "desc": "Usuarios en Ciudad de Mexico",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 3.03,
+     "wall_ms_p95": 3.54,
+     "wall_ms_p99": 3.56,
+     "wall_ms_min": 2.56,
+     "wall_ms_max": 3.57,
+     "meili_ms_p50": 1.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 20691,
+     "totalHits": null,
+     "resp_bytes": 26781
+    },
+    "truth_check": {
+     "ground_truth_count": 20691,
+     "cap": 300000,
+     "expected_reported": 20691,
+     "reported": 20691,
+     "count_match": true
+    },
+    "ids": [
+     18,
+     32,
+     47,
+     61,
+     69
+    ]
+   },
+   "seg_riesgo_alto_personal": {
+    "tipo": "filter",
+    "desc": "Riesgo alto con credito personal",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 3.01,
+     "wall_ms_p95": 3.23,
+     "wall_ms_p99": 3.31,
+     "wall_ms_min": 2.42,
+     "wall_ms_max": 3.34,
+     "meili_ms_p50": 1.0,
+     "meili_ms_p95": 1.0,
+     "hits": 20,
+     "estimatedTotalHits": 19504,
+     "totalHits": null,
+     "resp_bytes": 26616
+    },
+    "truth_check": {
+     "ground_truth_count": 19504,
+     "cap": 300000,
+     "expected_reported": 19504,
+     "reported": 19504,
+     "count_match": true
+    },
+    "ids": [
+     3,
+     16,
+     19,
+     25,
+     106
+    ]
+   },
+   "seg_score_bajo": {
+    "tipo": "filter",
+    "desc": "Buro menor a 520 (candidatos a rechazo)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 3.94,
+     "wall_ms_p95": 4.36,
+     "wall_ms_p99": 4.55,
+     "wall_ms_min": 3.39,
+     "wall_ms_max": 4.6,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 52879,
+     "totalHits": null,
+     "resp_bytes": 26890
+    },
+    "truth_check": {
+     "ground_truth_count": 52879,
+     "cap": 300000,
+     "expected_reported": 52879,
+     "reported": 52879,
+     "count_match": true
+    },
+    "ids": [
+     2,
+     8,
+     11,
+     12,
+     13
+    ]
+   },
+   "seg_morosos_30d": {
+    "tipo": "filter",
+    "desc": "Morosos con mas de 30 dias de atraso",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 3.63,
+     "wall_ms_p95": 4.18,
+     "wall_ms_p99": 4.26,
+     "wall_ms_min": 3.22,
+     "wall_ms_max": 4.28,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 7407,
+     "totalHits": null,
+     "resp_bytes": 27024
+    },
+    "truth_check": {
+     "ground_truth_count": 7407,
+     "cap": 300000,
+     "expected_reported": 7407,
+     "reported": 7407,
+     "count_match": true
+    },
+    "ids": [
+     101,
+     134,
+     186,
+     219,
+     275
+    ]
+   },
+   "seg_kyc_verif_jovenes": {
+    "tipo": "filter",
+    "desc": "KYC verificado de 25 a 35 anios",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.24,
+     "wall_ms_p95": 4.57,
+     "wall_ms_p99": 4.6,
+     "wall_ms_min": 3.83,
+     "wall_ms_max": 4.61,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.05,
+     "hits": 20,
+     "estimatedTotalHits": 78581,
+     "totalHits": null,
+     "resp_bytes": 26935
+    },
+    "truth_check": {
+     "ground_truth_count": 78581,
+     "cap": 300000,
+     "expected_reported": 78581,
+     "reported": 78581,
+     "count_match": true
+    },
+    "ids": [
+     4,
+     25,
+     28,
+     32,
+     43
+    ]
+   },
+   "seg_jalisco_ingreso_b": {
+    "tipo": "filter",
+    "desc": "Jalisco con ingreso banda B",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 3.6,
+     "wall_ms_p95": 3.89,
+     "wall_ms_p99": 3.98,
+     "wall_ms_min": 3.42,
+     "wall_ms_max": 4.0,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 6335,
+     "totalHits": null,
+     "resp_bytes": 26930
+    },
+    "truth_check": {
+     "ground_truth_count": 6335,
+     "cap": 300000,
+     "expected_reported": 6335,
+     "reported": 6335,
+     "count_match": true
+    },
+    "ids": [
+     26,
+     46,
+     201,
+     252,
+     271
+    ]
+   },
+   "seg_tiktok_android_marketing": {
+    "tipo": "filter",
+    "desc": "TikTok + Android + acepta marketing",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.22,
+     "wall_ms_p95": 4.41,
+     "wall_ms_p99": 4.53,
+     "wall_ms_min": 3.97,
+     "wall_ms_max": 4.56,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 20245,
+     "totalHits": null,
+     "resp_bytes": 26701
+    },
+    "truth_check": {
+     "ground_truth_count": 20245,
+     "cap": 300000,
+     "expected_reported": 20245,
+     "reported": 20245,
+     "count_match": true
+    },
+    "ids": [
+     24,
+     36,
+     53,
+     109,
+     114
+    ]
+   },
+   "seg_mujeres_30_45_kyc": {
+    "tipo": "filter",
+    "desc": "Mujeres de 30 a 45 verificadas",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.48,
+     "wall_ms_p95": 5.64,
+     "wall_ms_p99": 5.91,
+     "wall_ms_min": 5.35,
+     "wall_ms_max": 5.98,
+     "meili_ms_p50": 3.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 38527,
+     "totalHits": null,
+     "resp_bytes": 26903
+    },
+    "truth_check": {
+     "ground_truth_count": 38527,
+     "cap": 300000,
+     "expected_reported": 38527,
+     "reported": 38527,
+     "count_match": true
+    },
+    "ids": [
+     30,
+     32,
+     46,
+     64,
+     71
+    ]
+   },
+   "seg_riesgo_muy_alto": {
+    "tipo": "filter",
+    "desc": "Banda muy_alto (segmento chico pero >1000 a gran escala)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.14,
+     "wall_ms_p95": 4.21,
+     "wall_ms_p99": 4.22,
+     "wall_ms_min": 3.98,
+     "wall_ms_max": 4.22,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 17889,
+     "totalHits": null,
+     "resp_bytes": 27042
+    },
+    "truth_check": {
+     "ground_truth_count": 17889,
+     "cap": 300000,
+     "expected_reported": 17889,
+     "reported": 17889,
+     "count_match": true
+    },
+    "ids": [
+     8,
+     13,
+     28,
+     52,
+     57
+    ]
+   },
+   "seg_activos_sin_atraso": {
+    "tipo": "filter",
+    "desc": "Activos sin atraso (~1.1M en 4M): segmento masivo",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.18,
+     "wall_ms_p95": 4.3,
+     "wall_ms_p99": 4.35,
+     "wall_ms_min": 4.08,
+     "wall_ms_max": 4.36,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 90673,
+     "totalHits": null,
+     "resp_bytes": 26778
+    },
+    "truth_check": {
+     "ground_truth_count": 90673,
+     "cap": 300000,
+     "expected_reported": 90673,
+     "reported": 90673,
+     "count_match": true
+    },
+    "ids": [
+     1,
+     3,
+     5,
+     6,
+     8
+    ]
+   },
+   "seg_tag_promo": {
+    "tipo": "filter",
+    "desc": "Tag promo_2026",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.08,
+     "wall_ms_p95": 4.22,
+     "wall_ms_p99": 4.25,
+     "wall_ms_min": 3.97,
+     "wall_ms_max": 4.26,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 33943,
+     "totalHits": null,
+     "resp_bytes": 27016
+    },
+    "truth_check": {
+     "ground_truth_count": 33943,
+     "cap": 300000,
+     "expected_reported": 33943,
+     "reported": 33943,
+     "count_match": true
+    },
+    "ids": [
+     5,
+     17,
+     30,
+     50,
+     52
+    ]
+   },
+   "seg_nomina_vip_alto_monto": {
+    "tipo": "filter",
+    "desc": "Nomina VIP con monto > 40000",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.63,
+     "wall_ms_p95": 4.79,
+     "wall_ms_p99": 4.85,
+     "wall_ms_min": 4.44,
+     "wall_ms_max": 4.87,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.05,
+     "hits": 20,
+     "estimatedTotalHits": 230,
+     "totalHits": null,
+     "resp_bytes": 27091
+    },
+    "truth_check": {
+     "ground_truth_count": 230,
+     "cap": 300000,
+     "expected_reported": 230,
+     "reported": 230,
+     "count_match": true
+    },
+    "ids": [
+     991,
+     1428,
+     3175,
+     4378,
+     7639
+    ]
+   },
+   "geo_cdmx_25km": {
+    "tipo": "geo",
+    "desc": "Dentro de 25 km del Zocalo (CDMX)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 31.77,
+     "wall_ms_p95": 34.3,
+     "wall_ms_p99": 37.5,
+     "wall_ms_min": 31.37,
+     "wall_ms_max": 38.3,
+     "meili_ms_p50": 29.0,
+     "meili_ms_p95": 31.25,
+     "hits": 20,
+     "estimatedTotalHits": 10845,
+     "totalHits": null,
+     "resp_bytes": 26873
+    },
+    "truth_check": {
+     "ground_truth_count": 10845,
+     "cap": 300000,
+     "expected_reported": 10845,
+     "reported": 10845,
+     "count_match": true
+    },
+    "ids": [
+     18,
+     47,
+     61,
+     77,
+     97
+    ]
+   },
+   "geo_gdl_50km": {
+    "tipo": "geo",
+    "desc": "Dentro de 50 km de Guadalajara",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 35.71,
+     "wall_ms_p95": 37.28,
+     "wall_ms_p99": 37.93,
+     "wall_ms_min": 34.67,
+     "wall_ms_max": 38.09,
+     "meili_ms_p50": 33.0,
+     "meili_ms_p95": 35.0,
+     "hits": 20,
+     "estimatedTotalHits": 17611,
+     "totalHits": null,
+     "resp_bytes": 26812
+    },
+    "truth_check": {
+     "ground_truth_count": 17611,
+     "cap": 300000,
+     "expected_reported": 17611,
+     "reported": 17611,
+     "count_match": true
+    },
+    "ids": [
+     6,
+     26,
+     52,
+     74,
+     103
+    ]
+   },
+   "txt_apellido_hernandez": {
+    "tipo": "search",
+    "desc": "q=\"Hernandez\" sin typo tolerance (conteo exacto)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 10.8,
+     "wall_ms_p95": 11.34,
+     "wall_ms_p99": 11.39,
+     "wall_ms_min": 10.35,
+     "wall_ms_max": 11.4,
+     "meili_ms_p50": 8.5,
+     "meili_ms_p95": 9.0,
+     "hits": 20,
+     "estimatedTotalHits": 5775,
+     "totalHits": null,
+     "resp_bytes": 27025
+    },
+    "truth_check": {
+     "ground_truth_count": 5775,
+     "cap": 300000,
+     "expected_reported": 5775,
+     "reported": 5775,
+     "count_match": true
+    },
+    "ids": [
+     45,
+     71,
+     172,
+     300,
+     375
+    ]
+   },
+   "txt_nombre_maria": {
+    "tipo": "search",
+    "desc": "q=\"Maria\" en nombre",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.79,
+     "wall_ms_p95": 5.94,
+     "wall_ms_p99": 6.16,
+     "wall_ms_min": 5.63,
+     "wall_ms_max": 6.21,
+     "meili_ms_p50": 4.0,
+     "meili_ms_p95": 4.0,
+     "hits": 20,
+     "estimatedTotalHits": 5800,
+     "totalHits": null,
+     "resp_bytes": 26720
+    },
+    "truth_check": {
+     "ground_truth_count": 5800,
+     "cap": 300000,
+     "expected_reported": 5800,
+     "reported": 5800,
+     "count_match": true
+    },
+    "ids": [
+     127,
+     166,
+     286,
+     292,
+     340
+    ]
+   },
+   "txt_nombre_apellido_jalisco": {
+    "tipo": "search",
+    "desc": "q=\"Jose Hernandez\" + filtro Jalisco (segmento chico, control <1000)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 8.8,
+     "wall_ms_p95": 8.97,
+     "wall_ms_p99": 9.01,
+     "wall_ms_min": 8.59,
+     "wall_ms_max": 9.02,
+     "meili_ms_p50": 7.0,
+     "meili_ms_p95": 7.0,
+     "hits": 2,
+     "estimatedTotalHits": 2,
+     "totalHits": null,
+     "resp_bytes": 2786
+    },
+    "truth_check": {
+     "ground_truth_count": 2,
+     "cap": 300000,
+     "expected_reported": 2,
+     "reported": 2,
+     "count_match": true
+    },
+    "ids": [
+     190841,
+     284519
+    ]
+   },
+   "txt_apellido_hernandez_riesgo_alto": {
+    "tipo": "search",
+    "desc": "q=\"Hernandez\" + filtro banda_riesgo=alto (>1000 a gran escala)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 10.25,
+     "wall_ms_p95": 10.4,
+     "wall_ms_p99": 10.41,
+     "wall_ms_min": 10.05,
+     "wall_ms_max": 10.41,
+     "meili_ms_p50": 8.0,
+     "meili_ms_p95": 8.0,
+     "hits": 20,
+     "estimatedTotalHits": 1267,
+     "totalHits": null,
+     "resp_bytes": 27013
+    },
+    "truth_check": {
+     "ground_truth_count": 1267,
+     "cap": 300000,
+     "expected_reported": 1267,
+     "reported": 1267,
+     "count_match": true
+    },
+    "ids": [
+     172,
+     300,
+     375,
+     1195,
+     1897
+    ]
+   },
+   "txt_prefix_apellido": {
+    "tipo": "search",
+    "desc": "Prefijo \"Hern\" (prefix search sobre el ultimo token)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.72,
+     "wall_ms_p95": 5.6,
+     "wall_ms_p99": 5.78,
+     "wall_ms_min": 4.39,
+     "wall_ms_max": 5.83,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 3.05,
+     "hits": 20,
+     "estimatedTotalHits": 2855,
+     "totalHits": null,
+     "resp_bytes": 27020
+    },
+    "truth_check": {
+     "ground_truth_count": 2855,
+     "cap": 300000,
+     "expected_reported": 2855,
+     "reported": 2855,
+     "count_match": true
+    },
+    "ids": [
+     45,
+     71,
+     172,
+     300,
+     375
+    ]
+   },
+   "txt_colonia_centro": {
+    "tipo": "search",
+    "desc": "q=\"Centro\" en colonia",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.16,
+     "wall_ms_p95": 5.27,
+     "wall_ms_p99": 5.28,
+     "wall_ms_min": 4.96,
+     "wall_ms_max": 5.29,
+     "meili_ms_p50": 3.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 7452,
+     "totalHits": null,
+     "resp_bytes": 26501
+    },
+    "truth_check": {
+     "ground_truth_count": 7452,
+     "cap": 300000,
+     "expected_reported": 7452,
+     "reported": 7452,
+     "count_match": true
+    },
+    "ids": [
+     13,
+     14,
+     66,
+     152,
+     246
+    ]
+   },
+   "txt_fulltext_default": {
+    "tipo": "search",
+    "desc": "q=\"Guadalupe\" sobre todos los campos buscables (sonda fulltext)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.83,
+     "wall_ms_p95": 6.05,
+     "wall_ms_p99": 6.57,
+     "wall_ms_min": 5.72,
+     "wall_ms_max": 6.69,
+     "meili_ms_p50": 4.0,
+     "meili_ms_p95": 4.0,
+     "hits": 20,
+     "estimatedTotalHits": 10353,
+     "totalHits": null,
+     "resp_bytes": 26985
+    },
+    "truth_check": {
+     "ground_truth_count": 10353,
+     "cap": 300000,
+     "expected_reported": 10353,
+     "reported": 10353,
+     "count_match": true
+    },
+    "ids": [
+     9,
+     92,
+     98,
+     387,
+     405
+    ]
+   },
+   "mix_sort_score_riesgo_alto": {
+    "tipo": "sort",
+    "desc": "Riesgo alto ordenado por score ascendente",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.33,
+     "wall_ms_p95": 4.57,
+     "wall_ms_p99": 4.71,
+     "wall_ms_min": 4.24,
+     "wall_ms_max": 4.74,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.0,
+     "hits": 20,
+     "estimatedTotalHits": 65879,
+     "totalHits": null,
+     "resp_bytes": 26923
+    },
+    "truth_check": {
+     "ground_truth_count": 65879,
+     "cap": 300000,
+     "expected_reported": 65879,
+     "reported": 65879,
+     "count_match": true
+    },
+    "ids": [
+     100021,
+     64900,
+     76621,
+     16808,
+     94236
+    ]
+   },
+   "mix_sort_ingreso_banda_c": {
+    "tipo": "sort",
+    "desc": "Banda de ingreso C ordenada por ingreso descendente",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.52,
+     "wall_ms_p95": 4.86,
+     "wall_ms_p99": 5.22,
+     "wall_ms_min": 2.61,
+     "wall_ms_max": 5.31,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 2.05,
+     "hits": 20,
+     "estimatedTotalHits": 71847,
+     "totalHits": null,
+     "resp_bytes": 27217
+    },
+    "truth_check": {
+     "ground_truth_count": 71847,
+     "cap": 300000,
+     "expected_reported": 71847,
+     "reported": 71847,
+     "count_match": true
+    },
+    "ids": [
+     279176,
+     253354,
+     159418,
+     145319,
+     92401
+    ]
+   },
+   "facet_estado_global": {
+    "tipo": "facet",
+    "desc": "Distribucion por estado (32 buckets sobre todo el indice)",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 6.99,
+     "wall_ms_p95": 7.08,
+     "wall_ms_p99": 7.09,
+     "wall_ms_min": 6.87,
+     "wall_ms_max": 7.09,
+     "meili_ms_p50": 5.0,
+     "meili_ms_p95": 5.0,
+     "hits": 20,
+     "estimatedTotalHits": 300000,
+     "totalHits": null,
+     "resp_bytes": 27355
+    },
+    "truth_check": {
+     "ground_truth_count": 300000,
+     "cap": 300000,
+     "expected_reported": 300000,
+     "reported": 300000,
+     "count_match": true,
+     "facets_match": {
+      "estado": true
+     }
+    },
+    "ids": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "facet_morosos_producto_riesgo": {
+    "tipo": "facet",
+    "desc": "Morosos: facet por producto y banda de riesgo",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 5.43,
+     "wall_ms_p95": 5.71,
+     "wall_ms_p99": 5.78,
+     "wall_ms_min": 5.28,
+     "wall_ms_max": 5.8,
+     "meili_ms_p50": 3.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 54001,
+     "totalHits": null,
+     "resp_bytes": 26817
+    },
+    "truth_check": {
+     "ground_truth_count": 54001,
+     "cap": 300000,
+     "expected_reported": 54001,
+     "reported": 54001,
+     "count_match": true,
+     "facets_match": {
+      "producto": true,
+      "banda_riesgo": true
+     }
+    },
+    "ids": [
+     2,
+     4,
+     9,
+     21,
+     38
+    ]
+   },
+   "facet_score_bajo_canal": {
+    "tipo": "facet",
+    "desc": "Score < 520: facet por canal de adquisicion",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 6.36,
+     "wall_ms_p95": 6.48,
+     "wall_ms_p99": 6.51,
+     "wall_ms_min": 6.06,
+     "wall_ms_max": 6.52,
+     "meili_ms_p50": 4.0,
+     "meili_ms_p95": 4.0,
+     "hits": 20,
+     "estimatedTotalHits": 52879,
+     "totalHits": null,
+     "resp_bytes": 27062
+    },
+    "truth_check": {
+     "ground_truth_count": 52879,
+     "cap": 300000,
+     "expected_reported": 52879,
+     "reported": 52879,
+     "count_match": true,
+     "facets_match": {
+      "canal_adquisicion": true
+     }
+    },
+    "ids": [
+     2,
+     8,
+     11,
+     12,
+     13
+    ]
+   },
+   "facet_kyc_pendiente_dispositivo": {
+    "tipo": "facet",
+    "desc": "KYC pendiente: facet por dispositivo y acepta_marketing",
+    "metrics": {
+     "reps": 20,
+     "wall_ms_p50": 4.81,
+     "wall_ms_p95": 4.97,
+     "wall_ms_p99": 5.34,
+     "wall_ms_min": 4.6,
+     "wall_ms_max": 5.43,
+     "meili_ms_p50": 3.0,
+     "meili_ms_p95": 3.0,
+     "hits": 20,
+     "estimatedTotalHits": 65904,
+     "totalHits": null,
+     "resp_bytes": 26764
+    },
+    "truth_check": {
+     "ground_truth_count": 65904,
+     "cap": 300000,
+     "expected_reported": 65904,
+     "reported": 65904,
+     "count_match": true,
+     "facets_match": {
+      "dispositivo": true,
+      "acepta_marketing": true
+     }
+    },
+    "ids": [
+     3,
+     9,
+     16,
+     21,
+     23
+    ]
+   }
+  }
+ },
+ "queries_raised_limit1000": {
+  "config": "raised",
+  "limit": 1000,
+  "reps": 6,
+  "peak_rss_bytes": 3100495872,
+  "cpu": {
+   "cpu_pct_max": 81.9,
+   "cpu_pct_p50": 77.9,
+   "cpu_pct_mean": 77.3
+  },
+  "queries": {
+   "seg_estado_cdmx": {
+    "tipo": "filter",
+    "desc": "Usuarios en Ciudad de Mexico",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 85.22,
+     "wall_ms_p95": 87.34,
+     "wall_ms_p99": 87.54,
+     "wall_ms_min": 83.46,
+     "wall_ms_max": 87.59,
+     "meili_ms_p50": 75.0,
+     "meili_ms_p95": 76.75,
+     "hits": 1000,
+     "estimatedTotalHits": 20691,
+     "totalHits": null,
+     "resp_bytes": 1339209
+    },
+    "truth_check": {
+     "ground_truth_count": 20691,
+     "cap": 300000,
+     "expected_reported": 20691,
+     "reported": 20691,
+     "count_match": true
+    },
+    "ids": [
+     18,
+     32,
+     47,
+     61,
+     69
+    ]
+   },
+   "seg_riesgo_alto_personal": {
+    "tipo": "filter",
+    "desc": "Riesgo alto con credito personal",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 85.09,
+     "wall_ms_p95": 85.45,
+     "wall_ms_p99": 85.48,
+     "wall_ms_min": 81.97,
+     "wall_ms_max": 85.48,
+     "meili_ms_p50": 75.0,
+     "meili_ms_p95": 75.0,
+     "hits": 1000,
+     "estimatedTotalHits": 19504,
+     "totalHits": null,
+     "resp_bytes": 1337111
+    },
+    "truth_check": {
+     "ground_truth_count": 19504,
+     "cap": 300000,
+     "expected_reported": 19504,
+     "reported": 19504,
+     "count_match": true
+    },
+    "ids": [
+     3,
+     16,
+     19,
+     25,
+     106
+    ]
+   },
+   "seg_score_bajo": {
+    "tipo": "filter",
+    "desc": "Buro menor a 520 (candidatos a rechazo)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 85.89,
+     "wall_ms_p95": 87.52,
+     "wall_ms_p99": 87.77,
+     "wall_ms_min": 84.89,
+     "wall_ms_max": 87.83,
+     "meili_ms_p50": 76.0,
+     "meili_ms_p95": 76.75,
+     "hits": 1000,
+     "estimatedTotalHits": 52879,
+     "totalHits": null,
+     "resp_bytes": 1335908
+    },
+    "truth_check": {
+     "ground_truth_count": 52879,
+     "cap": 300000,
+     "expected_reported": 52879,
+     "reported": 52879,
+     "count_match": true
+    },
+    "ids": [
+     2,
+     8,
+     11,
+     12,
+     13
+    ]
+   },
+   "seg_morosos_30d": {
+    "tipo": "filter",
+    "desc": "Morosos con mas de 30 dias de atraso",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 86.68,
+     "wall_ms_p95": 88.37,
+     "wall_ms_p99": 88.65,
+     "wall_ms_min": 84.2,
+     "wall_ms_max": 88.72,
+     "meili_ms_p50": 76.5,
+     "meili_ms_p95": 77.75,
+     "hits": 1000,
+     "estimatedTotalHits": 7407,
+     "totalHits": null,
+     "resp_bytes": 1345167
+    },
+    "truth_check": {
+     "ground_truth_count": 7407,
+     "cap": 300000,
+     "expected_reported": 7407,
+     "reported": 7407,
+     "count_match": true
+    },
+    "ids": [
+     101,
+     134,
+     186,
+     219,
+     275
+    ]
+   },
+   "seg_kyc_verif_jovenes": {
+    "tipo": "filter",
+    "desc": "KYC verificado de 25 a 35 anios",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 69.74,
+     "wall_ms_p95": 74.98,
+     "wall_ms_p99": 75.17,
+     "wall_ms_min": 65.43,
+     "wall_ms_max": 75.21,
+     "meili_ms_p50": 60.5,
+     "meili_ms_p95": 65.0,
+     "hits": 1000,
+     "estimatedTotalHits": 78581,
+     "totalHits": null,
+     "resp_bytes": 1338907
+    },
+    "truth_check": {
+     "ground_truth_count": 78581,
+     "cap": 300000,
+     "expected_reported": 78581,
+     "reported": 78581,
+     "count_match": true
+    },
+    "ids": [
+     4,
+     25,
+     28,
+     32,
+     43
+    ]
+   },
+   "seg_jalisco_ingreso_b": {
+    "tipo": "filter",
+    "desc": "Jalisco con ingreso banda B",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 56.02,
+     "wall_ms_p95": 59.12,
+     "wall_ms_p99": 59.41,
+     "wall_ms_min": 53.34,
+     "wall_ms_max": 59.48,
+     "meili_ms_p50": 47.5,
+     "meili_ms_p95": 50.75,
+     "hits": 1000,
+     "estimatedTotalHits": 6335,
+     "totalHits": null,
+     "resp_bytes": 1334454
+    },
+    "truth_check": {
+     "ground_truth_count": 6335,
+     "cap": 300000,
+     "expected_reported": 6335,
+     "reported": 6335,
+     "count_match": true
+    },
+    "ids": [
+     26,
+     46,
+     201,
+     252,
+     271
+    ]
+   },
+   "seg_tiktok_android_marketing": {
+    "tipo": "filter",
+    "desc": "TikTok + Android + acepta marketing",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 46.76,
+     "wall_ms_p95": 51.07,
+     "wall_ms_p99": 51.88,
+     "wall_ms_min": 43.41,
+     "wall_ms_max": 52.08,
+     "meili_ms_p50": 40.0,
+     "meili_ms_p95": 43.25,
+     "hits": 1000,
+     "estimatedTotalHits": 20245,
+     "totalHits": null,
+     "resp_bytes": 1335621
+    },
+    "truth_check": {
+     "ground_truth_count": 20245,
+     "cap": 300000,
+     "expected_reported": 20245,
+     "reported": 20245,
+     "count_match": true
+    },
+    "ids": [
+     24,
+     36,
+     53,
+     109,
+     114
+    ]
+   },
+   "seg_mujeres_30_45_kyc": {
+    "tipo": "filter",
+    "desc": "Mujeres de 30 a 45 verificadas",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 41.54,
+     "wall_ms_p95": 45.32,
+     "wall_ms_p99": 46.11,
+     "wall_ms_min": 38.96,
+     "wall_ms_max": 46.31,
+     "meili_ms_p50": 35.0,
+     "meili_ms_p95": 39.0,
+     "hits": 1000,
+     "estimatedTotalHits": 38527,
+     "totalHits": null,
+     "resp_bytes": 1339494
+    },
+    "truth_check": {
+     "ground_truth_count": 38527,
+     "cap": 300000,
+     "expected_reported": 38527,
+     "reported": 38527,
+     "count_match": true
+    },
+    "ids": [
+     30,
+     32,
+     46,
+     64,
+     71
+    ]
+   },
+   "seg_riesgo_muy_alto": {
+    "tipo": "filter",
+    "desc": "Banda muy_alto (segmento chico pero >1000 a gran escala)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 37.54,
+     "wall_ms_p95": 39.77,
+     "wall_ms_p99": 39.91,
+     "wall_ms_min": 35.4,
+     "wall_ms_max": 39.94,
+     "meili_ms_p50": 31.5,
+     "meili_ms_p95": 33.0,
+     "hits": 1000,
+     "estimatedTotalHits": 17889,
+     "totalHits": null,
+     "resp_bytes": 1338827
+    },
+    "truth_check": {
+     "ground_truth_count": 17889,
+     "cap": 300000,
+     "expected_reported": 17889,
+     "reported": 17889,
+     "count_match": true
+    },
+    "ids": [
+     8,
+     13,
+     28,
+     52,
+     57
+    ]
+   },
+   "seg_activos_sin_atraso": {
+    "tipo": "filter",
+    "desc": "Activos sin atraso (~1.1M en 4M): segmento masivo",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 33.74,
+     "wall_ms_p95": 35.41,
+     "wall_ms_p99": 35.68,
+     "wall_ms_min": 32.54,
+     "wall_ms_max": 35.75,
+     "meili_ms_p50": 28.0,
+     "meili_ms_p95": 29.75,
+     "hits": 1000,
+     "estimatedTotalHits": 90673,
+     "totalHits": null,
+     "resp_bytes": 1333358
+    },
+    "truth_check": {
+     "ground_truth_count": 90673,
+     "cap": 300000,
+     "expected_reported": 90673,
+     "reported": 90673,
+     "count_match": true
+    },
+    "ids": [
+     1,
+     3,
+     5,
+     6,
+     8
+    ]
+   },
+   "seg_tag_promo": {
+    "tipo": "filter",
+    "desc": "Tag promo_2026",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 30.83,
+     "wall_ms_p95": 31.46,
+     "wall_ms_p99": 31.49,
+     "wall_ms_min": 29.63,
+     "wall_ms_max": 31.49,
+     "meili_ms_p50": 26.0,
+     "meili_ms_p95": 26.0,
+     "hits": 1000,
+     "estimatedTotalHits": 33943,
+     "totalHits": null,
+     "resp_bytes": 1345501
+    },
+    "truth_check": {
+     "ground_truth_count": 33943,
+     "cap": 300000,
+     "expected_reported": 33943,
+     "reported": 33943,
+     "count_match": true
+    },
+    "ids": [
+     5,
+     17,
+     30,
+     50,
+     52
+    ]
+   },
+   "seg_nomina_vip_alto_monto": {
+    "tipo": "filter",
+    "desc": "Nomina VIP con monto > 40000",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 8.45,
+     "wall_ms_p95": 9.45,
+     "wall_ms_p99": 9.62,
+     "wall_ms_min": 7.87,
+     "wall_ms_max": 9.67,
+     "meili_ms_p50": 6.0,
+     "meili_ms_p95": 6.75,
+     "hits": 230,
+     "estimatedTotalHits": 230,
+     "totalHits": null,
+     "resp_bytes": 308826
+    },
+    "truth_check": {
+     "ground_truth_count": 230,
+     "cap": 300000,
+     "expected_reported": 230,
+     "reported": 230,
+     "count_match": true
+    },
+    "ids": [
+     991,
+     1428,
+     3175,
+     4378,
+     7639
+    ]
+   },
+   "geo_cdmx_25km": {
+    "tipo": "geo",
+    "desc": "Dentro de 25 km del Zocalo (CDMX)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 41.97,
+     "wall_ms_p95": 42.79,
+     "wall_ms_p99": 42.99,
+     "wall_ms_min": 41.25,
+     "wall_ms_max": 43.03,
+     "meili_ms_p50": 37.0,
+     "meili_ms_p95": 37.75,
+     "hits": 1000,
+     "estimatedTotalHits": 10845,
+     "totalHits": null,
+     "resp_bytes": 1339486
+    },
+    "truth_check": {
+     "ground_truth_count": 10845,
+     "cap": 300000,
+     "expected_reported": 10845,
+     "reported": 10845,
+     "count_match": true
+    },
+    "ids": [
+     18,
+     47,
+     61,
+     77,
+     97
+    ]
+   },
+   "geo_gdl_50km": {
+    "tipo": "geo",
+    "desc": "Dentro de 50 km de Guadalajara",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 42.31,
+     "wall_ms_p95": 42.94,
+     "wall_ms_p99": 42.94,
+     "wall_ms_min": 40.47,
+     "wall_ms_max": 42.94,
+     "meili_ms_p50": 37.0,
+     "meili_ms_p95": 38.0,
+     "hits": 1000,
+     "estimatedTotalHits": 17611,
+     "totalHits": null,
+     "resp_bytes": 1335636
+    },
+    "truth_check": {
+     "ground_truth_count": 17611,
+     "cap": 300000,
+     "expected_reported": 17611,
+     "reported": 17611,
+     "count_match": true
+    },
+    "ids": [
+     6,
+     26,
+     52,
+     74,
+     103
+    ]
+   },
+   "txt_apellido_hernandez": {
+    "tipo": "search",
+    "desc": "q=\"Hernandez\" sin typo tolerance (conteo exacto)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 32.84,
+     "wall_ms_p95": 33.63,
+     "wall_ms_p99": 33.74,
+     "wall_ms_min": 31.95,
+     "wall_ms_max": 33.77,
+     "meili_ms_p50": 28.0,
+     "meili_ms_p95": 28.0,
+     "hits": 1000,
+     "estimatedTotalHits": 5775,
+     "totalHits": null,
+     "resp_bytes": 1343299
+    },
+    "truth_check": {
+     "ground_truth_count": 5775,
+     "cap": 300000,
+     "expected_reported": 5775,
+     "reported": 5775,
+     "count_match": true
+    },
+    "ids": [
+     45,
+     71,
+     172,
+     300,
+     375
+    ]
+   },
+   "txt_nombre_maria": {
+    "tipo": "search",
+    "desc": "q=\"Maria\" en nombre",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 31.46,
+     "wall_ms_p95": 34.1,
+     "wall_ms_p99": 34.77,
+     "wall_ms_min": 30.88,
+     "wall_ms_max": 34.93,
+     "meili_ms_p50": 26.0,
+     "meili_ms_p95": 29.0,
+     "hits": 1000,
+     "estimatedTotalHits": 5800,
+     "totalHits": null,
+     "resp_bytes": 1330956
+    },
+    "truth_check": {
+     "ground_truth_count": 5800,
+     "cap": 300000,
+     "expected_reported": 5800,
+     "reported": 5800,
+     "count_match": true
+    },
+    "ids": [
+     127,
+     166,
+     286,
+     292,
+     340
+    ]
+   },
+   "txt_nombre_apellido_jalisco": {
+    "tipo": "search",
+    "desc": "q=\"Jose Hernandez\" + filtro Jalisco (segmento chico, control <1000)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 3.82,
+     "wall_ms_p95": 4.44,
+     "wall_ms_p99": 4.45,
+     "wall_ms_min": 3.38,
+     "wall_ms_max": 4.45,
+     "meili_ms_p50": 2.0,
+     "meili_ms_p95": 3.0,
+     "hits": 2,
+     "estimatedTotalHits": 2,
+     "totalHits": null,
+     "resp_bytes": 2788
+    },
+    "truth_check": {
+     "ground_truth_count": 2,
+     "cap": 300000,
+     "expected_reported": 2,
+     "reported": 2,
+     "count_match": true
+    },
+    "ids": [
+     190841,
+     284519
+    ]
+   },
+   "txt_apellido_hernandez_riesgo_alto": {
+    "tipo": "search",
+    "desc": "q=\"Hernandez\" + filtro banda_riesgo=alto (>1000 a gran escala)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 33.69,
+     "wall_ms_p95": 34.3,
+     "wall_ms_p99": 34.36,
+     "wall_ms_min": 33.25,
+     "wall_ms_max": 34.38,
+     "meili_ms_p50": 28.0,
+     "meili_ms_p95": 29.0,
+     "hits": 1000,
+     "estimatedTotalHits": 1267,
+     "totalHits": null,
+     "resp_bytes": 1342688
+    },
+    "truth_check": {
+     "ground_truth_count": 1267,
+     "cap": 300000,
+     "expected_reported": 1267,
+     "reported": 1267,
+     "count_match": true
+    },
+    "ids": [
+     172,
+     300,
+     375,
+     1195,
+     1897
+    ]
+   },
+   "txt_prefix_apellido": {
+    "tipo": "search",
+    "desc": "Prefijo \"Hern\" (prefix search sobre el ultimo token)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 31.01,
+     "wall_ms_p95": 32.38,
+     "wall_ms_p99": 32.65,
+     "wall_ms_min": 29.89,
+     "wall_ms_max": 32.71,
+     "meili_ms_p50": 26.0,
+     "meili_ms_p95": 26.75,
+     "hits": 1000,
+     "estimatedTotalHits": 2855,
+     "totalHits": null,
+     "resp_bytes": 1343294
+    },
+    "truth_check": {
+     "ground_truth_count": 2855,
+     "cap": 300000,
+     "expected_reported": 2855,
+     "reported": 2855,
+     "count_match": true
+    },
+    "ids": [
+     45,
+     71,
+     172,
+     300,
+     375
+    ]
+   },
+   "txt_colonia_centro": {
+    "tipo": "search",
+    "desc": "q=\"Centro\" en colonia",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 30.34,
+     "wall_ms_p95": 31.06,
+     "wall_ms_p99": 31.16,
+     "wall_ms_min": 29.58,
+     "wall_ms_max": 31.19,
+     "meili_ms_p50": 25.0,
+     "meili_ms_p95": 25.75,
+     "hits": 1000,
+     "estimatedTotalHits": 7452,
+     "totalHits": null,
+     "resp_bytes": 1325665
+    },
+    "truth_check": {
+     "ground_truth_count": 7452,
+     "cap": 300000,
+     "expected_reported": 7452,
+     "reported": 7452,
+     "count_match": true
+    },
+    "ids": [
+     13,
+     14,
+     66,
+     152,
+     246
+    ]
+   },
+   "txt_fulltext_default": {
+    "tipo": "search",
+    "desc": "q=\"Guadalupe\" sobre todos los campos buscables (sonda fulltext)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 31.36,
+     "wall_ms_p95": 32.37,
+     "wall_ms_p99": 32.38,
+     "wall_ms_min": 29.95,
+     "wall_ms_max": 32.38,
+     "meili_ms_p50": 26.0,
+     "meili_ms_p95": 26.75,
+     "hits": 1000,
+     "estimatedTotalHits": 10353,
+     "totalHits": null,
+     "resp_bytes": 1345047
+    },
+    "truth_check": {
+     "ground_truth_count": 10353,
+     "cap": 300000,
+     "expected_reported": 10353,
+     "reported": 10353,
+     "count_match": true
+    },
+    "ids": [
+     9,
+     92,
+     98,
+     387,
+     405
+    ]
+   },
+   "mix_sort_score_riesgo_alto": {
+    "tipo": "sort",
+    "desc": "Riesgo alto ordenado por score ascendente",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 31.7,
+     "wall_ms_p95": 33.52,
+     "wall_ms_p99": 33.91,
+     "wall_ms_min": 30.85,
+     "wall_ms_max": 34.01,
+     "meili_ms_p50": 26.5,
+     "meili_ms_p95": 27.75,
+     "hits": 1000,
+     "estimatedTotalHits": 65879,
+     "totalHits": null,
+     "resp_bytes": 1336120
+    },
+    "truth_check": {
+     "ground_truth_count": 65879,
+     "cap": 300000,
+     "expected_reported": 65879,
+     "reported": 65879,
+     "count_match": true
+    },
+    "ids": [
+     100021,
+     64900,
+     76621,
+     16808,
+     94236
+    ]
+   },
+   "mix_sort_ingreso_banda_c": {
+    "tipo": "sort",
+    "desc": "Banda de ingreso C ordenada por ingreso descendente",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 34.22,
+     "wall_ms_p95": 34.75,
+     "wall_ms_p99": 34.86,
+     "wall_ms_min": 33.83,
+     "wall_ms_max": 34.89,
+     "meili_ms_p50": 29.0,
+     "meili_ms_p95": 29.75,
+     "hits": 1000,
+     "estimatedTotalHits": 71847,
+     "totalHits": null,
+     "resp_bytes": 1342644
+    },
+    "truth_check": {
+     "ground_truth_count": 71847,
+     "cap": 300000,
+     "expected_reported": 71847,
+     "reported": 71847,
+     "count_match": true
+    },
+    "ids": [
+     279176,
+     253354,
+     159418,
+     145319,
+     92401
+    ]
+   },
+   "facet_estado_global": {
+    "tipo": "facet",
+    "desc": "Distribucion por estado (32 buckets sobre todo el indice)",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 30.67,
+     "wall_ms_p95": 31.91,
+     "wall_ms_p99": 32.07,
+     "wall_ms_min": 29.8,
+     "wall_ms_max": 32.1,
+     "meili_ms_p50": 25.0,
+     "meili_ms_p95": 26.75,
+     "hits": 1000,
+     "estimatedTotalHits": 300000,
+     "totalHits": null,
+     "resp_bytes": 1334019
+    },
+    "truth_check": {
+     "ground_truth_count": 300000,
+     "cap": 300000,
+     "expected_reported": 300000,
+     "reported": 300000,
+     "count_match": true,
+     "facets_match": {
+      "estado": true
+     }
+    },
+    "ids": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "facet_morosos_producto_riesgo": {
+    "tipo": "facet",
+    "desc": "Morosos: facet por producto y banda de riesgo",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 30.3,
+     "wall_ms_p95": 31.34,
+     "wall_ms_p99": 31.38,
+     "wall_ms_min": 29.84,
+     "wall_ms_max": 31.39,
+     "meili_ms_p50": 25.0,
+     "meili_ms_p95": 26.0,
+     "hits": 1000,
+     "estimatedTotalHits": 54001,
+     "totalHits": null,
+     "resp_bytes": 1333823
+    },
+    "truth_check": {
+     "ground_truth_count": 54001,
+     "cap": 300000,
+     "expected_reported": 54001,
+     "reported": 54001,
+     "count_match": true,
+     "facets_match": {
+      "producto": true,
+      "banda_riesgo": true
+     }
+    },
+    "ids": [
+     2,
+     4,
+     9,
+     21,
+     38
+    ]
+   },
+   "facet_score_bajo_canal": {
+    "tipo": "facet",
+    "desc": "Score < 520: facet por canal de adquisicion",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 30.51,
+     "wall_ms_p95": 32.4,
+     "wall_ms_p99": 32.82,
+     "wall_ms_min": 29.68,
+     "wall_ms_max": 32.93,
+     "meili_ms_p50": 26.0,
+     "meili_ms_p95": 26.75,
+     "hits": 1000,
+     "estimatedTotalHits": 52879,
+     "totalHits": null,
+     "resp_bytes": 1336080
+    },
+    "truth_check": {
+     "ground_truth_count": 52879,
+     "cap": 300000,
+     "expected_reported": 52879,
+     "reported": 52879,
+     "count_match": true,
+     "facets_match": {
+      "canal_adquisicion": true
+     }
+    },
+    "ids": [
+     2,
+     8,
+     11,
+     12,
+     13
+    ]
+   },
+   "facet_kyc_pendiente_dispositivo": {
+    "tipo": "facet",
+    "desc": "KYC pendiente: facet por dispositivo y acepta_marketing",
+    "metrics": {
+     "reps": 6,
+     "wall_ms_p50": 30.18,
+     "wall_ms_p95": 30.64,
+     "wall_ms_p99": 30.68,
+     "wall_ms_min": 28.88,
+     "wall_ms_max": 30.69,
+     "meili_ms_p50": 25.0,
+     "meili_ms_p95": 25.0,
+     "hits": 1000,
+     "estimatedTotalHits": 65904,
+     "totalHits": null,
+     "resp_bytes": 1328146
+    },
+    "truth_check": {
+     "ground_truth_count": 65904,
+     "cap": 300000,
+     "expected_reported": 65904,
+     "reported": 65904,
+     "count_match": true,
+     "facets_match": {
+      "dispositivo": true,
+      "acepta_marketing": true
+     }
+    },
+    "ids": [
+     3,
+     9,
+     16,
+     21,
+     23
+    ]
+   }
+  }
+ },
+ "verify_ids": {
+  "ok": 16,
+  "total": 16,
+  "fallos": []
+ },
+ "typo_experiment": {
+  "typos_on": {
+   "settings_s": 0.064,
+   "queries": {
+    "txt_apellido_hernandez": {
+     "p50_ms": 4.35,
+     "reportado": 5775,
+     "ground_truth_token_exacto": 5775,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_nombre_maria": {
+     "p50_ms": 2.52,
+     "reportado": 8741,
+     "ground_truth_token_exacto": 5800,
+     "factor_vs_exacto": 1.507
+    },
+    "txt_nombre_apellido_jalisco": {
+     "p50_ms": 3.81,
+     "reportado": 2,
+     "ground_truth_token_exacto": 2,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_apellido_hernandez_riesgo_alto": {
+     "p50_ms": 4.64,
+     "reportado": 1267,
+     "ground_truth_token_exacto": 1267,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_prefix_apellido": {
+     "p50_ms": 3.02,
+     "reportado": 2855,
+     "ground_truth_token_exacto": 2855,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_colonia_centro": {
+     "p50_ms": 3.18,
+     "reportado": 7452,
+     "ground_truth_token_exacto": 7452,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_fulltext_default": {
+     "p50_ms": 2.99,
+     "reportado": 10353,
+     "ground_truth_token_exacto": 10353,
+     "factor_vs_exacto": 1.0
+    }
+   }
+  },
+  "typos_off": {
+   "settings_s": 0.064,
+   "queries": {
+    "txt_apellido_hernandez": {
+     "p50_ms": 4.17,
+     "reportado": 5775,
+     "ground_truth_token_exacto": 5775,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_nombre_maria": {
+     "p50_ms": 2.43,
+     "reportado": 5800,
+     "ground_truth_token_exacto": 5800,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_nombre_apellido_jalisco": {
+     "p50_ms": 4.17,
+     "reportado": 2,
+     "ground_truth_token_exacto": 2,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_apellido_hernandez_riesgo_alto": {
+     "p50_ms": 4.06,
+     "reportado": 1267,
+     "ground_truth_token_exacto": 1267,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_prefix_apellido": {
+     "p50_ms": 2.27,
+     "reportado": 2855,
+     "ground_truth_token_exacto": 2855,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_colonia_centro": {
+     "p50_ms": 3.1,
+     "reportado": 7452,
+     "ground_truth_token_exacto": 7452,
+     "factor_vs_exacto": 1.0
+    },
+    "txt_fulltext_default": {
+     "p50_ms": 2.91,
+     "reportado": 10353,
+     "ground_truth_token_exacto": 10353,
+     "factor_vs_exacto": 1.0
+    }
+   }
+  }
+ },
+ "deep_pagination": {
+  "peak_rss_bytes": 4789698560,
+  "cpu": {
+   "cpu_pct_max": 111.9,
+   "cpu_pct_p50": 99.9,
+   "cpu_pct_mean": 99.8
+  },
+  "rows": [
+   {
+    "id": "deep_activos_sin_atraso",
+    "offset": 0,
+    "wall_ms_p50": 2.01,
+    "wall_ms_p95": 2.67,
+    "wall_ms_p99": 2.78,
+    "meili_ms_p50": 1.0,
+    "hits": 20,
+    "totalHits": null,
+    "estimatedTotalHits": 90673,
+    "resp_bytes": 26778,
+    "ground_truth_count": 90673,
+    "expected_hits": 20,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_activos_sin_atraso",
+    "offset": 1000,
+    "wall_ms_p50": 31.22,
+    "wall_ms_p95": 33.08,
+    "wall_ms_p99": 33.76,
+    "meili_ms_p50": 29.5,
+    "hits": 20,
+    "totalHits": null,
+    "estimatedTotalHits": 90673,
+    "resp_bytes": 26742,
+    "ground_truth_count": 90673,
+    "expected_hits": 20,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_activos_sin_atraso",
+    "offset": 10000,
+    "wall_ms_p50": 314.24,
+    "wall_ms_p95": 367.52,
+    "wall_ms_p99": 375.21,
+    "meili_ms_p50": 311.5,
+    "hits": 20,
+    "totalHits": null,
+    "estimatedTotalHits": 90673,
+    "resp_bytes": 26953,
+    "ground_truth_count": 90673,
+    "expected_hits": 20,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_activos_sin_atraso",
+    "offset": 100000,
+    "wall_ms_p50": 2597.88,
+    "wall_ms_p95": 3294.09,
+    "wall_ms_p99": 3405.83,
+    "meili_ms_p50": 2587.5,
+    "hits": 0,
+    "totalHits": null,
+    "estimatedTotalHits": 90673,
+    "resp_bytes": 152,
+    "ground_truth_count": 90673,
+    "expected_hits": 0,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_activos_sin_atraso",
+    "offset": 500000,
+    "wall_ms_p50": 2563.87,
+    "wall_ms_p95": 2857.7,
+    "wall_ms_p99": 2982.94,
+    "meili_ms_p50": 2554.5,
+    "hits": 0,
+    "totalHits": null,
+    "estimatedTotalHits": 90673,
+    "resp_bytes": 152,
+    "ground_truth_count": 90673,
+    "expected_hits": 0,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_activos_sin_atraso",
+    "offset": 1000000,
+    "wall_ms_p50": 2561.72,
+    "wall_ms_p95": 2641.47,
+    "wall_ms_p99": 2645.83,
+    "meili_ms_p50": 2554.0,
+    "hits": 0,
+    "totalHits": null,
+    "estimatedTotalHits": 90673,
+    "resp_bytes": 153,
+    "ground_truth_count": 90673,
+    "expected_hits": 0,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_score_bajo",
+    "offset": 0,
+    "wall_ms_p50": 2.09,
+    "wall_ms_p95": 5.01,
+    "wall_ms_p99": 6.13,
+    "meili_ms_p50": 1.0,
+    "hits": 20,
+    "totalHits": null,
+    "estimatedTotalHits": 52879,
+    "resp_bytes": 26890,
+    "ground_truth_count": 52879,
+    "expected_hits": 20,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_score_bajo",
+    "offset": 1000,
+    "wall_ms_p50": 31.51,
+    "wall_ms_p95": 36.85,
+    "wall_ms_p99": 38.65,
+    "meili_ms_p50": 30.0,
+    "hits": 20,
+    "totalHits": null,
+    "estimatedTotalHits": 52879,
+    "resp_bytes": 26834,
+    "ground_truth_count": 52879,
+    "expected_hits": 20,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_score_bajo",
+    "offset": 10000,
+    "wall_ms_p50": 288.44,
+    "wall_ms_p95": 312.72,
+    "wall_ms_p99": 319.37,
+    "meili_ms_p50": 286.0,
+    "hits": 20,
+    "totalHits": null,
+    "estimatedTotalHits": 52879,
+    "resp_bytes": 26896,
+    "ground_truth_count": 52879,
+    "expected_hits": 20,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_score_bajo",
+    "offset": 100000,
+    "wall_ms_p50": 1490.89,
+    "wall_ms_p95": 1538.65,
+    "wall_ms_p99": 1545.56,
+    "meili_ms_p50": 1485.5,
+    "hits": 0,
+    "totalHits": null,
+    "estimatedTotalHits": 52879,
+    "resp_bytes": 152,
+    "ground_truth_count": 52879,
+    "expected_hits": 0,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_score_bajo",
+    "offset": 500000,
+    "wall_ms_p50": 1504.38,
+    "wall_ms_p95": 1529.1,
+    "wall_ms_p99": 1532.53,
+    "meili_ms_p50": 1499.5,
+    "hits": 0,
+    "totalHits": null,
+    "estimatedTotalHits": 52879,
+    "resp_bytes": 152,
+    "ground_truth_count": 52879,
+    "expected_hits": 0,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_score_bajo",
+    "offset": 1000000,
+    "wall_ms_p50": 1488.65,
+    "wall_ms_p95": 1536.62,
+    "wall_ms_p99": 1537.7,
+    "meili_ms_p50": 1483.5,
+    "hits": 0,
+    "totalHits": null,
+    "estimatedTotalHits": 52879,
+    "resp_bytes": 153,
+    "ground_truth_count": 52879,
+    "expected_hits": 0,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_sin_filtro",
+    "offset": 0,
+    "wall_ms_p50": 1.51,
+    "wall_ms_p95": 2.58,
+    "wall_ms_p99": 2.89,
+    "meili_ms_p50": 0.0,
+    "hits": 20,
+    "totalHits": null,
+    "estimatedTotalHits": 300000,
+    "resp_bytes": 26740,
+    "ground_truth_count": 300000,
+    "expected_hits": 20,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_sin_filtro",
+    "offset": 1000,
+    "wall_ms_p50": 29.64,
+    "wall_ms_p95": 31.22,
+    "wall_ms_p99": 31.66,
+    "meili_ms_p50": 28.0,
+    "hits": 20,
+    "totalHits": null,
+    "estimatedTotalHits": 300000,
+    "resp_bytes": 26855,
+    "ground_truth_count": 300000,
+    "expected_hits": 20,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_sin_filtro",
+    "offset": 10000,
+    "wall_ms_p50": 268.79,
+    "wall_ms_p95": 271.06,
+    "wall_ms_p99": 272.07,
+    "meili_ms_p50": 266.0,
+    "hits": 20,
+    "totalHits": null,
+    "estimatedTotalHits": 300000,
+    "resp_bytes": 26842,
+    "ground_truth_count": 300000,
+    "expected_hits": 20,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_sin_filtro",
+    "offset": 100000,
+    "wall_ms_p50": 2761.98,
+    "wall_ms_p95": 2839.2,
+    "wall_ms_p99": 2843.48,
+    "meili_ms_p50": 2753.5,
+    "hits": 20,
+    "totalHits": null,
+    "estimatedTotalHits": 300000,
+    "resp_bytes": 26878,
+    "ground_truth_count": 300000,
+    "expected_hits": 20,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_sin_filtro",
+    "offset": 500000,
+    "wall_ms_p50": 8751.51,
+    "wall_ms_p95": 8819.68,
+    "wall_ms_p99": 8829.99,
+    "meili_ms_p50": 8727.0,
+    "hits": 0,
+    "totalHits": null,
+    "estimatedTotalHits": 300000,
+    "resp_bytes": 153,
+    "ground_truth_count": 300000,
+    "expected_hits": 0,
+    "hits_ok": true,
+    "total_ok": true
+   },
+   {
+    "id": "deep_sin_filtro",
+    "offset": 1000000,
+    "wall_ms_p50": 8723.52,
+    "wall_ms_p95": 8763.01,
+    "wall_ms_p99": 8771.23,
+    "meili_ms_p50": 8696.0,
+    "hits": 0,
+    "totalHits": null,
+    "estimatedTotalHits": 300000,
+    "resp_bytes": 154,
+    "ground_truth_count": 300000,
+    "expected_hits": 0,
+    "hits_ok": true,
+    "total_ok": true
+   }
+  ]
+ },
+ "final_db_bytes": 2468831494,
+ "peak_rss_bytes_total": 4789698560
+}
